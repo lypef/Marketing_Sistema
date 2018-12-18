@@ -1,0 +1,37 @@
+
+.flexible-post .post:after,
+.flexible-post .post:before{
+	clear: both;
+	content: "";
+    display: block;
+
+}
+
+.flexible-post .post-featured-image {
+    float: left;
+    max-height: 214px;
+    width: 48%;
+}
+.flexible-post .entry-container {
+    float: right;
+    padding-top: 0px;
+    width: 48%;
+}
+
+
+/* All Mobile Portrait size smaller than 599 (devices and browsers) */
+@media only screen and (max-width: 599px) {
+
+.flexible-post .post-featured-image {
+    float: none;
+    max-height: inherit;
+    width: 100%;
+}
+.flexible-post .entry-container {
+    float: none;
+    padding-top: 25px;
+    width: 100%;
+}
+
+
+}

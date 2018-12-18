@@ -1,0 +1,30 @@
+iframe {
+	width: 100%;
+}
+
+.contact-submit input[type="submit"]{
+	display: inline-block;
+}
+.contact-submit{
+	text-align: center;
+}
+#main {
+    padding: 30px 0 0;
+}
+#main .widget_text,
+#main .widget_text p{
+	margin-bottom: 0;
+}
+#content .blog-contact-detail > ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* All Mobile Portrait size smaller than 599 (devices and browsers) */
+@media only screen and (max-width: 767px) {
+	.blog-contact-detail{
+		margin-bottom: 30px
+	}
+
+
+}
