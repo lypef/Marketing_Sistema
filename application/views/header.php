@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>BlogIdol</title>
     <!-- Custom Favicons -->
-    <link rel="icon" type="image/png" href="public/images/favicon.png">
+    <link rel="icon" type="image/png" href="../../public/images/favicon.png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet"> 
     <!-- Iconic fonts -->
-    <link rel="stylesheet" type="text/css" href='public/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href='../../public/css/font-awesome.min.css'>
     <!-- Bootstrap framework styling -->
-    <link href="public/css/bootstrap.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap.css" rel="stylesheet">
     <!-- Template main style -->
-    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="../../public/style.css">
     <!-- Flex slider overwrite styling  -->
-    <link rel='stylesheet' id='demo-style-css' href='public/css/style.css' type='text/css' media='all'/>
+    <link rel='stylesheet' id='demo-style-css' href='../../public/css/style.css' type='text/css' media='all'/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -44,12 +44,29 @@
             <div class="container">
               <div class="inline-social-icons">
                 <ul>
-                  <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
-                  <li><a href="#" target="_blank" class="fa fa-twitter-square"></a></li>
-                  <li><a href="#" target="_blank" class="fa fa-youtube-play"></a></li>
-                  <li><a href="#" target="_blank" class="fa fa-linkedin-square"></a></li>
-                  <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                  <li><a href="#" target="_blank" class="fa fa-pinterest-square"></a></li>
+                  
+                  <?php 
+                  if ($_SERVER["REQUEST_URI"] != '/index.php/all/login')
+                  {
+                    echo '
+                    <li><a href="/index.php/all/login" class="fa fa-user"> login</a></li>
+                    <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
+                    <li><a href="#" target="_blank" class="fa fa-twitter-square"></a></li>
+                    <li><a href="#" target="_blank" class="fa fa-youtube-play"></a></li>
+                    <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
+                    ';
+                  }
+                  else
+                  {
+                    echo '
+                    <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
+                    <li><a href="#" target="_blank" class="fa fa-twitter-square"></a></li>
+                    <li><a href="#" target="_blank" class="fa fa-youtube-play"></a></li>
+                    <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
+                    ';
+                  }
+                  ?>
+
                 </ul>
               </div>
               <div class="search-container">
@@ -58,9 +75,9 @@
                       <form class="search-form">
                         <label>
                           <span class="screen-reader-text">Search for:</span>
-                          <input type="text" class="search-field" value="" placeholder="Search here">
+                          <input type="text" class="search-field" value="" placeholder="Texto aqui">
                         </label>
-                        <input class="search-submit" type="submit" value="Search">
+                        <input class="search-submit" type="submit" value="Buscar">
                       </form>
                     </div>
                   </div> 
@@ -69,8 +86,8 @@
           <div class="site-branding">
             <div class="container">
               <h1 class="site-title">
-                <a href="index.html" title="Retech Offshore" target="_self">
-                <img alt="" src="public/images/site-logo.png"></a>
+                <a href="/" title="Pagina principal" target="_self">
+                <img alt="" src="../../public/images/site-logo.png"></a>
               </h1>
             </div>
           </div> 
@@ -103,7 +120,7 @@
                     </li>
                     <li class="nav-item"><a href="#" target="_self">Contact</a>
                       <ul>
-                        <li><a href="contact.html" target="_self">Contact version 1</a></li>
+                        <li><a href="/index.php/all/login" target="_self">Iniciar session</a></li>
                         <li><a href="topmap-contact.html" target="_self">Contact version 2</a></li>
                         <li><a href="bottommap-contact.html" target="_self">Contact version 3</a></li>
                       </ul>
@@ -114,27 +131,31 @@
             </div>
         </div>
       </header>
-      <div id="main" class="site-main">
+      
+      <?php if ($_SERVER["REQUEST_URI"] != '/index.php/all/login')
+      {
+        echo '
+        <div id="main" class="site-main">
         <div class="featured-slider">
           <div id="bannerflexslider" class="flexslider">
             <ul class="slides">
             <li>
             <a href="">
-            <img src="public/images/slider1.jpg" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
+            <img src="../../public/images/slider1.jpg" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
             <div class="slider-caption">
             <h2><a href="category.html">My Journey was full of mystrious.</a></h2>
             <p>Diam 1989 wisi quam lorem vestibulum nec nibh, sollicitudin volutpat at libero litora, non adipiscin...</p><a href="category.html" target="_self">Read More</a> </div>
             </li>
             <li>
             <a href="#">
-            <img src="public/images/slider2.jpg" class="attachment-slider size-slider wp-post-image" alt="slider2" /> </a>
+            <img src="../../public/images/slider2.jpg" class="attachment-slider size-slider wp-post-image" alt="slider2" /> </a>
             <div class="slider-caption">
             <h2><a href="category.html">Generation of the Technology</a></h2>
             <p>Diam wisi quam lorem vestibulum nec nibh, sollicitudin volutpat at libero litora, non adipiscing. Nu...</p><a href="category.html" target="_self">Read More</a> </div>
             </li>
             <li>
             <a href="#">
-            <img src="public/images/slider3.jpg" class="attachment-slider size-slider wp-post-image" alt="slider3" /> </a>
+            <img src="../../public/images/slider3.jpg" class="attachment-slider size-slider wp-post-image" alt="slider3" /> </a>
             <div class="slider-caption">
             <h2><a href="category.html">Games for health and nation.</a></h2>
             <p>Diam wisi quam lorem vestibulum nec nibh, sollicitudin volutpat at libero litora, non adipiscing. Nu...</p><a href="category.html" target="_self">Read More</a> </div>
@@ -142,4 +163,7 @@
             </ul>
           </div>
         </div>
-        <div class="container">
+        ';
+      } ?>
+
+      <div class="container">

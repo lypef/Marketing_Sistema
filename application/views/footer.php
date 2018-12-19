@@ -9,7 +9,7 @@
                 <aside class="widget widget_text">
                   <div class="site-info">
                     <h1 class="site-title">
-                      <a href="index.html" target="_self"><img alt="" src="public/images/footer-logo.png"></a>
+                      <a href="index.html" target="_self"><img alt="" src="../../public/images/footer-logo.png"></a>
                     </h1>  
                   </div>
                   <div class="textwidget">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
@@ -58,21 +58,21 @@
         </div>
     </div>
     <!-- jQuery Library -->
-    <script src="public/js/jquery.js"></script>
+    <script src="../../public/js/jquery.js"></script>
     <!-- Bootstrap js file -->
-    <script src="public/js/bootstrap.js"></script>
+    <script src="../../public/js/bootstrap.js"></script>
     <!-- Flexslider js file -->
-    <script src="public/js/jquery.flexslider.js" type="text/javascript"></script>
+    <script src="../../public/js/jquery.flexslider.js" type="text/javascript"></script>
     <!-- Fit video js file -->
-    <script type="text/javascript" src="public/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.fitvids.js"></script>
     <!-- Masonry js file live link -->
-     <script src="public/js/masonry.pkgd.js"></script>
-     <script type="text/javascript" src="public/js/imagesloaded.pkgd.js"></script>
+     <script src="../../public/js/masonry.pkgd.js"></script>
+     <script type="text/javascript" src="../../public/js/imagesloaded.pkgd.js"></script>
      <!-- Isotope js file -->
-    <script type="text/javascript" src="public/js/isotope.js"></script>
+    <script type="text/javascript" src="../../public/js/isotope.js"></script>
     <!-- Template custom js file -->
-    <script src="public/js/custom.js"></script>
+    <script src="../../public/js/custom.js"></script>
     <!-- Contact form validation -->
-    <script src="public/validate/jquery.validate.js"></script>
+    <script src="../../public/validate/jquery.validate.js"></script>
  </body>
 </html>
