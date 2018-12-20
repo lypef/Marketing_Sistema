@@ -30,7 +30,7 @@
 <article class="col-sm-6">
     <div class="post-content-wrap">
     <div class="entry-content">
-    <form method="post" class="wpcf7-form cmxform" id="commentForm" action="">
+    <form method="post" class="wpcf7-form cmxform">
         <aside class="widget widget_text">
         <h3 class="widget-title">Ingrese usuario y contraseña</h3>
     <p>
