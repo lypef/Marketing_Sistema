@@ -53,7 +53,7 @@
                       $salir = '<li><a href="/index.php/All/login_close" class="fa fa-times"> salir</a></li>';
                     }else
                     {
-                      $salir = '<li><a href="/index.php/all/login" class="fa fa-user"> login</a></li>';
+                      $salir = '<li><a href="/index.php/all/login" class="fa fa-user"> Entrar</a></li>';
                     }
                     echo $salir . '
                     <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
@@ -119,34 +119,18 @@
                 <nav id="site-navigation" class="navigation main-navigation container">
                   <div class="menu-top-menu-container clearfix">
                     <ul>
-                      <li class="current-menu-item"><a href="manager" target="_self">Home</a>
-                      </li>
-                      <li><a href="categories.html" target="_self">Nature</a></li>
-                      <li><a href="#" target="_self">Technology</a></li>
-                      <li><a href="#" target="_self">Games</a></li>
-                      <li class="nav-item"><a href="#" target="_self">Post Styles</a>
-                        <ul>
-                          <li><a href="single.html" target="_self">Image Post</a></li>
-                          <li><a href="video-post.html" target="_self">Video Post</a></li>
-                          <li><a href="slider-post.html" target="_self">Slider Post</a></li>
-                          <li><a href="fullwidth-post.html" target="_self">Full Width Post</a></li>
-                          <li><a href="error.html" target="_self">404 Error</a></li>
-                          <li><a href="search.html" target="_self">Search Result</a></li>
-                          <li><a href="author.html" target="_self">Author</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-item"><a href="#" target="_self">gallery</a>
-                        <ul>
-                          <li><a href="gallery.html" target="_self">gallery 1</a></li>
-                          <li><a href="gallery-filter.html" target="_self">gallery 2</a></li>
-                          <li><a href="gallery-pint.html" target="_self">gallery 3</a></li>
-                        </ul>
+                      <li><a href="categories.html" data-toggle="modal" data-target="#exampleModal">Quienes somos</a></li>
+                      <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
+                      <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
+                      <li><a href="/index.php/all/magazine" target="_self">U. Magazine</a></li>
+                      <li class="nav-item"><a href="#" target="_self">Categorias</a>
+                      '.GetCategoriesLI().'
                       </li>
                       <li class="nav-item"><a href="#" target="_self">'.$this->session->userdata('username').'</a>
                         <ul>
                           <li><a href="/index.php/All/login_close" >Cerrar session</a></li>
-                          <li><a href="topmap-contact.html" target="_self">Contact version 2</a></li>
-                          <li><a href="bottommap-contact.html" target="_self">Contact version 3</a></li>
+                          <li><a href="topmap-contact.html" target="_self">Editar</a></li>
+                          <li><a href="bottommap-contact.html" target="_self">Gestionar usuarios</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -160,35 +144,12 @@
                 <nav id="site-navigation" class="navigation main-navigation container">
                   <div class="menu-top-menu-container clearfix">
                     <ul>
-                      <li class="current-menu-item"><a href="/" target="_self">Home</a>
-                      </li>
-                      <li><a href="categories.html" target="_self">Nature</a></li>
-                      <li><a href="#" target="_self">Technology</a></li>
-                      <li><a href="#" target="_self">Games</a></li>
-                      <li class="nav-item"><a href="#" target="_self">Post Styles</a>
-                        <ul>
-                          <li><a href="single.html" target="_self">Image Post</a></li>
-                          <li><a href="video-post.html" target="_self">Video Post</a></li>
-                          <li><a href="slider-post.html" target="_self">Slider Post</a></li>
-                          <li><a href="fullwidth-post.html" target="_self">Full Width Post</a></li>
-                          <li><a href="error.html" target="_self">404 Error</a></li>
-                          <li><a href="search.html" target="_self">Search Result</a></li>
-                          <li><a href="author.html" target="_self">Author</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-item"><a href="#" target="_self">gallery</a>
-                        <ul>
-                          <li><a href="gallery.html" target="_self">gallery 1</a></li>
-                          <li><a href="gallery-filter.html" target="_self">gallery 2</a></li>
-                          <li><a href="gallery-pint.html" target="_self">gallery 3</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-item"><a href="#" target="_self">Contact</a>
-                        <ul>
-                          <li><a href="/index.php/all/login" target="_self">Iniciar session</a></li>
-                          <li><a href="topmap-contact.html" target="_self">Contact version 2</a></li>
-                          <li><a href="bottommap-contact.html" target="_self">Contact version 3</a></li>
-                        </ul>
+                      <li><a href="categories.html" data-toggle="modal" data-target="#exampleModal">Quienes somos</a></li>
+                      <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
+                      <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
+                      <li><a href="/index.php/all/magazine" target="_self">U. Magazine</a></li>
+                      <li class="nav-item"><a href="#" target="_self">Categorias</a>
+                      '.GetCategoriesLI().'
                       </li>
                     </ul>
                   </div>    
@@ -199,7 +160,8 @@
         </div>
       </header>
       
-      <?php if ($_SERVER["REQUEST_URI"] != '/index.php/all/login')
+      
+      <?php if ($_SERVER["REQUEST_URI"] == '/' || $_SERVER["REQUEST_URI"] == '/index.php')
       {
         echo '
         <div id="main" class="site-main">
@@ -231,6 +193,22 @@
           </div>
         </div>
         ';
+      }else
+      {
+        echo '
+        <div class="page-title-wrap" style="background-image:url(../../public/images/man.png);">
+        <div class="container">
+          <div class="breadcrumb">
+            <span typeof="v:Breadcrumb">
+              <a href="#">Home</a>
+            </span>
+            <i class="fa fa-long-arrow-right"></i>
+            <span typeof="v:Breadcrumb">
+              <span property="v:title">author</span>
+            </span>
+          </div>
+        </div>
+      </div><br>
+        ';
       } ?>
-
       <div class="container">

@@ -7,6 +7,7 @@ class All extends CI_Controller {
     {
 		parent::__construct();
 		$this->load->model('Models_model');
+		$this->load->helper('helpers');
 	}
 	
 	public function index()
@@ -20,6 +21,35 @@ class All extends CI_Controller {
 	{
 		$this->load->view('layouts/header');
 		$this->load->view('manager');
+		$this->load->view('layouts/footer');
+	}
+
+	public function nuestros_servicios()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('nuestros_servicios');
+		$this->load->view('layouts/footer');
+	}
+
+	public function contacto()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('contacto');
+		$this->load->view('layouts/footer');
+	}
+
+	public function magazine()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('magazine');
+		$this->load->view('layouts/footer');
+	}
+
+	public function view_category()
+	{
+		echo $_GET["id"];
+		$this->load->view('layouts/header');
+		$this->load->view('view_category');
 		$this->load->view('layouts/footer');
 	}
 
@@ -52,7 +82,7 @@ class All extends CI_Controller {
 	public function login_close ()
 	{
 		$this->session->sess_destroy();
-		redirect('/');
+		redirect('');
 	}
 }
 
