@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-12-2018 a las 05:56:08
+-- Tiempo de generación: 22-12-2018 a las 07:03:11
 -- Versión del servidor: 10.2.17-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `marketing`
 --
-CREATE DATABASE IF NOT EXISTS `marketing` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `marketing`;
 
 -- --------------------------------------------------------
 
@@ -50,6 +48,29 @@ INSERT INTO `categories` (`id`, `name`, `description`, `image`) VALUES
 (6, 'ANTROS / BARES', 'ANTROS, BARES Y DIVERSION', '/imagen/1.jpg'),
 (7, 'HOTELES', 'SERVICIOS HOTELEROS', '/imagen/1.jpg'),
 (8, 'SERVICIOS PROFESIONALES', 'SERVICIOS', '/imagen/1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `empresa` varchar(254) NOT NULL,
+  `direccion` varchar(254) NOT NULL,
+  `mail` varchar(254) NOT NULL,
+  `telefono` varchar(254) NOT NULL,
+  `responsable` varchar(254) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `clients`
+--
+
+INSERT INTO `clients` (`id`, `category`, `empresa`, `direccion`, `mail`, `telefono`, `responsable`) VALUES
+(1, 1, 'PAMPAS DO BRAZIL', 'DIRECCION FICTICIA NO. 94.0', 'contacto@pampas.com', '625615615', 'FULANO DE TAL \r\n');
 
 -- --------------------------------------------------------
 
@@ -83,6 +104,13 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_category` (`category`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -99,10 +127,26 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `clients`
+--
+ALTER TABLE `clients`
+  ADD CONSTRAINT `client_category` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

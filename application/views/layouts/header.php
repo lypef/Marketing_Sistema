@@ -119,7 +119,12 @@
                 <nav id="site-navigation" class="navigation main-navigation container">
                   <div class="menu-top-menu-container clearfix">
                     <ul>
-                      <li><a href="categories.html" data-toggle="modal" data-target="#exampleModal">Quienes somos</a></li>
+                      <li class="nav-item"><a href="#" target="_self">Clientes</a>
+                      <ul>
+                        <li><a href="#" data-toggle="modal" data-target="#addclient">Nuevo cliente</a></li>
+                        <li><a href="topmap-contact.html" target="_self">Gestionar</a></li>
+                      </ul>
+                    </li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
                       <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
                       <li><a href="/index.php/all/magazine" target="_self">U. Magazine</a></li>
@@ -144,7 +149,7 @@
                 <nav id="site-navigation" class="navigation main-navigation container">
                   <div class="menu-top-menu-container clearfix">
                     <ul>
-                      <li><a href="categories.html" data-toggle="modal" data-target="#exampleModal">Quienes somos</a></li>
+                      <li><a href="" data-toggle="modal" data-target="#exampleModal">Quienes somos</a></li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
                       <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
                       <li><a href="/index.php/all/magazine" target="_self">U. Magazine</a></li>
@@ -195,20 +200,17 @@
         ';
       }else
       {
-        echo '
-        <div class="page-title-wrap" style="background-image:url(../../public/images/man.png);">
-        <div class="container">
-          <div class="breadcrumb">
-            <span typeof="v:Breadcrumb">
-              <a href="#">Home</a>
-            </span>
-            <i class="fa fa-long-arrow-right"></i>
-            <span typeof="v:Breadcrumb">
-              <span property="v:title">author</span>
-            </span>
-          </div>
-        </div>
-      </div><br>
+        echo '<br>
         ';
       } ?>
+      <script>
+      function getUrlVars() {
+          var vars = {};
+          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value.replace(/%20/g, " ");
+          });
+          return vars;
+        }
+      </script>
       <div class="container">
+      <div id="message"></div>

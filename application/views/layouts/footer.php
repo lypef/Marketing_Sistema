@@ -85,6 +85,66 @@
     </div>
     <!-- Finaliza Modal Quienes somos -->
 
+    <!-- Modal Quienes somos -->
+    <?php
+    if ($this->session->userdata('username'))
+    {
+      echo '
+      <div class="modal fade" id="addclient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-body">
+            
+            <div class="site-content" id="content">
+            <h2 class="idol-title">Ingrese los datos correspondientes</h2>
+            </div>
+            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/client_add" autocomplete="off">
+                      <p>
+                        <span class="">
+                          '.GetCategoriesSelect().'
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="empresa" class="" type="text" value="" name="empresa" placeholder="Empresa: " autocomplete="off" required>
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="direccion" class="" type="text" value="" name="direccion" placeholder="Direccion: " autocomplete="off">
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="email" class="" type="email" value="" name="email" placeholder="Email: " autocomplete="off">
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="telefono" class="" type="number" value="" name="telefono" placeholder="Telefono: " autocomplete="off">
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="responsable" class="" type="text" value="" name="responsable" placeholder="Responsable: " autocomplete="off">
+                        </span>
+                      </p>
+                      <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary" >Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      ';
+    }
+    ?>
+    <!-- Finaliza Modal Quienes somos -->
+
     <div class="back-to-top">
           <a href="#masthead" title="Ir al principio" class="fa fa-angle-up"></a>       
         </div>
@@ -106,5 +166,28 @@
     <script src="../../public/js/custom.js"></script>
     <!-- Contact form validation -->
     <script src="../../public/validate/jquery.validate.js"></script>
+
+    <script>
+    if (getUrlVars()["clientaddtrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong>Hecho ! </strong> Se agrego cliente con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["clientaddfalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong>Error ! </strong> No es posible agregar cliente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    </script>
  </body>
 </html>

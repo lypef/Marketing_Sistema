@@ -84,6 +84,32 @@ class All extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('');
 	}
+
+	public function client_add ()
+	{
+		$url = $this->input->post('url');
+		
+		$data = array(
+			'category' => $this->input->post('category'),
+			'empresa'  => $this->input->post('empresa'),
+			'direccion'  => $this->input->post('direccion'),
+			'mail'  => $this->input->post('email'),
+			'telefono'  => $this->input->post('telefono'),
+			'responsable'  => $this->input->post('responsable')
+		);
+		
+		$r = $this->db->insert('clients',$data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?clientaddtrue=true');
+		}else
+		{
+			redirect($url.'?clientaddfalse=false');
+		}
+
+		
+	}
 }
 
 ?>
