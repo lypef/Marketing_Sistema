@@ -174,7 +174,7 @@
         body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
-        body +="<strong>Hecho ! </strong> Se agrego cliente con exito.";
+        body +="<strong><p class='fa fa-check'></strong> Se agrego cliente con exito.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
@@ -184,7 +184,7 @@
         body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
-        body +="<strong>Error ! </strong> No es posible agregar cliente.";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar cliente.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
