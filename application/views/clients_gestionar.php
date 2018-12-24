@@ -2,7 +2,7 @@
     <label>
         <div class="row">
             <div class="col-sm-11">
-                <input class="search-field" type="search" placeholder="Ingrese responsable o empresa para buscar" value="" name="search" autocomplete="off">
+                <input class="search-field" type="search" placeholder="Ingrese responsable o empresa para buscar" value="<?php echo $_GET['search'] ?>" name="search" autocomplete="off">
             </div>
             <div class="col-sm-1">
                 <button type="submit" class="btn btn-default" style="height: 50px;" width="100%"><span class="fa fa-search" /></button>
@@ -10,7 +10,6 @@
         </div>
     </label>
 </form>
-                
 <table class="table table-hover">
   <thead>
     <tr>
@@ -161,16 +160,59 @@
 </table>
     <nav aria-label="...">
     <ul class="pagination">
-        <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+        <?php 
+        if ($pag > 1)
+        {
+            echo '<li class="page-item">';
+            $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag-1);
+        }else
+        {
+            echo '<li class="page-item disabled">';
+            $link = "#";
+        }
+        ?>
+            <a class="page-link" href="<?php echo $link ?>">Anterior</a>
         </li>
-        <li class="page-item"><a class="page-link" href="<?php echo "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?pag=1" ?>">1</a></li>
-        <li class="page-item active">
-        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="<?php echo "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?pag=3" ?>">3</a></li>
-        <li class="page-item">
-        <a class="page-link" href="#">Siguiente</a>
+        <?php
+
+        for (null; $i <= $pags; $i++) {
+            if ($pag == $i)
+            {
+                echo '
+                <li class="page-item">
+                        <li class="page-item active">
+                            <a class="page-link" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>
+                        </li>
+                    </li>
+                </li>
+                ';
+            }else
+            {
+                echo '
+                <li class="page-item">
+                            <a class="page-link" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>
+                    </li>
+                </li>
+                ';   
+            }
+        }
+
+        ?>
+
+        <?php
+        if ($pag < $pags)
+        {
+            echo '<li class="page-item">';
+            $linkNext = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag+1);
+        }else
+        {
+            echo '<li class="page-item disabled">';
+            $linkNext = "#";
+        }
+        ?>
+
+        
+            <a class="page-link" href="<?php echo $linkNext ?>">Siguiente</a>
         </li>
     </ul>
     </nav>
