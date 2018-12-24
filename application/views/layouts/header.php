@@ -98,7 +98,7 @@
                   if ($this->session->userdata('username'))
                   {
                     echo '
-                    <a href="manager" title="Manager" target="_self">
+                    <a href="/index.php/all/manager" title="Manager" target="_self">
                     <img alt="" src="../../public/images/site-logo0.png">
                     </a>';
                   }else
@@ -123,7 +123,8 @@
                       <li class="nav-item"><a href="#" target="_self">Clientes</a>
                       <ul>
                         <li><a href="#" data-toggle="modal" data-target="#addclient">Nuevo cliente</a></li>
-                        <li><a href="topmap-contact.html" target="_self">Gestionar</a></li>
+                        <li><a href="/index.php/all/clients_gestionar">Gestionar</a></li>
+                        <li><a href="topmap-contact.html" target="_self">Administrar</a></li>
                       </ul>
                     </li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>

@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Models_model extends CI_Model {
-    public $variable;
     
     public function __construct()
     {

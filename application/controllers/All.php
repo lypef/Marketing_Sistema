@@ -45,6 +45,16 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function clients_gestionar()
+	{
+		
+		$data['data'] = $this->db->query('SELECT cl.id, ca.name, cl.empresa, cl.active, cl.direccion, cl.mail, cl.telefono, cl.responsable, ca.id as "id_cat" FROM clients cl, categories ca where cl.category = ca.id')->result();
+        
+		$this->load->view('layouts/header');
+		$this->load->view('clients_gestionar', $data);
+		$this->load->view('layouts/footer');
+	}
+
 	public function view_category()
 	{
 		echo $_GET["id"];
@@ -92,13 +102,14 @@ class All extends CI_Controller {
 		$data = array(
 			'category' => $this->input->post('category'),
 			'empresa'  => $this->input->post('empresa'),
+			'active'  => true,
 			'direccion'  => $this->input->post('direccion'),
 			'mail'  => $this->input->post('email'),
 			'telefono'  => $this->input->post('telefono'),
 			'responsable'  => $this->input->post('responsable')
 		);
 		
-		$r = $this->db->insert('clients',$data);
+		$this->db->insert('clients',$data);
 
 		if ($this->db->affected_rows() >= 1 )
 		{
@@ -108,8 +119,58 @@ class All extends CI_Controller {
 			redirect($url.'?clientaddfalse=false');
 		}
 
-		
 	}
-}
 
+	public function client_update ()
+	{
+		$url = $this->input->post('url');
+		$status = 0;
+		
+		if (!is_null($this->input->post('estatus')))
+		{
+			$status = 1;
+		}
+
+
+		$data = array(
+				'category' => $this->input->post('category'),
+				'empresa' => $this->input->post('empresa'),
+				'active' => $status,
+				'direccion' => $this->input->post('direccion'),
+				'mail' => $this->input->post('email'),
+				'telefono' => $this->input->post('telefono'),
+				'responsable' => $this->input->post('responsable')
+		);
+		
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('clients', $data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?clientaupdatetrue=true');
+		}else
+		{
+			redirect($url.'?clientupdatefalse=false');
+		}
+
+	}
+
+	public function client_delete ()
+	{
+		$url = $this->input->post('url');
+		
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->delete('clients');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?clientadeletetrue=true');
+		}else
+		{
+			redirect($url.'?clientdeletefalse=false');
+		}
+
+	}
+
+}
 ?>

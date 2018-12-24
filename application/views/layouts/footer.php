@@ -85,7 +85,7 @@
     </div>
     <!-- Finaliza Modal Quienes somos -->
 
-    <!-- Modal Quienes somos -->
+    <!-- Modal Agregar cliente -->
     <?php
     if ($this->session->userdata('username'))
     {
@@ -143,7 +143,7 @@
       ';
     }
     ?>
-    <!-- Finaliza Modal Quienes somos -->
+    <!-- Finaliza Modal Agregar cliente -->
 
     <div class="back-to-top">
           <a href="#masthead" title="Ir al principio" class="fa fa-angle-up"></a>       
@@ -168,6 +168,7 @@
     <script src="../../public/validate/jquery.validate.js"></script>
 
     <script>
+    //Agregar cliente
     if (getUrlVars()["clientaddtrue"])
     {
         var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
@@ -185,6 +186,48 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar cliente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Actualizar cliente
+    if (getUrlVars()["clientaupdatetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se Actualizo cliente con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["clientupdatefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible Actualizar cliente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Delete cliente
+    if (getUrlVars()["clientadeletetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se ELIMINO cliente con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["clientdeletefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible ELIMINAR cliente.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
