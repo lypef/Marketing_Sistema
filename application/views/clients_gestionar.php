@@ -158,62 +158,70 @@
     ?>
   </tbody>
 </table>
-    <nav aria-label="...">
-    <ul class="pagination">
-        <?php 
-        if ($pag > 1)
-        {
-            echo '<li class="page-item">';
-            $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag-1);
-        }else
-        {
-            echo '<li class="page-item disabled">';
-            $link = "#";
-        }
-        ?>
-            <a class="page-link" href="<?php echo $link ?>">Anterior</a>
-        </li>
-        <?php
+<br>
 
-        for (null; $i <= $pags; $i++) {
-            if ($pag == $i)
+<style>
+.center {
+text-align: center;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.pagination a.active {
+  background-color: #0c92cc;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+<div class="center">
+    <div class="pagination">
+        <?php 
+            if ($pag > 1)
             {
-                echo '
-                <li class="page-item">
-                        <li class="page-item active">
-                            <a class="page-link" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>
-                        </li>
-                    </li>
-                </li>
-                ';
+                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag-1);
+                echo '<a href="'.$link.'">&laquo;</a>';
             }else
             {
-                echo '
-                <li class="page-item">
-                            <a class="page-link" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>
-                    </li>
-                </li>
-                ';   
+                $link = "#";
+                echo '<a href="'.$link.'">&laquo;</a>';
+            }
+        ?>
+        <?php
+
+        for ($i = 1; $i <= $pags; $i++) {
+            if ($pag == $i)
+            {
+                echo '<a class="active" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>';
+            }else
+            {
+                echo '<a href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>';
             }
         }
 
         ?>
-
-        <?php
-        if ($pag < $pags)
-        {
-            echo '<li class="page-item">';
-            $linkNext = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag+1);
-        }else
-        {
-            echo '<li class="page-item disabled">';
-            $linkNext = "#";
-        }
+        <?php 
+            if ($pag < $pags)
+            {
+                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag+1);
+                echo '<a href="'.$link.'">&raquo;</a>';
+            }else
+            {
+                $link = "#";
+                echo '<a href="'.$link.'">&raquo;</a>';
+            }
         ?>
+    </div>
+</div>
 
-        
-            <a class="page-link" href="<?php echo $linkNext ?>">Siguiente</a>
-        </li>
-    </ul>
-    </nav>
 <br><br>
