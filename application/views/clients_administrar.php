@@ -8,10 +8,33 @@
 <div class="site-content" id="content">
 <h2 class="idol-title"><?php echo $item->empresa; ?></h2>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+        <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#subir_img">Subir imagen</button>
+        
+    </div>
+    <div class="col-sm-6">
+        <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#subir_vdo">Subir video</button>
+    </div>
+  </div>
+</div>
+<br><hr>
+
 <div class="container">
     <div id="primary">
     <div class="site-content" id="content">
-
+    
+    <div class="portfolio-section os-animation post" data-os-animation="animated-portfolio-section">
+    <div id="filters" class="button-group postname-categories">
+        <button class="button is-checked" data-filter="*">Todos</button>
+        <button class="button" data-filter=".img">Imagenes</button>
+        <button class="button" data-filter=".vdo">Videos</button>
+        <button class="button" data-filter=".fav">Favoritos</button>
+    </div>
+    </div>
+    
     <div class="isotope">
 
         <?php
@@ -19,6 +42,8 @@
                 $check_premium = 'checked';
                 $value_premium = 1;
                 $premium_icono = '';
+                $category = '';
+
                 if (!$item->premium)
                 {
                     $check_premium = '';
@@ -27,18 +52,36 @@
                 
                 if ($value_premium > 0)
                 {
+                    $category = 'fav ';
                     $premium_icono = '
                         <a href="#" data-toggle="modal" data-target="#premium'.$item->id.'"><span class="fa fa-star"></span></a>
                     ';
                 }
 
-                $figure = '<figure><img alt="" src="'.$item->url.'"></figure>';
-                $view = '<a class="venobox" data-gall="myGallery" href="'.$item->url.'" title="'.$item->descripcion.' ('.$item->tags.')"><span class="fa fa-eye"></span></a>';
+                if (strpos($item->url, 'youtube') !== false) {
+                    $category .= 'vdo';
+                    // YouTube video url
+                    $videoURL = $item->url;
+                    $urlArr = explode("/",$videoURL);
+                    $urlArrNum = count($urlArr);
 
-                //<a class="venobox" data-autoplay="true" data-vbtype="video" href="'.$item->url.'">Youtube</a>
+                    // Youtube video ID
+                    $youtubeVideoId = $urlArr[$urlArrNum - 1];
+                    // Generate youtube thumbnail url
+                    $thumbURL = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/mqdefault.jpg';
+
+                    $figure = '<figure><img alt="" src="'.$thumbURL.'"></figure>';
+                    $view = '<a class="venobox" data-autoplay="true" data-vbtype="video" href="'.$item->url.'"><span class="fa fa-youtube-play"></span></a>';
+                }else
+                {
+                    $category .= 'img';
+                    $figure = '<figure><img alt="" src="'.$item->url.'"></figure>';
+                    $view = '<a class="venobox" data-gall="myGallery" href="'.$item->url.'" title="'.$item->descripcion.' ('.$item->tags.')"><span class="fa fa-eye"></span></a>';
+                }
+
 
                 echo '
-                <div class="element-item nature wordpress">
+                <div class="element-item '.$category.'">
                     <div class="masonry-inner">
                     <article class="gallery-post">
                         '.$figure.'
@@ -166,6 +209,94 @@
     </div>
     </div>
 </div>
+<!--Subir archivos-->
+    <!-- subir_img -->
+        <div class="modal fade" id="subir_img" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                <div class="modal-body">
+                <div class="site-content" id="content">
+                <h2 class="idol-title">Subir nueva imagen</h2>
+                </div>
+                <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_img_Update" autocomplete="off">
+                    <p>
+                    <span class="">
+                        <input id="title" class="" type="text" value="" name="title" placeholder="Titulo: " autocomplete="off">
+                        </span>
+                    </p>
+                    <p>
+                    <span class="">
+                    <input id="descripcion" class="" type="text" value="" name="descripcion" placeholder="Descripcion: " autocomplete="off">
+                    </span>
+                    </p>
+                    <p>
+                        <span class="">
+                        <input id="tags" class="" type="text" value="" name="tags" placeholder="Etiquetas: " autocomplete="off">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="">
+                            <input type="checkbox" name="premium" id="premium" value=""> Marcar como premium. <br>
+                        </span>
+                    </p>
+                    <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
+                    <input type="hidden" id="id_empresa" name="id_empresa" value="<?php echo $_GET['id'] ?>">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Subir</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    <!-- subir_vdo -->
+        <div class="modal fade" id="subir_vdo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                <div class="modal-body">
+                <div class="site-content" id="content">
+                <h2 class="idol-title">Subir nuevo video</h2>
+                </div>
+                <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_vdo_add" autocomplete="off">
+                    <p>
+                    <span class="">
+                        <input id="url_vdo" class="" type="text" value="" name="url_vdo" placeholder="Ingrese url de youtube: " autocomplete="off">
+                        </span>
+                    </p>
+                    <p>
+                    <span class="">
+                        <input id="title" class="" type="text" value="" name="title" placeholder="Titulo: " autocomplete="off">
+                        </span>
+                    </p>
+                    <p>
+                    <span class="">
+                    <input id="descripcion" class="" type="text" value="" name="descripcion" placeholder="Descripcion: " autocomplete="off">
+                    </span>
+                    </p>
+                    <p>
+                        <span class="">
+                        <input id="tags" class="" type="text" value="" name="tags" placeholder="Etiquetas: " autocomplete="off">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="">
+                            <input type="checkbox" name="premium" id="premium" value=""> Marcar como premium. <br>
+                        </span>
+                    </p>
+                    <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
+                    <input type="hidden" id="id_empresa" name="id_empresa" value="<?php echo $_GET['id'] ?>">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Subir</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+<!-- Finaliza subir archivos -->
+
 <script>
     $(document).ready(function(){
         $('.venobox').venobox(); 

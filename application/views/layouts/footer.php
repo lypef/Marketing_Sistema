@@ -273,6 +273,27 @@
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
+    //Agregar video de clientes
+    if (getUrlVars()["clientaddvdotrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se Agrego un nuevo video.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["clientaddvdofalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible Agregar el nuevo video.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
     </script>
  </body>
 </html>

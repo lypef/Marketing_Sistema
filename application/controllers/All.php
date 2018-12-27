@@ -274,5 +274,38 @@ class All extends CI_Controller {
 			redirect($url.'?id='.$id_empresa.'&img_clients_delete_false=false');
 		}
 	}
+
+	public function clients_administrar_vdo_add ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$premium = 0;
+		
+		if (!is_null($this->input->post('premium')))
+		{
+			$premium = 1;
+		}
+
+		$data = array(
+			'empresa' => $this->input->post('id_empresa'),
+			'url'  => $this->input->post('url_vdo'),
+			'premium'  => $premium,
+			'title'  => $this->input->post('title'),
+			'descripcion'  => $this->input->post('descripcion'),
+			'tags'  => $this->input->post('tags')
+		);
+		
+		$this->db->insert('empresa_gallery',$data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?id='.$this->input->post('id_empresa').'&clientaddvdotrue=true');
+		}else
+		{
+			redirect($url.'?id='.$this->input->post('id_empresa').'&clientaddvdofalse=false');
+		}
+
+	}
+
 }
 ?>
