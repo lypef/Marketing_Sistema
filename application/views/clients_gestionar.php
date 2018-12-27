@@ -15,9 +15,8 @@
     <tr>
       <th scope="col">NO. CLIENTE</th>
       <th scope="col">EMPRESA</th>
-      <th scope="col">ESTATUS</th>
-      <th scope="col">CATEGORIA</th>
       <th scope="col">RESPOSABLE</th>
+      <th scope="col">CATEGORIA</th>
       <th scope="col">OPCIONES</th>
     </tr>
   </thead>
@@ -27,6 +26,10 @@
             $estatus = 'Activo';
             $estatus_edit = 'checked';
             $estatus_edit_value = 1;
+            $estatus_premium = 'ACTIVO';
+
+            $estatus_edit_premium = 'checked';
+            $estatus_edit_value_premium = 1;
 
             if (!$item->active)
             {
@@ -35,18 +38,24 @@
                 $estatus_edit_value = 0;
             }
 
+            if (!$item->premium5)
+            {
+                $estatus_premium = 'NO Activo';
+                $estatus_edit_premium = '';
+                $estatus_edit_value_premium = 0;
+            }
+
             echo '
             <tr>
                 <th scope="row">'.$item->id.'</th>
                 <td>'.$item->empresa.'</td>
-                <td>'.$estatus.'</td>
-                <td>'.$item->name.'</td>
                 <td>'.$item->responsable.'</td>
+                <td>'.$item->name.'</td>
                 <td align="center">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ver'.$item->id.'" ><span class="fa fa-eye" /></button>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editar'.$item->id.'" ><span class="fa fa-pencil" /></button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete'.$item->id.'" ><span class="fa fa-trash-o" /></button>
-                    <a href="/aa" target="_blank" class="btn btn-warning"><span class="fa fa-cogs" /></a>
+                    <a href="/index.php/all/clients_administrar?id='.$item->id.'" class="btn btn-warning"><span class="fa fa-cogs" /></a>
                 </td>
             </tr>
                 
@@ -115,7 +124,8 @@
                             </p>
                             <p>
                                 <span class="">
-                                    <input type="checkbox" name="estatus" id="estatus" value="'.$estatus_edit_value.'" '.$estatus_edit.'> Seleccione estatus de el cliente.<br>
+                                    <input type="checkbox" name="estatus" id="estatus" value="'.$estatus_edit_value.'" '.$estatus_edit.'> Seleccione estatus de el cliente | 
+                                    <input type="checkbox" name="premium5" id="premium5" value="'.$estatus_edit_value_premium.'" '.$estatus_edit_premium.'> Servicio premium 5 Imagenes.<br>
                                 </span>
                             </p>
                             <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
@@ -141,10 +151,10 @@
                 <hr>
                 <strong>EMPRESA:</strong><BR>'.$item->empresa.'<BR><BR>
                 <strong>RESPONSABLE:</strong> <BR>'.$item->responsable.'<BR><BR>
-                <strong>NO. DE CLIENTE: </strong># '.$item->id.', <strong>ESTATUS:</strong> '.strtoupper($estatus).'<BR><BR>
+                <strong>EMAIL: </strong><BR>'.$item->mail.'<BR><BR>
+                <strong>NO. DE CLIENTE: </strong># '.$item->id.', <strong>ESTATUS:</strong> '.strtoupper($estatus).', <strong>PREMIUM 5 IMG:</strong> '.strtoupper($estatus_premium).'<BR><BR>
                 <strong>CATEGORIA A LA QUE PERTENECE: </strong><BR>'.$item->name.'<BR><BR>
                 <strong>DIRECCION: </strong><BR>'.$item->direccion.'<BR><BR>
-                <strong>EMAIL: </strong><BR>'.$item->mail.'<BR><BR>
                 <strong>TELEFONO: </strong><BR>'.$item->telefono.'<BR><BR>
                 </div>
                 <div class="modal-footer">

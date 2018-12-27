@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="../../public/style.css">
     <!-- Flex slider overwrite styling  -->
     <link rel='stylesheet' id='demo-style-css' href='../../public/css/style.css' type='text/css' media='all'/>
+    <!-- Flex slider overwrite styling  -->
+    <link rel='stylesheet' href='../../public/css/customgallery.css' type='text/css' media='all'/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -124,7 +126,6 @@
                       <ul>
                         <li><a href="#" data-toggle="modal" data-target="#addclient">Nuevo cliente</a></li>
                         <li><a href="/index.php/all/clients_gestionar">Gestionar</a></li>
-                        <li><a href="topmap-contact.html" target="_self">Administrar</a></li>
                       </ul>
                     </li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
