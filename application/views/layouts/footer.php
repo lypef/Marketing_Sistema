@@ -294,6 +294,37 @@
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
+    //Agregar imagen de clientes
+    if (getUrlVars()["clientaddimgtrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se Agrego una nueva imagen.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["clientaddimgfalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible Agregar la imagen, intente de nuevo.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["clientaddimgnoupdate"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> Verifique las rutas y permisos de las carpetas publicas.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
     </script>
  </body>
 </html>

@@ -8,6 +8,7 @@ class All extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Models_model');
 		$this->load->helper('helpers');
+		$this->load->helper('url');
 	}
 	
 	public function index()
@@ -181,8 +182,7 @@ class All extends CI_Controller {
 				'premium5' => $status_premium
 		);
 		
-		$this->db->where('id', $this->input->post('id'));
-		$this->db->update('clients', $data);
+		$this->db->where('id', $this->input->post('id'))->update('clients', $data);
 
 		if ($this->db->affected_rows() >= 1 )
 		{
@@ -199,8 +199,7 @@ class All extends CI_Controller {
 		LoginCheck();
 		$url = $this->input->post('url');
 		
-		$this->db->where('id', $this->input->post('id'));
-		$this->db->delete('clients');
+		$this->db->where('id', $this->input->post('id'))->delete('clients');
 
 		if ($this->db->affected_rows() >= 1 )
 		{
@@ -225,8 +224,61 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function clients_administrar_img_add()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$id_empresa = $this->input->post('id_empresa');
+		$premium = 0;
+		
+		if (!is_null($this->input->post('premium')))
+		{
+			$premium = 1;
+		}
+		
+		$extencion = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
+		$config['upload_path'] = "././public/images/clients/";
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['file_name'] = $id_empresa.'_'. date("YmdHis").'.'.$extencion;
+		$config['max_size'] = '5000';
+		$config['max_width']  = '5024';
+		$config['max_height']  = '5768';
+
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('img'))
+		{
+			/*Existe error al tratar de subir imagen*/
+			//echo $this->upload->display_errors();
+			redirect($url.'?id='.$id_empresa.'&clientaddimgnoupdate=false');
+		}else
+		{
+			$data = array(
+				'empresa' => $id_empresa,
+				'url'  => '../../public/images/clients/'.$config['file_name'],
+				'premium'  => $premium,
+				'title'  => $this->input->post('title'),
+				'descripcion'  => $this->input->post('descripcion'),
+				'tags'  => $this->input->post('tags')
+			);
+			
+			$this->db->insert('empresa_gallery',$data);
+	
+			if ($this->db->affected_rows() >= 1 )
+			{
+				redirect($url.'?id='.$id_empresa.'&clientaddimgtrue=true');
+			}else
+			{
+				unlink('../../public/images/clients/'.$config['file_name']);
+				redirect($url.'?id='.$id_empresa.'&clientaddimgfalse=false');
+			}
+		}
+
+	}
+	
 	public function clients_administrar_img_Update()
 	{
+		LoginCheck();
 		$url = $this->input->post('url');
 		$id_empresa = $this->input->post('id_empresa');
 		$premium = 0;
@@ -244,8 +296,7 @@ class All extends CI_Controller {
 				'premium' => $premium
 		);
 		
-		$this->db->where('id', $this->input->post('id'));
-		$this->db->update('empresa_gallery', $data);
+		$this->db->where('id', $this->input->post('id'))->update('empresa_gallery', $data);
 
 		if ($this->db->affected_rows() >= 1 )
 		{
@@ -262,8 +313,7 @@ class All extends CI_Controller {
 		$url = $this->input->post('url');
 		$id_empresa = $this->input->post('id_empresa');
 
-		$this->db->where('id', $this->input->post('id'));
-		$this->db->delete('empresa_gallery');
+		$this->db->where('id', $this->input->post('id'))->delete('empresa_gallery');
 
 		if ($this->db->affected_rows() >= 1 )
 		{

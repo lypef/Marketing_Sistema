@@ -218,7 +218,7 @@
                 <div class="site-content" id="content">
                 <h2 class="idol-title">Subir nueva imagen</h2>
                 </div>
-                <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_img_Update" autocomplete="off">
+                <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_img_add" autocomplete="off" enctype="multipart/form-data">
                     <p>
                     <span class="">
                         <input id="title" class="" type="text" value="" name="title" placeholder="Titulo: " autocomplete="off">
@@ -235,10 +235,24 @@
                         </span>
                     </p>
                     <p>
+
+                    <div class="row">
+                    <div class="col-sm-6" align="center">
                         <span class="">
-                            <input type="checkbox" name="premium" id="premium" value=""> Marcar como premium. <br>
-                        </span>
-                    </p>
+                            <input id="img" class="" type="file" value="" name="img" placeholder="Titulo: " accept="image/x-png,image/gif,image/jpeg" required>
+                            </span>
+                        </p>
+
+                    </div>
+                    <div class="col-sm-6" align="center">
+                        <p>
+                            <span class="">
+                                <input type="checkbox" name="premium" id="premium" value=""> Marcar como premium. <br>
+                            </span>
+                        </p>
+                    </div>
+                    </div>
+
                     <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
                     <input type="hidden" id="id_empresa" name="id_empresa" value="<?php echo $_GET['id'] ?>">
                 </div>
