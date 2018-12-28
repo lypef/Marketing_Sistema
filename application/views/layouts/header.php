@@ -54,7 +54,7 @@
                   <?php 
                   if ($_SERVER["REQUEST_URI"] != '/index.php/all/login')
                   {
-                    if ($this->session->userdata('username'))
+                    if ($login)
                     {
                       $salir = '<li><a href="/index.php/All/login_close" class="fa fa-times"> salir</a></li>';
                     }else
@@ -100,7 +100,7 @@
               <h1 class="site-title">
                 
                 <?php
-                  if ($this->session->userdata('username'))
+                  if ($login)
                   {
                     echo '
                     <a href="/index.php/all/manager" title="Manager" target="_self">
@@ -118,7 +118,7 @@
             </div>
           </div> 
             <?php
-              if ($this->session->userdata('username'))
+              if ($login)
               {
                 echo'
                 <div id="navbar" class="navbar">
