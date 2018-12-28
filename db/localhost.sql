@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-12-2018 a las 07:49:18
+-- Tiempo de generación: 28-12-2018 a las 19:35:41
 -- Versión del servidor: 10.2.17-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -80,7 +80,7 @@ INSERT INTO `clients` (`id`, `category`, `empresa`, `active`, `direccion`, `mail
 (54, 5, 'FARMACIA DEL AHORRO', 1, 'TUXTLA GUTIERREZ CHIAPAS', 'CONTACTO@FARMAHORRO.COM', '5465464', 'ING. LUIS ANTONIO MAGANDA PATRICIO', 0),
 (55, 8, 'H. AYUNTAMIENTO CONSTITUCIONAL', 1, 'INDEPENDENCIA 15, COATZACOALCOS VERACRUZ', 'AA@A.COM', '5646545', 'ING. ANA KAREN COUTOLEM', 0),
 (56, 3, 'CAFETERIA DEL PARQUE', 1, 'PARQUE', 'A@A.COM', '852', 'ING. VALDOMERO PERES ASCANIO', 1),
-(57, 3, 'FRUTAS Y VERDURAS CABADA', 1, 'CERRO, CENTRO. ', 'A@A.COM', '963', 'CAROLINA ASCENDIO DOMINGUEZ', 0),
+(57, 3, 'FRUTAS Y VERDURAS CABADA', 1, 'CERRO, CENTRO. ', 'A@A.COM', '963', 'CAROLINA ASCENCIO DOMINGUEZ', 0),
 (58, 3, 'ZAPATERIA CUERNAVACA', 1, '20 DE NOVIEMBRE 306', 'A@A.COM', '963', 'CANDELARIA DOMINICK TORETO', 0),
 (59, 3, 'PEMEX S.A DE C.V', 1, 'DESCONOCIDA', 'A@A.COM', '963', 'GERMAN MARIANO ROSAL', 0),
 (60, 3, 'demo', 1, 'DIRECCION', 'A@A.COM', '963', 'PEREZ MARTINES SANCHES SIRPIANO', 0),
@@ -203,6 +203,7 @@ CREATE TABLE `empresa_gallery` (
   `id` int(11) NOT NULL,
   `empresa` int(11) NOT NULL,
   `url` varchar(254) NOT NULL,
+  `url_img` varchar(254) NOT NULL,
   `premium` tinyint(1) NOT NULL DEFAULT 0,
   `title` varchar(254) NOT NULL,
   `descripcion` varchar(254) NOT NULL,
@@ -213,14 +214,21 @@ CREATE TABLE `empresa_gallery` (
 -- Volcado de datos para la tabla `empresa_gallery`
 --
 
-INSERT INTO `empresa_gallery` (`id`, `empresa`, `url`, `premium`, `title`, `descripcion`, `tags`) VALUES
-(1, 1, '../../public/images/clients/1.jpg', 0, 'BOSQUE', 'ARBOLES DE EL BOSQUE FRIÓ EN ESTADOS UNIDOS DE NORTE AMERICA', 'NATURALEZA, AMANECER, ARBOLES ALTOS'),
-(2, 1, '../../public/images/clients/2.jpg', 1, 'AVE', 'IMAGEN DE UN AVE DESCONOCIDA', 'NATURALEZA, AVE, MONTE'),
-(3, 1, '../../public/images/clients/3.jpg', 1, 'EDIFICIOS', 'EDIFICIOS DONDE LO ÚNICO QUE LOS DIVIDE ES EL AGUA, Y NO EL AMOR. ', 'CONSTRUCCIÓN, NATURALEZA, PLANETA'),
-(4, 1, '../../public/images/clients/4.jpg', 1, 'ROSA', 'ROSA CULTIVADA EN EL HOGAR DE UNA FAMILIA MEXICANA', 'NATURALEZA, ROSA, PLANETA'),
-(5, 1, '../../public/images/clients/5.jpg', 0, 'BALLENA AZUL', 'BALLENA NADANDO LIBREMENTE', 'NATURALEZA, MAR, AGUA, BALLENA, LIBERTAD'),
-(8, 1, '../../public/images/clients/6.jpg', 0, 'RIO EN LA SELVA', 'RIO DE AGUA AZUL EN MEDIO DE LA SELVA', 'RIO, SELVA, ARENA, AGUA, NATURALEZA'),
-(12, 1, 'https://www.youtube.com/watch?v=65u2h0ZDFtQ', 0, '', '', '');
+INSERT INTO `empresa_gallery` (`id`, `empresa`, `url`, `url_img`, `premium`, `title`, `descripcion`, `tags`) VALUES
+(1, 1, '../../public/images/clients/1.jpg', '../../public/images/clients/1.jpg', 0, 'BOSQUE', 'ARBOLES DE EL BOSQUE FRIÓ EN ESTADOS UNIDOS DE NORTE AMERICA', 'NATURALEZA, AMANECER, ARBOLES ALTOS'),
+(2, 1, '../../public/images/clients/2.jpg', '../../public/images/clients/2.jpg', 1, 'AVE', 'IMAGEN DE UN AVE DESCONOCIDA', 'NATURALEZA, AVE, MONTE'),
+(3, 1, '../../public/images/clients/3.jpg', '../../public/images/clients/3.jpg', 1, 'EDIFICIOS', 'EDIFICIOS DONDE LO ÚNICO QUE LOS DIVIDE ES EL AGUA, Y NO EL AMOR. ', 'CONSTRUCCIÓN, NATURALEZA, PLANETA'),
+(4, 1, '../../public/images/clients/4.jpg', '../../public/images/clients/4.jpg', 1, 'ROSA', 'ROSA CULTIVADA EN EL HOGAR DE UNA FAMILIA MEXICANA', 'NATURALEZA, ROSA, PLANETA'),
+(5, 1, '../../public/images/clients/5.jpg', '../../public/images/clients/5.jpg', 0, 'BALLENA AZUL', 'BALLENA NADANDO LIBREMENTE', 'NATURALEZA, MAR, AGUA, BALLENA, LIBERTAD'),
+(8, 1, '../../public/images/clients/6.jpg', '../../public/images/clients/6.jpg', 0, 'RIO EN LA SELVA', 'RIO DE AGUA AZUL EN MEDIO DE LA SELVA', 'RIO, SELVA, ARENA, AGUA, NATURALEZA'),
+(15, 49, 'https://www.youtube.com/watch?v=pvTsR3xMPIM', '', 1, 'VIDEO DE PRUEBA', 'DESCRIPCION DE PRUEBA', 'tags, '),
+(22, 1, '../../public/images/clients/1_20181228051856.jpg', '../../public/images/clients/1_20181228051856.jpg', 1, 'CONTROL DE SOCIOS', 'SISTEMA PARA ADMINISTRACIÓN DE SOCIOS POR HUELLA DIGITAL', 'CLTA, ADMINISTRACION'),
+(24, 49, '../../public/images/clients/49_20181228052755.jpg', '../../public/images/clients/49_20181228052755.jpg', 0, 'OFERTA', 'IMPRESIONES 50 CENTAVOS', 'IMPRESIONES, OFERTA, ECONOMIA'),
+(27, 1, 'https://www.youtube.com/watch?v=pvTsR3xMPIM', '../../public/images/clients/1_20181228191056.jpg', 0, 'cómo elaborar un estanque para tortugas', 'buenas para todos y todas cómo elaborar un estanque para tortugas .', 'ESTANQUE, TORTUGAS'),
+(28, 1, 'https://www.youtube.com/watch?v=65u2h0ZDFtQ', '../../public/images/clients/1_20181228191146.jpg', 1, 'MONTAR FILTRO', 'DESPUES DE VER ESTO YA NO PODRAS MONTAR TU FILTRO MAL', 'FILTO, ACUARIO, PECES'),
+(29, 1, '../../public/images/clients/1_20181228191315.jpg', '../../public/images/clients/1_20181228191315.jpg', 1, 'OFERTA IMPRESIONES', 'IMPRESIONES A SOLO 60 CTVOS', '60, CENTAVOS'),
+(30, 49, '../../public/images/clients/49_20181228191747.jpg', '../../public/images/clients/49_20181228191747.jpg', 0, 'CONTROL DE SOCIOS', 'CONTROL DE SOCIOS, HUELLA BIOMETRIA', 'HUELLA, SOCIOS'),
+(31, 49, 'https://www.youtube.com/watch?v=bPpfCPrCSxI', '../../public/images/clients/49_20181228191816.jpg', 0, 'lusito', 'hyjk', 'hyjk');
 
 -- --------------------------------------------------------
 
@@ -293,7 +301,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT de la tabla `empresa_gallery`
 --
 ALTER TABLE `empresa_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

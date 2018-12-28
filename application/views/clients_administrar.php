@@ -1,3 +1,4 @@
+<?php $login = LoginCheckBool(); ?>
 <!-- Add jQuery library -->
 <script type="text/javascript" src="../../public/venobox/jquery-latest.min.js"></script>
 
@@ -10,18 +11,26 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-        <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#subir_img">Subir imagen</button>
-        
+  
+  <?php
+    if ($login)
+    {
+        echo '
+        <div class="row">
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#subir_img">Subir imagen</button>
+            
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#subir_vdo">Subir video</button>
+        </div>
     </div>
-    <div class="col-sm-6">
-        <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#subir_vdo">Subir video</button>
-    </div>
-  </div>
+    
+    <br><hr>
+        ';
+    }
+  ?>
 </div>
-<br><hr>
-
 <div class="container">
     <div id="primary">
     <div class="site-content" id="content">
@@ -60,26 +69,22 @@
 
                 if (strpos($item->url, 'youtube') !== false) {
                     $category .= 'vdo';
-                    // YouTube video url
-                    $videoURL = $item->url;
-                    $urlArr = explode("/",$videoURL);
-                    $urlArrNum = count($urlArr);
-
-                    // Youtube video ID
-                    $youtubeVideoId = $urlArr[$urlArrNum - 1];
-                    // Generate youtube thumbnail url
-                    $thumbURL = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/mqdefault.jpg';
-
-                    $figure = '<figure><img alt="" src="'.$thumbURL.'"></figure>';
+                    $figure = '<figure><img alt="" src="'.$item->url_img.'"></figure>';
                     $view = '<a class="venobox" data-autoplay="true" data-vbtype="video" href="'.$item->url.'"><span class="fa fa-youtube-play"></span></a>';
                 }else
                 {
                     $category .= 'img';
-                    $figure = '<figure><img alt="" src="'.$item->url.'"></figure>';
+                    $figure = '<figure><img alt="" src="'.$item->url_img.'"></figure>';
                     $view = '<a class="venobox" data-gall="myGallery" href="'.$item->url.'" title="'.$item->descripcion.' ('.$item->tags.')"><span class="fa fa-eye"></span></a>';
                 }
 
-
+                if ($login)
+                {
+                    $pencil_trash = '
+                    <a href="#" data-toggle="modal" data-target="#editar'.$item->id.'"><span class="fa fa-pencil"></span></a>
+                    <a href="#" data-toggle="modal" data-target="#delete'.$item->id.'"><span class="fa fa-trash"></span></a>
+                    ';
+                }
                 echo '
                 <div class="element-item '.$category.'">
                     <div class="masonry-inner">
@@ -87,8 +92,8 @@
                         '.$figure.'
                         <header class="entry-header">
                         '.$premium_icono. $view.'
-                        <a href="#" data-toggle="modal" data-target="#editar'.$item->id.'"><span class="fa fa-pencil"></span></a>
-                        <a href="#" data-toggle="modal" data-target="#delete'.$item->id.'"><span class="fa fa-trash"></span></a>
+                        <a href="#" data-toggle="modal" data-target="#send'.$item->id.'"><span class="fa fa-send"></span></a>
+                        '.$pencil_trash.'
                         <h2 class="entry-title">'.$item->descripcion.'</h2>
                         <div class="entry-meta">
                             <span class="tag-links">
@@ -100,15 +105,15 @@
                     </div>
                 </div>
 
-                    <!-- Ver imagen -->
-                    <div class="modal fade" id="view'.$item->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Enviar invitacion por email -->
+                    <div class="modal fade" id="send'.$item->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                         <div class="modal-body">
                         <div class="site-content" id="content">
-                        <h2 class="idol-title">'.$item->title.'</h2>
+                        <h2 class="idol-title">Enviar invitacion para: '.$item->title.'</h2>
                         </div>
-                            <img src="'.$item->url.'" alt="">
+                            Hola te invito a ver esta galaera
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
@@ -126,7 +131,7 @@
                             <div class="site-content" id="content">
                             <h2 class="idol-title">'.$item->title.'</h2>
                             </div>
-                        Esta imagen esta marcada como premium y aparecera entre las 5 favoritas.
+                        Esta imagen esta marcada como favorita.
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>

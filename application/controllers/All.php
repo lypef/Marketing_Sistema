@@ -213,7 +213,7 @@ class All extends CI_Controller {
 
 	public function clients_administrar()
 	{
-		LoginCheck();
+		//LoginCheck();
 		$id = $this->input->get('id');
 		$data['item'] = $this->db->query('SELECT cl.id, ca.name, cl.empresa, cl.active, cl.direccion, cl.mail, cl.telefono, cl.responsable, ca.id as "id_cat", cl.premium5 FROM clients cl, categories ca where cl.category = ca.id and cl.id = '.$id.' ')->row();
 
@@ -256,6 +256,7 @@ class All extends CI_Controller {
 			$data = array(
 				'empresa' => $id_empresa,
 				'url'  => '../../public/images/clients/'.$config['file_name'],
+				'url_img'  => '../../public/images/clients/'.$config['file_name'],
 				'premium'  => $premium,
 				'title'  => $this->input->post('title'),
 				'descripcion'  => $this->input->post('descripcion'),
@@ -336,22 +337,40 @@ class All extends CI_Controller {
 			$premium = 1;
 		}
 
-		$data = array(
-			'empresa' => $this->input->post('id_empresa'),
-			'url'  => $this->input->post('url_vdo'),
-			'premium'  => $premium,
-			'title'  => $this->input->post('title'),
-			'descripcion'  => $this->input->post('descripcion'),
-			'tags'  => $this->input->post('tags')
-		);
-		
-		$this->db->insert('empresa_gallery',$data);
+		// YouTube video url
+		$videoURL = $this->input->post('url_vdo');
+		$urlArr = explode("/",$videoURL);
+		$urlArrNum = count($urlArr);
 
-		if ($this->db->affected_rows() >= 1 )
-		{
-			redirect($url.'?id='.$this->input->post('id_empresa').'&clientaddvdotrue=true');
-		}else
-		{
+		// Youtube video ID
+		$youtubeVideoId = $urlArr[$urlArrNum - 1];
+		// Generate youtube thumbnail url
+		$url_img = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/mqdefault.jpg';
+		$newfile = '././public/images/clients/'.$this->input->post('id_empresa').'_'. date("YmdHis").'.'.'jpg';
+		$img_db = '../../public/images/clients/'.$this->input->post('id_empresa').'_'. date("YmdHis").'.'.'jpg';
+
+		
+		if ( copy($url_img, $newfile) ) {
+			$data = array(
+				'empresa' => $this->input->post('id_empresa'),
+				'url'  => $this->input->post('url_vdo'),
+				'url_img'  => $img_db,
+				'premium'  => $premium,
+				'title'  => $this->input->post('title'),
+				'descripcion'  => $this->input->post('descripcion'),
+				'tags'  => $this->input->post('tags')
+			);
+			
+			$this->db->insert('empresa_gallery',$data);
+	
+			if ($this->db->affected_rows() >= 1 )
+			{
+				redirect($url.'?id='.$this->input->post('id_empresa').'&clientaddvdotrue=true');
+			}else
+			{
+				redirect($url.'?id='.$this->input->post('id_empresa').'&clientaddvdofalse=false');
+			}
+		}else{
 			redirect($url.'?id='.$this->input->post('id_empresa').'&clientaddvdofalse=false');
 		}
 
