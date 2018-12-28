@@ -1,4 +1,7 @@
-<?php error_reporting(0); ?>
+<?php 
+      $login = LoginCheckBool();
+      error_reporting(0); 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

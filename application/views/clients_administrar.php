@@ -1,4 +1,3 @@
-<?php $login = LoginCheckBool(); ?>
 <!-- Add jQuery library -->
 <script type="text/javascript" src="../../public/venobox/jquery-latest.min.js"></script>
 
