@@ -1,1 +1,3 @@
-ver category
+<?php
+    echo GetCategoriesFilters($_GET['id']);
+?>

@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class All extends CI_Controller {
 	
+
 	public function __construct()
     {
 		parent::__construct();
@@ -49,7 +50,7 @@ class All extends CI_Controller {
 
 	public function view_category()
 	{
-		echo $_GET["id"];
+		//echo $_GET["id"];
 		$this->load->view('layouts/header');
 		$this->load->view('view_category');
 		$this->load->view('layouts/footer');
@@ -213,7 +214,6 @@ class All extends CI_Controller {
 
 	public function clients_administrar()
 	{
-		//LoginCheck();
 		$id = $this->input->get('id');
 		$data['item'] = $this->db->query('SELECT cl.id, ca.name, cl.empresa, cl.active, cl.direccion, cl.mail, cl.telefono, cl.responsable, ca.id as "id_cat", cl.premium5 FROM clients cl, categories ca where cl.category = ca.id and cl.id = '.$id.' ')->row();
 
@@ -376,5 +376,47 @@ class All extends CI_Controller {
 
 	}
 
+	public function clients_administrar_sendmail ()
+	{
+		$url = $this->input->post('url');
+		$url_web = 'http://localhost/';
+
+		$this->load->library("email");
+ 
+		//configuracion para gmail
+		$configGmail = array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.gmail.com',
+		'smtp_port' => 465,
+		'smtp_user' => 'documentos@cyberchoapas.com',
+		'smtp_pass' => 'Zxasqw10',
+		'mailtype' => 'html',
+		'charset' => 'utf-8',
+		'newline' => "\r\n"
+		);    
+		$this->email->initialize($configGmail);
+		
+		$body = '
+			<h2>'.$this->input->post('descripcion').'</h2>
+			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',$url_web,$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
+			<br><br>
+			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.$url_web. 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
+			<br><br>
+			O todas nuestras empresas <a href="'.$url_web. 'index.php/all/view_category" target="_blank"> AQUI</a>
+		';
+		
+		$this->email->from("Link u Projects");
+		$this->email->to($this->input->post('emails'));
+		$this->email->subject($this->input->post('title') . ' !' );
+		$this->email->message($body);
+		
+		if ($this->email->send())
+		{
+			redirect($url.'?id='.$this->input->post('id_empresa').'&sendmailtrue=true');
+		}else
+		{
+			redirect($url.'?id='.$this->input->post('id_empresa').'&sendmailfalse=false');
+		}
+	}
 }
 ?>

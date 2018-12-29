@@ -1,10 +1,57 @@
 <?php
+    
+    function GetCategoriesFilters ($id_select)
+    {
+        $c =& get_instance();
+        $q = $c->db->get('categories');
+
+        $r = '
+        <div class="portfolio-section os-animation post" data-os-animation="animated-portfolio-section">
+            <div id="filters" class="button-group postname-categories">
+        ';
+        if ($id_select == 0)
+        {
+            $r .= '
+                <button class="button is-checked" data-filter="*">Todos</button>
+            ';
+        }else
+        {
+            $r .= '
+                <button class="button" data-filter="*">Todos</button>
+            ';
+        }
+        
+        foreach ($q->result() as $row)
+        {
+                if ($id_select == $row->id)
+                {
+                    $r .= '
+                        <button class="button is-checked" data-filter=".'.$row->id.'">'.$row->name.'</button>
+                    ';
+                }else
+                {
+                    $r .= '
+                        <button class="button" data-filter=".'.$row->id.'">'.$row->name.'</button>
+                    ';
+                }
+        }
+        $r .= '
+            </div>
+        </div>
+        ';
+
+        return $r;
+    }
+    
     function GetCategoriesLI ()
     {
         $c =& get_instance();
         $q = $c->db->get('categories');
 
-        $r = '<ul>';
+        $r = '
+        <ul>
+        <li><a href="/index.php/all/view_category?id=0" target="_self">Todas</a></li>
+        ';
         foreach ($q->result() as $row)
         {
                 $r .= '
@@ -123,5 +170,11 @@
         {
             return true;
         }
+    }
+
+    function NameEmpresaID ($id)
+    {
+        $c =& get_instance();
+        return $c->db->query('SELECT empresa FROM clients WHERE id = '.$id.' ')->row()->empresa;
     }
 ?>

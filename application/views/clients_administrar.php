@@ -1,3 +1,6 @@
+<?php 
+      $login = LoginCheckBool();
+?>
 <!-- Add jQuery library -->
 <script type="text/javascript" src="../../public/venobox/jquery-latest.min.js"></script>
 
@@ -112,10 +115,23 @@
                         <div class="site-content" id="content">
                         <h2 class="idol-title">Enviar invitacion para: '.$item->title.'</h2>
                         </div>
-                            Hola te invito a ver esta galaera
+                            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_sendmail">
+                            <p>
+                            <span class="">
+                                <input id="emails" class="" type="text" value="" name="emails" placeholder="Ingrese emails, separados por (,)">
+                                </span>
+                            </p>
+                            <input type="hidden" id="title" name="title" value="'.$item->title.'">
+                            <input type="hidden" id="descripcion" name="descripcion" value="'.$item->descripcion.'">
+                            <input type="hidden" id="url_cont" name="url_cont" value="'.$item->url.'">
+                            <input type="hidden" id="url_image" name="url_image" value="'.$item->url_img.'">
+                            <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+                            <input type="hidden" id="id_empresa" name="id_empresa" value="'.$item->empresa.'">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            </form>
                         </div>
                         </div>
                     </div>
@@ -172,14 +188,14 @@
                         <h2 class="idol-title">Actualizar datos de: '.$item->title.'</h2>
                         </div>
                         <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_img_Update" autocomplete="off">
-                                    <p>
+                                <p>
+                                <span class="">
+                                    <input id="title" class="" type="text" value="'.$item->title.'" name="title" placeholder="Titulo: " autocomplete="off">
+                                    </span>
+                                </p>
+                                <p>
                                     <span class="">
-                                        <input id="title" class="" type="text" value="'.$item->title.'" name="title" placeholder="Titulo: " autocomplete="off">
-                                        </span>
-                                    </p>
-                                    <p>
-                                    <span class="">
-                                    <input id="descripcion" class="" type="text" value="'.$item->descripcion.'" name="descripcion" placeholder="Descripcion: " autocomplete="off">
+                                        <input id="descripcion" class="" type="text" value="'.$item->descripcion.'" name="descripcion" placeholder="Descripcion: " autocomplete="off">
                                     </span>
                                 </p>
                                 <p>
