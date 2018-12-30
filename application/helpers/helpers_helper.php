@@ -12,12 +12,12 @@
         if ($id_select == 0)
         {
             $r .= '
-                <button class="button is-checked" data-filter="*">Todos</button>
+                <a href="/index.php/all/view_category?id=0&pag=1"><button class="button is-checked">Todos</button></a>
             ';
         }else
         {
             $r .= '
-                <button class="button" data-filter="*">Todos</button>
+                <a href="/index.php/all/view_category?id=0&pag=1"><button class="button">Todos</button></a>
             ';
         }
         
@@ -26,12 +26,12 @@
                 if ($id_select == $row->id)
                 {
                     $r .= '
-                        <button class="button is-checked" data-filter=".'.$row->id.'">'.$row->name.'</button>
+                        <a href="/index.php/all/view_category?id='.$row->id.'&pag=1"><button class="button is-checked">'.$row->name.'</button></a>
                     ';
                 }else
                 {
                     $r .= '
-                        <button class="button" data-filter=".'.$row->id.'">'.$row->name.'</button>
+                        <a href="/index.php/all/view_category?id='.$row->id.'&pag=1"><button class="button">'.$row->name.'</button></a>
                     ';
                 }
         }
@@ -50,12 +50,12 @@
 
         $r = '
         <ul>
-        <li><a href="/index.php/all/view_category?id=0" target="_self">Todas</a></li>
+        <li><a href="/index.php/all/view_category?id=0&pag=1" target="_self">Todas</a></li>
         ';
         foreach ($q->result() as $row)
         {
                 $r .= '
-                <li><a href="/index.php/all/view_category?id='.$row->id.'" target="_self">'.$row->name.'</a></li>
+                <li><a href="/index.php/all/view_category?id='.$row->id.'&pag=1" target="_self">'.$row->name.'</a></li>
                 ';
         }
         $r .= '</ul>';

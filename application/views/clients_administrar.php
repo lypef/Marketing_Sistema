@@ -272,7 +272,7 @@
                         </p>
                     </div>
                     </div>
-
+                    <span>* Recomendamos imagenss de 900px X 600px</span>
                     <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
                     <input type="hidden" id="id_empresa" name="id_empresa" value="<?php echo $_GET['id'] ?>">
                 </div>

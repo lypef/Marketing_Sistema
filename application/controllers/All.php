@@ -48,14 +48,6 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
-	public function view_category()
-	{
-		//echo $_GET["id"];
-		$this->load->view('layouts/header');
-		$this->load->view('view_category');
-		$this->load->view('layouts/footer');
-	}
-
 	public function login()
 	{
 		if ($this->session->userdata('username'))
@@ -86,6 +78,55 @@ class All extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect('');
+	}
+
+	public function view_category()
+	{
+		$category =  $_GET["id"];
+		$pag = $this->input->get('pag');
+		$buscar = $this->input->get('search');
+		$limit = '';
+		if (is_null($pag))
+		{
+			$pag = 1;
+		}
+
+		if ($category > 0)
+		{
+			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.category = '.$category.' ')->num_rows() / 10, 0, '', ' ');
+		}
+		else if (!is_null($buscar))
+		{
+			$like = "'%" .$buscar. "%'";
+			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.empresa like '.$like.' or ga.empresa = cl.id and ga.title like '.$like.' or ga.empresa = cl.id and ga.descripcion like '.$like.' ')->num_rows() / 10, 0, '', ' ');
+		}
+		else
+		{
+			$TotalPags = number_format($this->db->query('SELECT id FROM empresa_gallery')->num_rows() / 10, 0, '', ' ');
+		}
+
+		$limit = 'LIMIT '.(($pag * 9) - 9).', 9;';
+		$data['pags'] = $TotalPags;
+		$data['pag'] = $pag;
+
+		if ($category > 0)
+		{
+			$data['data'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.category = '.$category .' '. $limit.' ')->result();
+		}
+		else if (!is_null($buscar))
+		{
+			$like = "'%" .$buscar. "%'";
+			$data['data'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.empresa like '.$like.' or ga.empresa = cl.id and ga.title like '.$like.' or ga.empresa = cl.id and ga.descripcion like '.$like. ' ' . $limit .' ')->result();
+		}
+		else
+		{
+			$data['data'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id  '.$limit.' ')->result();
+		}
+
+		
+		$this->load->view('layouts/header');
+		$this->load->view('view_category', $data);
+		$this->load->view('layouts/footer');
 	}
 
 	public function clients_gestionar()
@@ -402,7 +443,7 @@ class All extends CI_Controller {
 			<br><br>
 			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.$url_web. 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
 			<br><br>
-			O todas nuestras empresas <a href="'.$url_web. 'index.php/all/view_category" target="_blank"> AQUI</a>
+			O todas nuestras empresas <a href="'.$url_web. 'index.php/all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
 		';
 		
 		$this->email->from("Link u Projects");
@@ -416,6 +457,49 @@ class All extends CI_Controller {
 		}else
 		{
 			redirect($url.'?id='.$this->input->post('id_empresa').'&sendmailfalse=false');
+		}
+	}
+
+	public function category_administrar_sendmail ()
+	{
+		$url = $this->input->post('url');
+		$url_web = 'http://localhost/';
+
+		$this->load->library("email");
+ 
+		//configuracion para gmail
+		$configGmail = array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.gmail.com',
+		'smtp_port' => 465,
+		'smtp_user' => 'documentos@cyberchoapas.com',
+		'smtp_pass' => 'Zxasqw10',
+		'mailtype' => 'html',
+		'charset' => 'utf-8',
+		'newline' => "\r\n"
+		);    
+		$this->email->initialize($configGmail);
+		
+		$body = '
+			<h2>'.$this->input->post('descripcion').'</h2>
+			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',$url_web,$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
+			<br><br>
+			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.$url_web. 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
+			<br><br>
+			O todas nuestras empresas <a href="'.$url_web. 'index.php/all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
+		';
+		
+		$this->email->from("Link u Projects");
+		$this->email->to($this->input->post('emails'));
+		$this->email->subject($this->input->post('title') . ' !' );
+		$this->email->message($body);
+		
+		if ($this->email->send())
+		{
+			redirect($url.'?id='.$this->input->post('category').'&sendmailtrue=true');
+		}else
+		{
+			redirect($url.'?id='.$this->input->post('category').'&sendmailfalse=false');
 		}
 	}
 }

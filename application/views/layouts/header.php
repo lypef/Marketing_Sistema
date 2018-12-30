@@ -84,10 +84,12 @@
               <div class="search-container">
                     <div class="fa fa-search search-toggle"></div>
                     <div class="search-box">
-                      <form class="search-form">
+                      <form class="search-form" action="/index.php/All/view_category" autocomplete="off">
                         <label>
                           <span class="screen-reader-text">Search for:</span>
-                          <input type="text" class="search-field" value="" placeholder="Texto aqui">
+                          <input type="text" class="search-field" id="search" name="search" value="" placeholder="Texto aqui">
+                          <input type="hidden"  value="0" id="id" name="id">
+                          <input type="hidden"  value="1" id="pag" name="pag" >
                         </label>
                         <input class="search-submit" type="submit" value="Buscar">
                       </form>
