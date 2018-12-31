@@ -417,6 +417,50 @@ class All extends CI_Controller {
 
 	}
 
+	public function servicio_inteserado ()
+	{
+		$url = $this->input->post('url');
+		$url_web = 'http://localhost/';
+
+		$this->load->library("email");
+ 
+		//configuracion para gmail
+		$configGmail = array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.gmail.com',
+		'smtp_port' => $this->config->item('correo_port'),
+		'smtp_user' => $this->config->item('correo_smtp'),
+		'smtp_pass' => $this->config->item('correo_pass'),
+		'mailtype' => 'html',
+		'charset' => 'utf-8',
+		'newline' => "\r\n"
+		);  
+
+		$this->email->initialize($configGmail);
+		
+		$body = $this->input->post('comentario') . '
+			<br><br>Nombre<br>'.$this->input->post('nombre').'
+			<br><br>Empresa:<br>'.$this->input->post('empresa').'
+			<br><br>Sitio web:<br><a href="http://'.$this->input->post('web').'">'.$this->input->post('web').'</a>
+			<br><br>Email:<br><a href="mailto:'.$this->input->post('email').'" target="_top">'.$this->input->post('email').'</a>
+			<br><br>Telefono:<br>'.$this->input->post('telefono').'
+		';
+		
+		$this->email->from($this->config->item('correo_smtp'),$this->input->post('nombre'));
+		$this->email->reply_to($this->input->post('email'), $this->input->post('nombre'));
+		$this->email->to($this->config->item('correo_recepcion'));
+		$this->email->subject($this->input->post('asunto') . ' !' );
+		$this->email->message($body);
+		
+		if ($this->email->send())
+		{
+			redirect($url.'?sendmailserviciotrue=true');
+		}else
+		{
+			redirect($url.'?sendmailserviciofalse=false');
+		}
+	}
+	
 	public function clients_administrar_sendmail ()
 	{
 		$url = $this->input->post('url');
@@ -428,13 +472,14 @@ class All extends CI_Controller {
 		$configGmail = array(
 		'protocol' => 'smtp',
 		'smtp_host' => 'ssl://smtp.gmail.com',
-		'smtp_port' => 465,
-		'smtp_user' => 'documentos@cyberchoapas.com',
-		'smtp_pass' => 'Zxasqw10',
+		'smtp_port' => $this->config->item('correo_port'),
+		'smtp_user' => $this->config->item('correo_smtp'),
+		'smtp_pass' => $this->config->item('correo_pass'),
 		'mailtype' => 'html',
 		'charset' => 'utf-8',
 		'newline' => "\r\n"
-		);    
+		);  
+
 		$this->email->initialize($configGmail);
 		
 		$body = '
@@ -471,13 +516,14 @@ class All extends CI_Controller {
 		$configGmail = array(
 		'protocol' => 'smtp',
 		'smtp_host' => 'ssl://smtp.gmail.com',
-		'smtp_port' => 465,
-		'smtp_user' => 'documentos@cyberchoapas.com',
-		'smtp_pass' => 'Zxasqw10',
+		'smtp_port' => $this->config->item('correo_port'),
+		'smtp_user' => $this->config->item('correo_smtp'),
+		'smtp_pass' => $this->config->item('correo_pass'),
 		'mailtype' => 'html',
 		'charset' => 'utf-8',
 		'newline' => "\r\n"
-		);    
+		);   
+
 		$this->email->initialize($configGmail);
 		
 		$body = '

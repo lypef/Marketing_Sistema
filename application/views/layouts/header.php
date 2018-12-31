@@ -126,13 +126,13 @@
                   {
                     echo '
                     <a href="/index.php/all/manager" title="Manager" target="_self">
-                    <img alt="" src="../../public/images/site-logo0.png">
+                    <img alt="" src="../../public/images/site-logo1.png">
                     </a>';
                   }else
                   {
                     echo '
                     <a href="/" title="Pagina principal" target="_self">
-                    <img alt="" src="../../public/images/site-logo0.png">
+                    <img alt="" src="../../public/images/site-logo1.png">
                     </a>';
                   }
                 ?>

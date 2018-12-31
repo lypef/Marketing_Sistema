@@ -61,21 +61,9 @@
         <div class="modal-content">
           <div class="modal-body">
           <hr>
-          El impulso de nuestra empresa está basado en una filosofía empresarial cuyo deseo principal es atraer y satisfacer la demanda de los consumidores, generando consistentemente valor económico para los accionistas, así como un mayor desarrollo social.
-          <br><br>
-          En cada una de nuestras distintas etapas históricas hemos partido de un principio fundamental: el respeto a la dignidad humana está por encima de cualquier consideración económica.
-          <br><br>
-          A lo largo de más de 127 años, nos hemos diversificado y participamos en los mercados mundiales de distintas formas.
-          <br><br>
-          Creamos Coca-Cola FEMSA, el embotellador público más grande de productos Coca-Cola en el mundo, con presencia en 10 países de América Latina.
-          <br><br>Nos convertimos en el segundo accionista más importante de Heineken, una de las cerveceras líderes en el mundo con presencia en más de 70 países, con una participación accionaria de 14.8%.
-          <br><br>Desarrollamos FEMSA Comercio, que comprende una División Proximidad que opera OXXO, una cadena de tiendas de formato pequeño; una División Salud que incluye farmacias y operaciones relacionadas; y una División Combustibles que opera la cadena de estaciones de servicio OXXO GAS.
-          <br><br>Establecimos FEMSA Negocios Estratégicos, conjunto de empresas conformado por Solistica, Imbera y PTM®, que ofrece servicios de logística, soluciones de refrigeración en el punto de venta y soluciones en plásticos a las empresas FEMSA y a clientes externos.
-          <br><br>Actualmente, operamos en Argentina, Brasil, Chile, Colombia, Costa Rica, Guatemala, México, Nicaragua, Panamá, Uruguay y Venezuela, comercializando marcas reconocidas de refrescos, jugos, agua embotellada y bebidas energizantes como Coca-Cola, Sprite, Ciel, AdeS, Powerade y andatti, atendiendo a más de 396 millones de consumidores.
-          <br><br><br><br>Esta es nuestra estructura corporativa
-          <center>
-          <img src="https://www.femsa.com/sites/default/files/Estructura_corporativa_FEMSA_0.png" alt="">
-          </center>
+          EN LINK U PROJECTS SOMOS UN EQUIPO DE PROFESIONALES DEDICADOS A REALIZAR PROYECTOS DE EXPANSIÓN COMERCIAL PARA EMPRESAS, PyMES Y EMPRENDEDORES. 
+          <br><br>PONIENDO A SU ALCANCE  NUESTRAS MEJORES HERRAMIENTAS PARA ASI POSICIONAR SUS MARCAS Y PRODUCTOS SOBRE CUALQUIER COMPETENCIAS.
+          <br><br>NUESTRO OBJETIVO ES BRINDAR EL MEJOR SERVICIO CON LA MEJOR CALIDAD Y A UN BAJO COSTO, DE ESTA MANERA LOGRAMOS VINCULAR LA ECONOMÍA DEL CONSUMIDOR CON LA DE NUESTROS CLIENTES Y A SU VEZ LA DE ELLOS CON LA NUESTRA.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
@@ -352,6 +340,27 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-exclamation'> </strong> No es posible enviar la informacion por correo.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Enviar mail de ionteresados en servicios 
+    if (getUrlVars()["sendmailserviciotrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se envio el correo a nuestras cuentas, a la bravedad le atendemos.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["sendmailserviciofalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible enviar la informacion por correo, intente de nuevo.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
