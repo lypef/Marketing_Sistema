@@ -94,6 +94,7 @@
                         '.$figure.'
                         <header class="entry-header">
                         '.$premium_icono. $view.'
+                        <a href="#" data-toggle="modal" data-target="#comments'.$item->id.'" title="Comentarios"><span class="fa fa-comments"></span></a>
                         <a href="#" data-toggle="modal" data-target="#send'.$item->id.'"><span class="fa fa-send"></span></a>
                         '.$pencil_trash.'
                         <h2 class="entry-title">'.$item->descripcion.'</h2>
@@ -107,6 +108,20 @@
                     </div>
                 </div>
 
+                <!-- Comentarios -->
+                <div class="modal fade" id="comments'.$item->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="fb-comments" data-href="http://localhost/index.php/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ocultar</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                
                     <!-- Enviar invitacion por email -->
                     <div class="modal fade" id="send'.$item->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">

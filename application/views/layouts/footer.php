@@ -167,6 +167,15 @@
     <!-- Contact form validation -->
     <script src="../../public/validate/jquery.validate.js"></script>
 
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=358922931585815';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
+
     <script>
     //Agregar cliente
     if (getUrlVars()["clientaddtrue"])
@@ -349,3 +358,9 @@
     </script>
  </body>
 </html>
+<script>
+$(window).load(function() {
+	$('#preloader').fadeOut('slow');
+	$('body').css({'overflow':'visible'});
+})
+</script>

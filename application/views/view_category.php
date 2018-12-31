@@ -1,3 +1,10 @@
+<div id="preloader" class="preloader" style="display: none;">
+    <div class="preloader-area">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+
 <?php 
       $login = LoginCheckBool();
 ?>
@@ -147,12 +154,10 @@ text-align: center;
 
         <!-- Comentarios -->
         <div class="modal fade" id="comments'.$item->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <div class="site-content" id="content">
-            </div>
-                Comentarios
+                <div class="fb-comments" data-href="http://localhost/index.php/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Ocultar</button>
@@ -224,6 +229,7 @@ text-align: center;
     console.log('PRE OPEN');
     console.log(obj);
     },
+    
 
     // is called when opening is finished
     cb_post_open  : function(obj, gallIndex, thenext, theprev){
