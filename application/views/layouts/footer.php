@@ -155,15 +155,6 @@
     <!-- Contact form validation -->
     <script src="../../public/validate/jquery.validate.js"></script>
 
-    <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=358922931585815';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  </script>
-
     <script>
     //Agregar cliente
     if (getUrlVars()["clientaddtrue"])
@@ -350,7 +341,7 @@
         body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
-        body +="<strong><p class='fa fa-check'></strong> Se envio el correo a nuestras cuentas, a la bravedad le atendemos.";
+        body +="<strong><p class='fa fa-check'></strong> Se envio el correo a nuestras cuentas, a la brevedad le atendemos.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }

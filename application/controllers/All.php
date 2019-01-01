@@ -441,7 +441,7 @@ class All extends CI_Controller {
 		$body = $this->input->post('comentario') . '
 			<br><br>Nombre<br>'.$this->input->post('nombre').'
 			<br><br>Empresa:<br>'.$this->input->post('empresa').'
-			<br><br>Sitio web:<br><a href="http://'.$this->input->post('web').'">'.$this->input->post('web').'</a>
+			<br><br>Sitio web:<br><a href="'.$this->input->post('web').'">'.$this->input->post('web').'</a>
 			<br><br>Email:<br><a href="mailto:'.$this->input->post('email').'" target="_top">'.$this->input->post('email').'</a>
 			<br><br>Telefono:<br>'.$this->input->post('telefono').'
 		';

@@ -75,7 +75,7 @@
           </p>
           <p>
           <span class="">
-              <input id="web" class="" type="text" value="" name="web" placeholder="www.mipagina.com">
+              <input id="web" class="" type="url" value="" name="web" placeholder="http://www.mipagina.com">
               </span>
           </p>
           <p>
@@ -125,7 +125,7 @@
           </p>
           <p>
           <span class="">
-              <input id="web" class="" type="text" value="" name="web" placeholder="www.mipagina.com">
+              <input id="web" class="" type="url" value="" name="web" placeholder="http://www.mipagina.com">
               </span>
           </p>
           <p>
@@ -175,7 +175,7 @@
           </p>
           <p>
           <span class="">
-              <input id="web" class="" type="text" value="" name="web" placeholder="www.mipagina.com">
+              <input id="web" class="" type="url" value="" name="web" placeholder="http://www.mipagina.com">
               </span>
           </p>
           <p>
