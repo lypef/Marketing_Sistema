@@ -9,10 +9,10 @@
                 <aside class="widget widget_text">
                   <div class="site-info">
                     <h1 class="site-title">
-                      <a href="index.html" target="_self"><img alt="" src="../../public/images/footer-logo.png"></a>
+                      <a href="/" target="_self"><img alt="" src="../../public/images/footer-logo_.png"></a>
                     </h1>  
                   </div>
-                  <div class="textwidget">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                  <div class="textwidget text-justify">En link u projects somos un equipo de profesionales dedicados a realizar proyectos de expansión comercial para empresas, pymes y emprendedores.</div>
                   <div class="inline-social-icons">
                     <ul>
                       <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
@@ -27,13 +27,9 @@
               </div>
               <div class="col-sm-4">
                 <aside class="widget">
-                  <h2 class="widget-title">Categories</h2>
+                  <h2 class="widget-title">Categorias</h2>
                   <ul>
-                    <li><a href="#" target="_self">Psd Design</a><span>(25)</span></li>
-                    <li><a href="#" target="_self">Static HTML</a><span>(25)</span></li>
-                    <li><a href="#" target="_self">Responsive Websites</a><span>(25)</span></li>
-                    <li><a href="#" target="_self">Wordpress theme</a><span>(22)</span></li>
-                    <li><a href="#" target="_self">Wordpress Plugins</a><span>(18)</span></li>
+                    <?php echo GetCategoriesLI(); ?>
                   </ul>
                 </aside>
               </div>
@@ -61,6 +57,8 @@
         <div class="modal-content">
           <div class="modal-body">
           <hr>
+          <center><img src="../../public/images/site-logo1.png" alt=""></center>
+          <br>
           EN LINK U PROJECTS SOMOS UN EQUIPO DE PROFESIONALES DEDICADOS A REALIZAR PROYECTOS DE EXPANSIÓN COMERCIAL PARA EMPRESAS, PyMES Y EMPRENDEDORES. 
           <br><br>PONIENDO A SU ALCANCE  NUESTRAS MEJORES HERRAMIENTAS PARA ASI POSICIONAR SUS MARCAS Y PRODUCTOS SOBRE CUALQUIER COMPETENCIAS.
           <br><br>NUESTRO OBJETIVO ES BRINDAR EL MEJOR SERVICIO CON LA MEJOR CALIDAD Y A UN BAJO COSTO, DE ESTA MANERA LOGRAMOS VINCULAR LA ECONOMÍA DEL CONSUMIDOR CON LA DE NUESTROS CLIENTES Y A SU VEZ LA DE ELLOS CON LA NUESTRA.

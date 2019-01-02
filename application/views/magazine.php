@@ -178,8 +178,8 @@
                           </p>
                           <p>
                               <span class="">
-                                  <input type="checkbox" name="r_informacion" id="r_informacion" value=""> Quiero recibir información por correo electronico. <br>
-                                  <input type="checkbox" name="r_promo_nego" id="r_promo_nego" value=""> Quiero recibir promociones de negocios. <br>
+                                  <input type="checkbox" name="r_informacion" id="r_informacion" value="" checked> Quiero recibir información por correo electronico. <br>
+                                  <input type="checkbox" name="r_promo_nego" id="r_promo_nego" value="" checked> Quiero recibir promociones de negocios. <br>
                               </span>
                           </p>
                           <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
@@ -204,11 +204,11 @@
                   <?php
                     foreach ($data as $item) {
                       echo '
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                         <div class="text-center">
                           <a href="/index.php/'.UrlActual($_SERVER[REQUEST_URI]).'?id_img='.$item->id.'&pag='.$_GET[pag].'">
                             <span><strong>'.$item->nombre.'</strong></span><br><span><strong>Publicado: '.$item->f_publicacion.'</strong></span><br>
-                            <img src="'.$item->url_img.'" class="zoom img-thumbnail" width="200" alt="Edicion #'.$item->numero.'">
+                            <img src="'.$item->url_img.'" class="zoom img-thumbnail" width="" alt="Edicion #'.$item->numero.'">
                           </a>
                         </div>
                       </div>

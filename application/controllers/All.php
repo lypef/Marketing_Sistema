@@ -19,14 +19,6 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
-	public function manager()
-	{
-		LoginCheck();
-		$this->load->view('layouts/header');
-		$this->load->view('manager');
-		$this->load->view('layouts/footer');
-	}
-
 	public function nuestros_servicios()
 	{
 		$this->load->view('layouts/header');
@@ -52,9 +44,9 @@ class All extends CI_Controller {
 			$pag = 1;
 		}
 		
-		$TotalPags = number_format($this->db->query('SELECT id FROM magazine')->num_rows() / 4, 0, '', ' ');
+		$TotalPags = number_format($this->db->query('SELECT id FROM magazine')->num_rows() / 6, 0, '', ' ');
 
-		$limit = 'LIMIT '.(($pag * 4) - 4).', 4;';
+		$limit = 'LIMIT '.(($pag * 6) - 6).', 6;';
 		$data['pags'] = $TotalPags;
 		$data['pag'] = $pag;
 
@@ -161,7 +153,7 @@ class All extends CI_Controller {
 	{
 		if ($this->session->userdata('username'))
 		{
-			redirect('All/manager');
+			redirect('All/clients_gestionar');
 		}
 
 		if (isset($_POST['username']))
@@ -170,7 +162,7 @@ class All extends CI_Controller {
 			$password = $_POST['password'];
 			if ($this->Models_model->login($username,$password))
 			{
-				redirect('All/manager');
+				redirect('All/clients_gestionar');
 			}
 			else
 			{

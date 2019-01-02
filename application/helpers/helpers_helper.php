@@ -188,8 +188,11 @@
             return '
             <div class="row">
                 <div class="col-sm-6">
-                    <a class="venobox" data-gall="myGallery" href="'.$item->url_img.'" title="'.$item->nombre.' - EDICION: '. $item->numero .'">
-                        <img src="'.$item->url_img.'" class="imagen_principal img-thumbnail" width="100%" alt="Edicion '.$item->numero.'">
+                    <a class="venobox" data-gall="myGallery" href="'.$item->url_img.'" title="'.$item->nombre.' - EDICION: #'. $item->numero .' - PUBLICADO EL: '.$item->f_publicacion.'">
+                        <center>
+                            <span><strong>'.$item->nombre.' - EDICION: #'. $item->numero .' - PUBLICADO EL: '.$item->f_publicacion.'</strong></span>
+                            <img src="'.$item->url_img.'" class="imagen_principal img-thumbnail" width="100%" alt="Edicion '.$item->numero.'">
+                        </center>
                     </a>
                 </div>
                 <div class="col-sm-6">

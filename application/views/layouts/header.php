@@ -125,7 +125,7 @@
                   if ($login)
                   {
                     echo '
-                    <a href="/index.php/all/manager" title="Manager" target="_self">
+                    <a href="/index.php/all/clients_gestionar" title="Gestionar clientes" target="_self">
                     <img alt="" src="../../public/images/site-logo1.png">
                     </a>';
                   }else
@@ -161,9 +161,9 @@
                       </li>
                       <li class="nav-item"><a href="#" target="_self">'.$this->session->userdata('username').'</a>
                         <ul>
-                          <li><a href="/index.php/All/login_close" >Cerrar session</a></li>
-                          <li><a href="topmap-contact.html" target="_self">Editar</a></li>
                           <li><a href="bottommap-contact.html" target="_self">Gestionar usuarios</a></li>
+                          <li><a href="topmap-contact.html" target="_self">Editar</a></li>
+                          
                         </ul>
                       </li>
                     </ul>

@@ -101,7 +101,7 @@ text-align: center;
         }
 
         echo '
-        <div class="element-item nature wordpress" data-category="nature wordpress">
+        <div class="element-item">
             <div class="masonry-inner">
             <article class="gallery-post">
                 <figure><img alt="" src="'.$item->url_img.'"></figure>
@@ -157,6 +157,8 @@ text-align: center;
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
+                <center><img alt="" src="'.$item->url_img.'"></center>
+                <br>
                 <div class="fb-comments" data-href="http://localhost/index.php/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
             </div>
             <div class="modal-footer">
