@@ -334,7 +334,7 @@
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
-    //Enviar mail de ionteresados en servicios 
+    //Enviar mail de interesados en servicios 
     if (getUrlVars()["sendmailserviciotrue"])
     {
         var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
@@ -352,6 +352,69 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-exclamation'> </strong> No es posible enviar la informacion por correo, intente de nuevo.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Agregar portada magazine
+    if (getUrlVars()["magazineaddtrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se agrego la portada correctamente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["magazineaddfalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar la portada.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //editar portada magazine
+    if (getUrlVars()["magazineupdatetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se edito la portada correctamente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["magazineupdatefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible editar la portada.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Eliminar portada magazine
+    if (getUrlVars()["magazinedeletetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se elimino la portada correctamente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["magazinedeletefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible eliminar la portada.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }

@@ -43,9 +43,118 @@ class All extends CI_Controller {
 
 	public function magazine()
 	{
+		$pag = $this->input->get('pag');
+		$img = $this->input->get('id_img');
+		$limit = '';
+		
+		if (is_null($pag))
+		{
+			$pag = 1;
+		}
+		
+		$TotalPags = number_format($this->db->query('SELECT id FROM magazine')->num_rows() / 4, 0, '', ' ');
+
+		$limit = 'LIMIT '.(($pag * 4) - 4).', 4;';
+		$data['pags'] = $TotalPags;
+		$data['pag'] = $pag;
+
+		$data['data'] = $this->db->query('SELECT * FROM magazine ORDER BY f_publicacion DESC  '.$limit.' ')->result();
+		
+		if ($img > 0 && !is_null($img))
+		{
+			$data['select'] = $this->db->query('SELECT * FROM magazine where id = '.$img.' ')->row();
+		}
+
 		$this->load->view('layouts/header');
-		$this->load->view('magazine');
+		$this->load->view('magazine', $data);
 		$this->load->view('layouts/footer');
+	}
+
+	public function magazine_add()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$id_img = $this->input->post('id_img');
+		$pag = $this->input->post('pag');
+		
+		//subir imagen
+		$extencion = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
+		$config['upload_path'] = "././public/images/magazine/";
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['file_name'] = 'magazine_'. date("YmdHis").'.'.$extencion;
+		$config['max_size'] = '5000';
+		$config['max_width']  = '5024';
+		$config['max_height']  = '5768';
+
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('img'))
+		{
+			/*Existe error al tratar de subir imagen*/
+			//echo $this->upload->display_errors();
+			redirect($url.'?magazineaddfalse=false&id_img=0&pag='.$pag.'');
+		}else
+		{
+			$data = array(
+				'nombre' => $this->input->post('nombre'),
+				'numero' => $this->input->post('numero'),
+				'url_img' => '../../public/images/magazine/'.$config['file_name'],
+				'f_publicacion' => $this->input->post('f_publicacion')
+			);
+
+			$this->db->insert('magazine',$data);
+
+			if ($this->db->affected_rows() >= 1 )
+			{
+				redirect($url.'?magazineaddtrue=true&id_img=0&pag='.$pag.'');
+			}else
+			{
+				redirect($url.'?magazineaddfalse=false&id_img='.$id_img.'&pag='.$pag.'');
+			}
+		}
+	}
+
+	public function magazine_update()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$id_img = $this->input->post('id_img');
+		$pag = $this->input->post('pag');
+		$id = $this->input->post('id');
+		
+		$data = array(
+				'nombre' => $this->input->post('nombre'),
+				'numero' => $this->input->post('numero'),
+				'f_publicacion' => $this->input->post('f_publicacion')
+		);
+		
+		$this->db->where('id', $this->input->post('id'))->update('magazine', $data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?magazineupdatetrue=true&id_img='.$id_img.'&pag='.$pag.'');
+		}else
+		{
+			redirect($url.'?magazineupdatefalse=false&id_img='.$id_img.'&pag='.$pag.'');
+		}
+	}
+
+	public function magazine_delete()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$id_img = $this->input->post('id_img');
+		$pag = $this->input->post('pag');
+
+		$this->db->where('id', $this->input->post('id'))->delete('magazine');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?magazinedeletetrue=true&id_img=0&pag='.$pag.'');
+		}else
+		{
+			redirect($url.'?magazinedeletefalse=false&id_img='.$id_img.'&pag='.$pag.'');
+		}
 	}
 
 	public function login()
@@ -86,6 +195,7 @@ class All extends CI_Controller {
 		$pag = $this->input->get('pag');
 		$buscar = $this->input->get('search');
 		$limit = '';
+
 		if (is_null($pag))
 		{
 			$pag = 1;
@@ -250,7 +360,6 @@ class All extends CI_Controller {
 		{
 			redirect($url.'?clientdeletefalse=false');
 		}
-
 	}
 
 	public function clients_administrar()

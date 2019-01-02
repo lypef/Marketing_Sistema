@@ -17,6 +17,7 @@
                   <div align="right">
                     <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#publicidad_modal" title="Publicidad">Ver mas !</a>
                   </div>
+                  <br>
                 </div>
               </div>
               
@@ -30,6 +31,7 @@
                   <div align="right">
                     <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#desarrollo_modal" title="Desarrollo">Ver mas !</a>
                   </div>
+                  <br>
                 </div>
               </div>
 

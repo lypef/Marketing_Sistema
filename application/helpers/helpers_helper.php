@@ -177,4 +177,33 @@
         $c =& get_instance();
         return $c->db->query('SELECT empresa FROM clients WHERE id = '.$id.' ')->row()->empresa;
     }
+
+    function ImgSelectMagazine ($id)
+    {
+        if ($id > 0)
+        {
+            $c =& get_instance();
+            $item = $c->db->query('SELECT * FROM `magazine` WHERE id = '.$id.' ')->row();
+
+            return '
+            <div class="row">
+                <div class="col-sm-6">
+                    <a class="venobox" data-gall="myGallery" href="'.$item->url_img.'" title="'.$item->nombre.' - EDICION: '. $item->numero .'">
+                        <img src="'.$item->url_img.'" class="imagen_principal img-thumbnail" width="100%" alt="Edicion '.$item->numero.'">
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fb-comments" data-href="http://localhost/index.php/All/magazine/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                </div>
+            </div>
+            <br><br>
+            <hr>
+            ';
+        }
+        else
+        {
+            return '';
+        }
+        
+    }
 ?>
