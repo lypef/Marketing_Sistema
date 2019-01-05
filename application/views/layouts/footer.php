@@ -15,12 +15,9 @@
                   <div class="textwidget text-justify">En link u projects somos un equipo de profesionales dedicados a realizar proyectos de expansión comercial para empresas, pymes y emprendedores.</div>
                   <div class="inline-social-icons">
                     <ul>
-                      <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
-                      <li><a href="#" target="_blank" class="fa fa-twitter-square"></a></li>
-                      <li><a href="#" target="_blank" class="fa fa-youtube-play"></a></li>
-                      <li><a href="#" target="_blank" class="fa fa-linkedin-square"></a></li>
-                      <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                      <li><a href="#" target="_blank" class="fa fa-pinterest-square"></a></li>
+                      <li><a href="https://www.facebook.com/linkuzac/?modal=admin_todo_tour" target="_blank" class="fa fa-facebook-square"></a></li>
+                      <li><a href="https://www.youtube.com/channel/UCv72dPE4OO9HZ_JSUVL_HPA?disable_polymer=true" target="_blank" class="fa fa-youtube-play"></a></li>
+                      <li><a href="https://www.instagram.com/linku.gestion/?utm_source=ig_profile_share&igshid=1vkm4f8uy46jr" target="_blank" class="fa fa-instagram"></a></li>
                     </ul>
                   </div>
                 </aside>
@@ -36,7 +33,7 @@
               <div class="col-sm-4">
                 <aside class="widget widget-links">
                   <h2 class="widget-title">Like Us on Facebook</h2>
-                  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemeidol&tabs=timeline&width=340&height=250&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=1349216208421887" width="340" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Flinkuzac&tabs=timeline&width=340&height=450&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false" width="340" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                 </aside>
               </div>
             </div>

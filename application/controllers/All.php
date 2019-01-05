@@ -26,6 +26,16 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function c_zacatecas()
+	{
+		
+		$data['data'] = $this->db->query('SELECT * FROM `c_zacatecas` ')->result();
+
+		$this->load->view('layouts/header');
+		$this->load->view('c_zacatecas', $data);
+		$this->load->view('layouts/footer');
+	}
+	
 	public function contacto()
 	{
 		$this->load->view('layouts/header');

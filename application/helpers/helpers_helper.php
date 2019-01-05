@@ -209,4 +209,36 @@
         }
         
     }
+
+    function ImgSelectC_zacatecas ($id)
+    {
+        if ($id > 0)
+        {
+            $c =& get_instance();
+            $item = $c->db->query('SELECT * FROM `c_zacatecas` WHERE id = '.$id.' ')->row();
+
+            return '
+            <div class="row">
+                <div class="col-sm-6">
+                    <a class="venobox" data-gall="myGallery" href="'.$item->url.'" title="'.$item->name.'">
+                        <center>
+                            <span><strong>'.$item->name.'</strong></span>
+                            <br><img src="'.$item->url.'" class="imagen_principal img-thumbnail" width="100%" alt="'.$item->text.'">
+                        </center></a>
+                        <br><div class="text-justify">'.$item->text.'</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fb-comments" data-href="http://localhost/index.php/All/c_zacatecas/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                </div>
+            </div>
+            <br><br>
+            <hr>
+            ';
+        }
+        else
+        {
+            return '';
+        }
+        
+    }
 ?>

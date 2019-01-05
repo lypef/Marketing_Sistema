@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-01-2019 a las 06:19:27
+-- Tiempo de generación: 05-01-2019 a las 05:35:31
 -- Versión del servidor: 10.2.17-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -88,6 +88,33 @@ INSERT INTO `clients` (`id`, `category`, `empresa`, `active`, `direccion`, `mail
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `c_zacatecas`
+--
+
+CREATE TABLE `c_zacatecas` (
+  `id` int(11) NOT NULL,
+  `url` varchar(254) NOT NULL,
+  `name` varchar(254) NOT NULL,
+  `text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `c_zacatecas`
+--
+
+INSERT INTO `c_zacatecas` (`id`, `url`, `name`, `text`) VALUES
+(1, '../../public/images/c_zacatecas/jerez.jpg', 'Jerez de García Salinas', 'Ubicado a 57 km de la capital, uno de los seis Pueblos Mágicos del estado de Zacatecas y sin duda, el más visitado tanto por los capitalinos como por los turistas provenientes de otras ciudades. Debido a sus tradiciones, fiestas y su  belleza natural y arquitectónica, sin dejar de mencionar su música conocida como “Tamborazo Zacatecano” o bien sus deliciosas nieves de garrafa y sus típicas tostadas de trompa y de carnitas, hacen que visitar el municipio de Jerez sea una experiencia que se quiera repetir. '),
+(2, '../../public/images/c_zacatecas/laquemada.jpg', 'La Quemada', 'El estado de Zacatecas guarda a 57 km de la capital, el asentamiento monumental más importante del centro norte de México, se cree que esta zona arqueológica fue construida por diversos habitantes del lugar entre los años 350 y 1150 d.C., época en la que hubieron varios asentamientos culturales en esa región. En ella, se construyeron grandes salones, enormes columnas, una cancha para el juego de pelota, una pirámide y una red de calzadas que comunicaban con asentamientos inferiores por las que circulaban las ofrendas, mercancía que sostenía a la comunidad,además de sus procesiones para honrar a sus dioses. La Quemada es un lugar lleno de historia y enigmas aún sin revelar, por eso, vale la pena visitar este atractivo.'),
+(3, '../../public/images/c_zacatecas/nochistlan.jpg', 'Nochistlán', 'Son 230 kilómetros los que separan a la capital de este hermoso Pueblo Mágico lleno de historia pues es considerado la segunda cabecera municipal más antigua del estado de Zacatecas, ya que fue en este lugar en el año de 1532 cuando los españoles fundaron por primera vez Guadalajara para luego ser trasladada a su actual ubicación en el estado de Jalisco. Pero sin duda, son sus suculentos platillos de birria o las gorditas y el platillo típico del lugar llamado “Pollo a la Valentina”, sus piezas de arte popular y las famosas coleaderas suertes charras típicas de la zona\r\n\r\n las que hacen de Nochistlán un pueblo que conserva la esencia de la cultura mexicana.'),
+(4, '../../public/images/c_zacatecas/organos.jpg', 'Parque Nacional Sierra de Órganos', 'A 30 km del municipio de Sombrerete se esconde este imponente atractivo turístico regalado por la naturaleza, son 1,125 hectáreas donde podrás admirar las impactantes formaciones rocosas creadas por el viento, el agua y el origen volcánico, dándole una similitud a las pipas musicales de un órgano, de ahí su peculiar nombre. En este lugar, podrás practicar alpinismo, excursionismo e incluso acampar en medio de la naturaleza o si lo prefieres, rentar una de las cabañas disponibles del lugar. Sin lugar a dudas, el Parque Nacional Sierra de Órganos es un lugar que todo espíritu aventurero no debe perderse.'),
+(5, '../../public/images/c_zacatecas/ortega.jpg', 'Teúl de González Ortega', 'Al sur de la capital, a 213 km, se encuentra este acogedor Pueblo Mágico característico por sus calzadas de piedra y famoso por sus bebidas a base de mezcal y cremas de agave de exquisitos sabores como coco, maracuyá, piñón, café entre otros. En su arquitectura podrás encontrar edificaciones del siglo XVIII, casas muy antiguas y gárgolas de cantera que resguardan este bello pueblo y sin olvidarnos de los trabajos de alfarería que realizan los locatarios y los deliciosos dulces regionales como el taninole (combinación de calabaza enmielada y leche), el ponteduro (maíz dulce o prieto con piloncillo), la torta de arroz con piloncillo, entre otros que podrás encontrar en el mercado municipal de este bello municipio.'),
+(6, '../../public/images/c_zacatecas/pinos.jpg', 'Pinos', 'En la frontera con el estado de San Luis Potosí a 125 km de la capital zacatecana, se encuentra uno de los municipios que fuera de los más importantes para la minería entre el siglo XIV y XIX, hoy es un lugar ideal para disfrutar de una armoniosa tranquilidad y recorrer aquellas edificaciones con historia, adquirir las típicas artesanías de barro y degustar de su extensa gastronomía que en su mayoría va acompañada de nopales, además de los platillos regionales como el conejo con mole de pinole, las gorditas de horno y los patoles blancos (frijoles). Si amas la gastronomía, Pinos es el lugar indicado para satisfacer al  paladar.'),
+(7, '../../public/images/c_zacatecas/plateros.jpg', 'Santuario de Plateros', 'Este santuario es el tercero más importante para los devotos católicos después de la Basílica de Guadalupe y la iglesia de San Juan de los Lagos y se encuentra 66 km de la capital zacatecana en el municipio de Fresnillo. El Santuario de Plateros alberga a más de 1.5 millones de peregrinos cada año, esto debido, por una parte a la gran cantidad de milagros que se cuentan, realizó el Santo Niño de Atocha y por otro lado, la arquitectura y el patrimonio artístico-religioso único en todo México, atrae a los menos creyentes pero amantes de la historia. Sin importar las creencias religiosas, el santuario es un lugar digno de admirar por su riqueza y belleza general.'),
+(8, '../../public/images/c_zacatecas/sombrerete.jpg', 'Sombrerete', 'Uno de los municipios más hermosos y ricos en tradiciones del Estado; a 170 km de Zacatecas capital se encuentra esta bella tierra que alberga uno de los Parques Nacionales más imponentes de México llamado “Parque Nacional Sierra de Órganos”, además de contar con una deliciosa gastronomía en la que resaltan las llamadas “brujitas”, que son empanadas de maíz fritas en aceite y rellenas de carne deshebrada o frijoles y el famoso pan ranchero cuya cocción se realiza en un horno de adobe, ladrillo y lodo, mismo que le brinda un sabor único y exquisito. Las plazuelas y jardines del centro hacen de Sombrerete un pueblo pintoresco que no puede dejar de visitarse.');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `empresa_gallery`
 --
 
@@ -156,7 +183,7 @@ CREATE TABLE `magazine` (
 --
 
 INSERT INTO `magazine` (`id`, `nombre`, `numero`, `url_img`, `f_publicacion`) VALUES
-(1, 'camcon', 1, '../../public/images/magazine/2.jpg', '2019-01-31'),
+(1, 'CAPCOM', 1500, '../../public/images/magazine/2.jpg', '2019-01-31'),
 (2, 'CAPCOM', 2, '../../public/images/magazine/2.jpg', '2019-01-04'),
 (3, 'EDGE', 3, '../../public/images/magazine/3.jpg', '2019-01-05'),
 (4, 'SMASH', 4, '../../public/images/magazine/4.jpg', '2019-01-09'),
@@ -214,6 +241,12 @@ ALTER TABLE `clients`
   ADD KEY `client_category` (`category`);
 
 --
+-- Indices de la tabla `c_zacatecas`
+--
+ALTER TABLE `c_zacatecas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `empresa_gallery`
 --
 ALTER TABLE `empresa_gallery`
@@ -247,6 +280,12 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+
+--
+-- AUTO_INCREMENT de la tabla `c_zacatecas`
+--
+ALTER TABLE `c_zacatecas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `empresa_gallery`

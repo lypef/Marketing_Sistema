@@ -82,10 +82,9 @@
                       $salir = '<li><a href="/index.php/all/login" class="fa fa-user"> Entrar</a></li>';
                     }
                     echo $salir . '
-                    <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
-                    <li><a href="#" target="_blank" class="fa fa-twitter-square"></a></li>
-                    <li><a href="#" target="_blank" class="fa fa-youtube-play"></a></li>
-                    <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
+                    <li><a href="https://www.facebook.com/linkuzac/?modal=admin_todo_tour" target="_blank" class="fa fa-facebook-square"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCv72dPE4OO9HZ_JSUVL_HPA?disable_polymer=true" target="_blank" class="fa fa-youtube-play"></a></li>
+                    <li><a href="https://www.instagram.com/linku.gestion/?utm_source=ig_profile_share&igshid=1vkm4f8uy46jr" target="_blank" class="fa fa-instagram"></a></li>
                     ';
                   }
                   else
@@ -181,6 +180,7 @@
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
                       <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
                       <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">U. Magazine</a></li>
+                      <li><a href="/index.php/all/c_zacatecas" target="_self">Conoce Zacatecas</a></li>
                       <li class="nav-item"><a href="#" target="_self">Categorias</a>
                       '.GetCategoriesLI().'
                       </li>
