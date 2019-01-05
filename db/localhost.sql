@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-01-2019 a las 05:35:31
+-- Tiempo de generación: 05-01-2019 a las 05:54:06
 -- Versión del servidor: 10.2.17-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -42,14 +42,14 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `image`) VALUES
-(1, 'RESTAURANTES', 'TODOS LOS RESTAURANTES AQUI\r\n', '/imagen/1.jpg'),
-(2, 'COMIDA RAPIDA', 'RESTAURANTES DE COMIDA RAPIDA', '/imagen/1.jpg'),
-(3, 'CAFETERIAS', 'CAFETERÍAS Y DEMÁS ', '/imagen/1.jpg'),
-(4, 'BELLEZA', 'TIENDAS DE BELLEZA', '/imagen/1.jpg'),
-(5, 'SALUD / BELLEZA', 'SALUD Y BELLEZA', '/imagen/1.jpg'),
-(6, 'ANTROS / BARES', 'ANTROS, BARES Y DIVERSION', '/imagen/1.jpg'),
-(7, 'HOTELES', 'SERVICIOS HOTELEROS', '/imagen/1.jpg'),
-(8, 'SERVICIOS PROFESIONALES', 'SERVICIOS', '/imagen/1.jpg');
+(1, 'RESTAURANTES', 'TODOS LOS RESTAURANTES AQUI\r\n', '../../public/images/category/1.JPG'),
+(2, 'COMIDA RAPIDA', 'RESTAURANTES DE COMIDA RAPIDA', '../../public/images/category/2.JPG'),
+(3, 'CAFETERIAS', 'CAFETERÍAS Y DEMÁS ', '../../public/images/category/3.JPG'),
+(4, 'BELLEZA', 'TIENDAS DE BELLEZA', '../../public/images/category/4.JPG'),
+(5, 'SALUD / BELLEZA', 'SALUD Y BELLEZA', '../../public/images/category/5.JPG'),
+(6, 'ANTROS / BARES', 'ANTROS, BARES Y DIVERSION', '../../public/images/category/6.JPG'),
+(7, 'HOTELES', 'SERVICIOS HOTELEROS', '../../public/images/category/7.JPG'),
+(8, 'SERVICIOS PROFESIONALES', 'SERVICIOS', '../../public/images/category/8.JPG');
 
 -- --------------------------------------------------------
 
