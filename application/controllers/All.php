@@ -530,11 +530,11 @@ class All extends CI_Controller {
 	{
 		$url = $this->input->post('url');
 		
-		$to = $this->input->post('email');
+		$to = $this->config->item('correo_receptor');
 
 		$subject = $this->input->post('asunto') . ' !' ;
 
-		$headers = "From: " . $this->config->item('correo_receptor') . "\r\n";
+		$headers = "From: " . $this->input->post('email') . "\r\n";
 		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
@@ -562,11 +562,11 @@ class All extends CI_Controller {
 	{
 		$url = $this->input->post('url');
 		
-		$to = 'Link u Projects';
+		$to = $this->input->post('email');
 
 		$subject = $this->input->post('asunto') . ' !' ;
 
-		$headers = "From: " . $this->config->item('correo_receptor') . "\r\n";
+		$headers = "From: " . 'Link u Projects' . "\r\n";
 		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
