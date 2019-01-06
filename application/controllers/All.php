@@ -530,21 +530,15 @@ class All extends CI_Controller {
 	{
 		$url = $this->input->post('url');
 		
-		$this->load->library("email");
- 
-		//configuracion para gmail
-		$configGmail = array(
-		'protocol' => 'smtp',
-		'smtp_host' => 'ssl://smtp.gmail.com',
-		'smtp_port' => $this->config->item('correo_port'),
-		'smtp_user' => $this->config->item('correo_smtp'),
-		'smtp_pass' => $this->config->item('correo_pass'),
-		'mailtype' => 'html',
-		'charset' => 'utf-8',
-		'newline' => "\r\n"
-		);  
+		$to = $this->config->item('correo_recepcion');
 
-		$this->email->initialize($configGmail);
+		$subject = $this->input->post('asunto') . ' !' ;
+
+		$headers = "From: " . $this->config->item('correo_smtp') . "\r\n";
+		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+
 		
 		$body = $this->input->post('comentario') . '
 			<br><br>Nombre<br>'.$this->input->post('nombre').'
@@ -554,13 +548,8 @@ class All extends CI_Controller {
 			<br><br>Telefono:<br>'.$this->input->post('telefono').'
 		';
 		
-		$this->email->from($this->config->item('correo_smtp'),$this->input->post('nombre'));
-		$this->email->reply_to($this->input->post('email'), $this->input->post('nombre'));
-		$this->email->to($this->config->item('correo_recepcion'));
-		$this->email->subject($this->input->post('asunto') . ' !' );
-		$this->email->message($body);
 		
-		if ($this->email->send())
+		if (mail($to, $subject, $body, $headers))
 		{
 			redirect($url.'?sendmailserviciotrue=true');
 		}else
