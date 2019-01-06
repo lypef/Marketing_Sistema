@@ -529,8 +529,7 @@ class All extends CI_Controller {
 	public function servicio_inteserado ()
 	{
 		$url = $this->input->post('url');
-		$url_web = 'http://localhost/';
-
+		
 		$this->load->library("email");
  
 		//configuracion para gmail
@@ -573,8 +572,7 @@ class All extends CI_Controller {
 	public function clients_administrar_sendmail ()
 	{
 		$url = $this->input->post('url');
-		$url_web = 'http://localhost/';
-
+		
 		$this->load->library("email");
  
 		//configuracion para gmail
@@ -617,8 +615,7 @@ class All extends CI_Controller {
 	public function category_administrar_sendmail ()
 	{
 		$url = $this->input->post('url');
-		$url_web = 'http://localhost/';
-
+		
 		$this->load->library("email");
  
 		//configuracion para gmail
