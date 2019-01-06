@@ -28,7 +28,7 @@
                       <div class="col-sm-6">
                         <div class="text-center">
                           <br>
-                          <a href="/index.php/'.UrlActual($_SERVER[REQUEST_URI]).'?id_img='.$item->id.'">
+                          <a href="'.UrlActual($_SERVER[REQUEST_URI]).'?id_img='.$item->id.'">
                             <span><strong>'.$item->name.'</strong></span><br>
                             <img src="'.$item->url.'" class="zoom img-thumbnail" alt="'.$item->name.'" style="height:300px;">
                           </a>

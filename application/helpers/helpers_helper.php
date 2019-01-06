@@ -232,7 +232,7 @@
                         <br><div class="text-justify">'.$item->text.'</div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="fb-comments" data-href="http://localhost/index.php/All/c_zacatecas/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                    <div class="fb-comments" data-href="'.base_url().'All/c_zacatecas/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
                 </div>
             </div>
             <br><br>
