@@ -571,11 +571,11 @@ class All extends CI_Controller {
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
 
-		
+		$url_img = str_replace('../../',str_replace('index.php/','',base_url()),$this->input->post('url_image'));
 
 		$body = '
 			<h2>'.$this->input->post('descripcion').'</h2>
-			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',str_replace('index.php/','',base_url()),$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
+			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.$url_img.'" alt="'.$this->input->post('title').'"></a>
 			<br><br>
 			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.base_url(). 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
 			<br><br>
