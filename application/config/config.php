@@ -533,4 +533,4 @@ $config['proxy_ips'] = '';
 $config['correo_recepcion'] = 'contacto@cyberchoapas.com';
 $config['correo_smtp'] = 'documentos@cyberchoapas.com';
 $config['correo_pass'] = 'Zxasqw10';
-$config['correo_port'] = 587;
+$config['correo_port'] = 465;
