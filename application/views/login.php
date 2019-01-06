@@ -9,19 +9,17 @@
         <li>
         <span class="fa fa-map-marker"></span>
         <address>
-            Madhyapur Munisipality-14, 
-            <br>
-            Bhaktapur, Nepal
+            Calle De La Unión 108, Centro, Zacatecas 
         </address>
         </li>
         <li>
         <span class="fa fa-phone"></span>
-        +977 - 9741515459
+            +52 - 492 145 07 91
         </li>
         <li>
-        <a target="_blank" href="mailto:themeidol@gmail.com">
+        <a target="_blank" href="mailto:info@linku.com.mx">
             <span class="fa fa-envelope-o"></span>
-            themeidol@gmail.com
+            info@linku.com.mx
         </a>
         </li>
     </ul>
