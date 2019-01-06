@@ -566,7 +566,7 @@ class All extends CI_Controller {
 
 		$subject = $this->input->post('title') . ' !';
 
-		$headers = "From: " . 'Link u Projects' . "\r\n";
+		$headers = "From: " . 'info@linku.com.mx' . "\r\n";
 		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
@@ -575,20 +575,21 @@ class All extends CI_Controller {
 
 		$body = '
 			<h2>'.$this->input->post('descripcion').'</h2>
-			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.$url_img.'" alt="'.$this->input->post('title').'"></a>
+			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.$this->input->post('url_cont').'" alt="'.$this->input->post('title').'"></a>
 			<br><br>
 			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.base_url(). 'all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
 			<br><br>
 			O todas nuestras empresas <a href="'.base_url(). 'all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
 		';
-		
-		if (mail($to, $subject, $body, $headers))
+		echo $body;
+
+		/*if (mail($to, $subject, $body, $headers))
 		{
 			redirect($url.'?sendmailserviciotrue=true&id='.$this->input->post('id_empresa').'');
 		}else
 		{
 			redirect($url.'?sendmailserviciofalse=false&id='.$this->input->post('id_empresa').'');
-		}		
+		}*/		
 	}
 }
 ?>
