@@ -529,8 +529,5 @@ $config['rewrite_short_tags'] = FALSE;
 | Comma-separated:	'10.0.1.200,192.168.5.0/24'
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
-$config['proxy_ips'] = '';
-$config['correo_recepcion'] = 'contacto@cyberchoapas.com';
-$config['correo_smtp'] = 'documentos@cyberchoapas.com';
-$config['correo_pass'] = 'Zxasqw10';
-$config['correo_port'] = 465;
+
+$config['correo_receptor'] = 'documentos@cyberchoapas.com';

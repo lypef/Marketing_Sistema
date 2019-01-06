@@ -530,11 +530,11 @@ class All extends CI_Controller {
 	{
 		$url = $this->input->post('url');
 		
-		$to = $this->config->item('correo_recepcion');
+		$to = $this->input->post('email');
 
 		$subject = $this->input->post('asunto') . ' !' ;
 
-		$headers = "From: " . $this->config->item('correo_smtp') . "\r\n";
+		$headers = "From: " . $this->config->item('correo_receptor') . "\r\n";
 		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
@@ -562,21 +562,15 @@ class All extends CI_Controller {
 	{
 		$url = $this->input->post('url');
 		
-		$this->load->library("email");
- 
-		//configuracion para gmail
-		$configGmail = array(
-		'protocol' => 'smtp',
-		'smtp_host' => 'ssl://smtp.gmail.com',
-		'smtp_port' => $this->config->item('correo_port'),
-		'smtp_user' => $this->config->item('correo_smtp'),
-		'smtp_pass' => $this->config->item('correo_pass'),
-		'mailtype' => 'html',
-		'charset' => 'utf-8',
-		'newline' => "\r\n"
-		);  
+		$to = 'Link u Projects';
 
-		$this->email->initialize($configGmail);
+		$subject = $this->input->post('asunto') . ' !' ;
+
+		$headers = "From: " . $this->config->item('correo_receptor') . "\r\n";
+		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+
 		
 		$body = '
 			<h2>'.$this->input->post('descripcion').'</h2>
@@ -587,17 +581,13 @@ class All extends CI_Controller {
 			O todas nuestras empresas <a href="'.$url_web. 'index.php/all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
 		';
 		
-		$this->email->from("Link u Projects");
-		$this->email->to($this->input->post('emails'));
-		$this->email->subject($this->input->post('title') . ' !' );
-		$this->email->message($body);
 		
-		if ($this->email->send())
+		if (mail($to, $subject, $body, $headers))
 		{
-			redirect($url.'?id='.$this->input->post('id_empresa').'&sendmailtrue=true');
+			redirect($url.'?sendmailserviciotrue=true');
 		}else
 		{
-			redirect($url.'?id='.$this->input->post('id_empresa').'&sendmailfalse=false');
+			redirect($url.'?sendmailserviciofalse=false');
 		}
 	}
 
