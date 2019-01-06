@@ -72,10 +72,14 @@
 
         if ($pos !== false) 
         {
-            return htmlspecialchars(substr($url, 0, $pos), ENT_QUOTES, 'UTF-8');
+            $tmp = htmlspecialchars(substr($url, 0, $pos), ENT_QUOTES, 'UTF-8');
+            $tmp = base_url() . $tmp;
+            return $tmp;
         } else 
         {
-            return htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+            $tmp = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+            $tmp = base_url() . $tmp;
+            return $tmp;
         }
     }
 

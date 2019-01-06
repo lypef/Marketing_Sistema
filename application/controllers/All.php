@@ -163,20 +163,18 @@ class All extends CI_Controller {
 	{
 		if ($this->session->userdata('username'))
 		{
-			redirect('All/clients_gestionar');
+			redirect(base_url() . 'all/clients_gestionar');
 		}
 
 		if (isset($_POST['username']))
 		{
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			if ($this->Models_model->login($username,$password))
+			if ($this->Models_model->login($_POST['username'], $_POST['password']))
 			{
-				redirect('All/clients_gestionar');
+				redirect(base_url() . 'all/clients_gestionar');
 			}
 			else
 			{
-				redirect('All/login#bad_password');
+				redirect(base_url() . 'all/login#bad_password');
 			}
 		}
 		
@@ -188,7 +186,7 @@ class All extends CI_Controller {
 	public function login_close ()
 	{
 		$this->session->sess_destroy();
-		redirect('');
+		redirect(base_url());
 	}
 
 	public function view_category()
