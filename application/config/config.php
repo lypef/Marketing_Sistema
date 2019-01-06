@@ -29,6 +29,9 @@ switch($_SERVER['SERVER_NAME'])
     case 'www.linku.com.mx':
             $config['base_url'] = 'http://www.linku.com.mx/index.php';
             break;
+    case 'linku.com.mx':
+        $config['base_url'] = 'http://www.linku.com.mx/index.php';
+        break;
     default:
             $config['base_url']    = "http://localhost/index.php/";
             break;       

@@ -77,6 +77,9 @@ switch($_SERVER['SERVER_NAME'])
     case 'www.linku.com.mx':
             $active_group = 'linku';
             break;
+	case 'linku.com.mx':
+		$active_group = 'linku';
+		break;
     default:
 			$active_group = 'local';
             break;       
