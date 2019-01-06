@@ -74,14 +74,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 switch($_SERVER['SERVER_NAME'])
 {
-    case 'www.linku.com.mx':
-            $active_group = 'linku';
-            break;
-	case 'linku.com.mx':
-		$active_group = 'linku';
-		break;
-    default:
+    case 'localhost':
 			$active_group = 'local';
+            break;
+	default:
+			$active_group = 'linku';
             break;       
 }
 
