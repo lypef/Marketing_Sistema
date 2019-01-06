@@ -574,9 +574,9 @@ class All extends CI_Controller {
 		
 		$body = '
 			<h2>'.$this->input->post('descripcion').'</h2>
-			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',$url_web,$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
+			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',base_url(),$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
 			<br><br>
-			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.$url_web. 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
+			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.base_url(). 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
 			<br><br>
 			O todas nuestras empresas <a href="'.base_url(). 'all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
 		';
@@ -607,9 +607,9 @@ class All extends CI_Controller {
 		
 		$body = '
 			<h2>'.$this->input->post('descripcion').'</h2>
-			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',$url_web,$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
+			<a target="_blank" href="'.$this->input->post('url_cont').'"><img src="'.str_replace('../../',base_url(),$this->input->post('url_image')).'" alt="'.$this->input->post('title').'"></a>
 			<br><br>
-			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.$url_web. 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
+			Tambien puedes ver toda la galeria de '.NameEmpresaID($this->input->post('id_empresa')).' <a href="'.base_url(). 'index.php/all/clients_administrar?id='.$this->input->post('id_empresa').'" target="_blank"> AQUI</a>
 			<br><br>
 			O todas nuestras empresas <a href="'.base_url(). 'all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
 		';
