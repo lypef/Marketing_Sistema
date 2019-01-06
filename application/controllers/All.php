@@ -581,15 +581,14 @@ class All extends CI_Controller {
 			<br><br>
 			O todas nuestras empresas <a href="'.base_url(). 'all/view_category?id=0&pag=1" target="_blank"> AQUI</a>
 		';
-		echo $body;
-
-		/*if (mail($to, $subject, $body, $headers))
+		
+		if (mail($to, $subject, $body, $headers))
 		{
 			redirect($url.'?sendmailserviciotrue=true&id='.$this->input->post('id_empresa').'');
 		}else
 		{
 			redirect($url.'?sendmailserviciofalse=false&id='.$this->input->post('id_empresa').'');
-		}*/		
+		}
 	}
 }
 ?>
