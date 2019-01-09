@@ -98,7 +98,7 @@ text-align: center;
         <div class="element-item">
             <div class="masonry-inner">
             <article class="gallery-post">
-                <figure><img alt="" src="'.$item->url_img.'"></figure>
+                <figure><img alt="" src="'.$item->url_img.'" style="height:245px; max-height: 245px; width:100%;"></figure>
                 <header class="entry-header">
                 '.$premium_icono. $view.'
                 <a target="_BLANK" href="/index.php/all/clients_administrar?id='.$item->cl_id_empresa.'"><span class="fa fa-image" title="Ver galeria de '.$item->empresa.'"></span></a>
