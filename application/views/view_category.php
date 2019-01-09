@@ -36,89 +36,6 @@ text-align: center;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
-
-
-
-.postname-categories {
-    float: none;
-}
-.portfolio-section {
-    padding-bottom: 30px;
-}
-.gallery-post .entry-header {
-    background: rgba(3, 146, 206, 0.8) none repeat scroll 0 0;
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    padding: 14% 0 0;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
-    transform: scale(0);
-    -webkit-transition: all 0.4s ease 0s;
-    -moz-transition: all 0.4s ease 0s;
-    -ms-transition: all 0.4s ease 0s;
-    -o-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
-    width: 100%;
-}
-.gallery-post:hover .entry-header{
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: all 0.4s ease 0s;
-    -moz-transition: all 0.4s ease 0s;
-    -ms-transition: all 0.4s ease 0s;
-    -o-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
-}
-.gallery-post {
-    position: relative;
-}
-.gallery-post .entry-title {
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    font-weight: 400 !important;
-    padding: 10px 0;
-}
-.gallery-post .entry-meta, 
-.gallery-post .entry-meta a {
-    color: rgb(255, 255, 255);
-}
-.gallery-post .entry-header > a span::before {
-    color: #0392CE;
-    display: inline-block;
-    font-size: 15px;
-}
-.gallery-post .entry-header > a {
-    background: rgb(255, 255, 255) none repeat scroll 0 0;
-    border-radius: 50%;
-    display: inline-block;
-    height: 35px;
-    margin: 0 3px;
-    padding: 6px 0 0;
-    width: 35px;
-}
-.gallery-post .entry-header > a:hover{
-    background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
-}
-.tag-links > a {
-    cursor: text;
-}
-.tag-links > a:hover{
-    color: rgb(255, 255, 255);
-}
-.gallery-post figure img {
-    width: 100%;
-}
-
 </style>
 <?php
     echo GetCategoriesFilters($_GET['id']);
@@ -128,7 +45,7 @@ text-align: center;
         <?php 
             if ($pag > 1)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag-1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag-1);
                 echo '<a href="'.$link.'">&laquo;</a>';
             }else
             {
@@ -141,10 +58,10 @@ text-align: center;
         for ($i = 1; $i <= $pags; $i++) {
             if ($pag == $i)
             {
-                echo '<a class="active" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
+                echo '<a class="active" href="'.UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
             }else
             {
-                echo '<a href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
+                echo '<a href="'.UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
             }
         }
 
@@ -152,7 +69,7 @@ text-align: center;
         <?php 
             if ($pag < $pags)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag+1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag+1);
                 echo '<a href="'.$link.'">&raquo;</a>';
             }else
             {
@@ -242,7 +159,7 @@ text-align: center;
             <div class="modal-body">
                 <center><img alt="" src="'.$item->url_img.'"></center>
                 <br>
-                <div class="fb-comments" data-href="http://localhost/index.php/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
+                <div class="fb-comments" data-href="'.base_url().'/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Ocultar</button>
@@ -260,7 +177,7 @@ text-align: center;
         <?php 
             if ($pag > 1)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag-1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag-1);
                 echo '<a href="'.$link.'">&laquo;</a>';
             }else
             {
@@ -273,10 +190,10 @@ text-align: center;
         for ($i = 1; $i <= $pags; $i++) {
             if ($pag == $i)
             {
-                echo '<a class="active" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
+                echo '<a class="active" href="'. UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
             }else
             {
-                echo '<a href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
+                echo '<a href="'. UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=$i" .'">'.$i.'</a>';
             }
         }
 
@@ -284,7 +201,7 @@ text-align: center;
         <?php 
             if ($pag < $pags)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag+1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?id=$_GET[id]&pag=" . ($pag+1);
                 echo '<a href="'.$link.'">&raquo;</a>';
             }else
             {

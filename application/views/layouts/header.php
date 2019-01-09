@@ -23,6 +23,7 @@
     <!-- Flex slider overwrite styling  -->
     <link rel='stylesheet' id='demo-style-css' href='../../public/css/style.css' type='text/css' media='all'/>
     <!-- Flex slider overwrite styling  -->
+    <link rel='stylesheet' href='../../public/css/customgallery.css' type='text/css' media='all'/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
