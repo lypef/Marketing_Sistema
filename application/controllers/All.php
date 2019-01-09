@@ -422,7 +422,7 @@ class All extends CI_Controller {
 				redirect($url.'?id='.$id_empresa.'&clientaddimgtrue=true');
 			}else
 			{
-				unlink('../../public/images/clients/'.$config['file_name']);
+				//unlink('../../public/images/clients/'.$config['file_name']);
 				redirect($url.'?id='.$id_empresa.'&clientaddimgfalse=false');
 			}
 		}
@@ -470,7 +470,7 @@ class All extends CI_Controller {
 
 		if ($this->db->affected_rows() >= 1 )
 		{
-			unlink($this->input->post('url_foto'));
+			//unlink($this->input->post('url_foto'));
 			redirect($url.'?id='.$id_empresa.'&img_clients_delete_true=true');
 		}else
 		{
