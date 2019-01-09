@@ -392,8 +392,10 @@ class All extends CI_Controller {
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['file_name'] = $id_empresa.'_'. date("YmdHis").'.'.$extencion;
 		$config['max_size'] = '5000';
-		$config['max_width']  = '5024';
-		$config['max_height']  = '5768';
+		$config['max_width']  = '900';
+		$config['max_height']  = '600';
+		$config['min_width']  = '900';
+		$config['min_height']  = '600';
 
 		$this->load->library('upload', $config);
 		
@@ -497,7 +499,7 @@ class All extends CI_Controller {
 		// Youtube video ID
 		$youtubeVideoId = $urlArr[$urlArrNum - 1];
 		// Generate youtube thumbnail url
-		$url_img = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/mqdefault.jpg';
+		$url_img = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/maxresdefault.jpg';
 		$newfile = '././public/images/clients/'.$this->input->post('id_empresa').'_'. date("YmdHis").'.'.'jpg';
 		$img_db = '../../public/images/clients/'.$this->input->post('id_empresa').'_'. date("YmdHis").'.'.'jpg';
 

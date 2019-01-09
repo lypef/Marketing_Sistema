@@ -71,7 +71,7 @@
 
                 if (strpos($item->url, 'youtube') !== false) {
                     $category .= 'vdo';
-                    $figure = '<figure><img alt="" src="'.$item->url_img.'"></figure>';
+                    $figure = '<figure><img alt="" src="'.$item->url_img.'" style="height:245px; max-height: 245px; width:100%;"></figure>';
                     $view = '<a class="venobox" data-autoplay="true" data-vbtype="video" href="'.$item->url.'"><span class="fa fa-youtube-play"></span></a>';
                 }else
                 {
@@ -287,7 +287,7 @@
                         </p>
                     </div>
                     </div>
-                    <span>* Recomendamos imagenss de 900px X 600px</span>
+                    <span style="color:red">* Solo aceptamos imagenes de 900px * 600px.</span>
                     <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
                     <input type="hidden" id="id_empresa" name="id_empresa" value="<?php echo $_GET['id'] ?>">
                 </div>
