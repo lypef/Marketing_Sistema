@@ -1,10 +1,3 @@
-<div id="preloader" class="preloader" style="display: none;">
-    <div class="preloader-area">
-        <div class="spinner"></div>
-    </div>
-</div>
-
-
 <?php 
       $login = LoginCheckBool();
 ?>
@@ -80,6 +73,7 @@ text-align: center;
     </div>
 </div>
 <br>
+
 <div class="isotope">
 <?php
     foreach ($data as $item) {

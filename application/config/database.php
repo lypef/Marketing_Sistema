@@ -76,7 +76,10 @@ switch($_SERVER['SERVER_NAME'])
 {
     case 'localhost':
 			$active_group = 'local';
-            break;
+			break;
+	case '192.168.1.80':
+		$active_group = 'local';
+		break;
 	default:
 			$active_group = 'linku';
             break;       

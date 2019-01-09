@@ -199,7 +199,7 @@ text-align: center;
         <?php 
             if ($pag > 1)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag-1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag-1);
                 echo '<a href="'.$link.'">&laquo;</a>';
             }else
             {
@@ -212,10 +212,10 @@ text-align: center;
         for ($i = 1; $i <= $pags; $i++) {
             if ($pag == $i)
             {
-                echo '<a class="active" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>';
+                echo '<a class="active" href="'.UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>';
             }else
             {
-                echo '<a href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>';
+                echo '<a href="'.UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=$i" .'">'.$i.'</a>';
             }
         }
 
@@ -223,7 +223,7 @@ text-align: center;
         <?php 
             if ($pag < $pags)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag+1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?search=$_GET[search]&pag=" . ($pag+1);
                 echo '<a href="'.$link.'">&raquo;</a>';
             }else
             {
