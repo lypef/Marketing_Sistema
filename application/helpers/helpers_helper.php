@@ -200,7 +200,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6">
-                    <div class="fb-comments" data-href="http://localhost/index.php/All/magazine/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                    <div class="fb-comments" data-href="'.base_url().'All/magazine/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
                 </div>
             </div>
             <br><br>

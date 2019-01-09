@@ -206,7 +206,7 @@
                       echo '
                       <div class="col-sm-2">
                         <div class="text-center">
-                          <a href="/index.php/'.UrlActual($_SERVER[REQUEST_URI]).'?id_img='.$item->id.'&pag='.$_GET[pag].'">
+                          <a href="'.UrlActual($_SERVER[REQUEST_URI]).'?id_img='.$item->id.'&pag='.$_GET[pag].'">
                             <span><strong>'.$item->nombre.'</strong></span><br><span><strong>Publicado: '.$item->f_publicacion.'</strong></span><br>
                             <img src="'.$item->url_img.'" class="zoom img-thumbnail" width="" alt="Edicion #'.$item->numero.'">
                           </a>
