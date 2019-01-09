@@ -336,7 +336,7 @@
         body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
-        body +="<strong><p class='fa fa-check'></strong> Se envio el correo a nuestras cuentas, a la brevedad le atendemos.";
+        body +="<strong><p class='fa fa-check'></strong> Se envio el correo con exito.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
