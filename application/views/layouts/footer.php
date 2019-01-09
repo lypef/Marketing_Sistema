@@ -138,10 +138,7 @@
     <script src="../../public/js/bootstrap.js"></script>
     <!-- Flexslider js file -->
     <script>
-      if (!isMobile())
-      {
-        document.write('<script src="../../public/js/jquery.flexslider.js"><\/script> type="text/javascript" ');
-      }
+      document.write('<script src="../../public/js/jquery.flexslider.js"><\/script> type="text/javascript" ');
       function isMobile(){
         return (
             (navigator.userAgent.match(/Android/i)) ||
