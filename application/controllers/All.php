@@ -94,6 +94,7 @@ class All extends CI_Controller {
 		{
 			/*Existe error al tratar de subir imagen*/
 			//echo $this->upload->display_errors();
+			chmod($config['upload_path'] . $extencion, 777);
 			redirect($url.'?magazineaddfalse=false&id_img=0&pag='.$pag.'');
 		}else
 		{
@@ -400,6 +401,7 @@ class All extends CI_Controller {
 		{
 			/*Existe error al tratar de subir imagen*/
 			//echo $this->upload->display_errors();
+			chmod($config['upload_path'] . $extencion, 777);
 			redirect($url.'?id='.$id_empresa.'&clientaddimgnoupdate=false');
 		}else
 		{
