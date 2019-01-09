@@ -499,7 +499,7 @@ class All extends CI_Controller {
 		// Youtube video ID
 		$youtubeVideoId = $urlArr[$urlArrNum - 1];
 		// Generate youtube thumbnail url
-		$url_img = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/mqdefault.jpg';
+		$url_img = 'http://img.youtube.com/vi/'.str_replace('watch?v=','',$youtubeVideoId).'/maxresdefault.jpg';
 		$newfile = '././public/images/clients/'.$this->input->post('id_empresa').'_'. date("YmdHis").'.'.'jpg';
 		$img_db = '../../public/images/clients/'.$this->input->post('id_empresa').'_'. date("YmdHis").'.'.'jpg';
 
