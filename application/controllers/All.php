@@ -699,22 +699,18 @@ class All extends CI_Controller {
 		$data = json_decode($body);
 		http_response_code(200);
 
-		if ($data->type == 'charge.paid')
-		{
-			$payment_method = $data->charges->data->object->payment_method->type;
 			
-			$to = 'lypef@live.com';
-    
-    		$subject = 'Pago confirmado';
-    
-    		$headers = "From: " . 'info@linku.com.mx' . "\r\n";
-    		$headers .= "Reply-To: 'lypef@live.com'\r\n";
-    		$headers .= "MIME-Version: 1.0\r\n";
-    		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
-    
-    		mail($to, $subject, 's', $headers);
-		}
+		$to = 'lypef@live.com';
 
+		$subject = 'Pago confirmado';
+
+		$headers = "From: " . 'info@linku.com.mx' . "\r\n";
+		$headers .= "Reply-To: 'lypef@live.com'\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+
+		mail($to, $subject, $data, $headers);
+		
 	}
 }
 ?>
