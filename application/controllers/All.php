@@ -655,7 +655,7 @@ class All extends CI_Controller {
 				
 				$body_mail = '
 					<center><h1>Recibe por un año completo la revista U Magazine. 
-					<br>Solo paga en el oxxo  mas cercano $ 100 MXN !
+					<br>paga en el oxxo  mas cercano solo $ 100 MXN !
 					<br> <a target="_BLANK" href='.base_url() . 'all/oxxo_ficha?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.' ?> Descargar ficha </a></h1></center>
 				';
 				mail($to, 'Ficha OXXO', $body_mail, $headers);
@@ -675,6 +675,27 @@ class All extends CI_Controller {
 	public function oxxo_ficha ()
 	{
 		$this->load->view('oxxo_ficha');
+	}
+
+	public function oxxo_webhook ()
+	{
+		$body = @file_get_contents('php://input');
+        $data = json_decode($body);
+        
+        
+        //if ($data->type == 'charge.paid'){
+              $to = 'lypef@live.com';
+    
+    		$subject = 'Pago confirmado';
+    
+    		$headers = "From: " . 'info@linku.com.mx' . "\r\n";
+    		$headers .= "Reply-To: 'lypef@live.com'\r\n";
+    		$headers .= "MIME-Version: 1.0\r\n";
+    		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+    
+    		mail($to, $subject, 'pagado', $headers);
+        //}
+        http_response_code(200); // Return 200 OK
 	}
 }
 ?>
