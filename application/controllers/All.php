@@ -682,7 +682,7 @@ class All extends CI_Controller {
         $data = json_decode($body);
         
         
-        //if ($data->type == 'charge.paid'){
+        if ($data->type == 'charge.paid'){
               $to = 'lypef@live.com';
     
     		$subject = 'Pago confirmado';
@@ -692,9 +692,9 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
     
-    		mail($to, $subject, 'pagado', $headers);
-        //}
-        http_response_code(200); // Return 200 OK
+    		mail($to, $subject, $data, $headers);
+        }
+		//http_response_code(200); // Return 200 OK*/
 	}
 }
 ?>
