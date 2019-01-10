@@ -678,11 +678,11 @@ class All extends CI_Controller {
 
 	public function oxxo_webhook ()
 	{
-		$body = @file_get_contents('php://input');
+		/*$body = @file_get_contents('php://input');
         $data = json_decode($body);
         
         
-        if ($data->type == 'charge.paid'){
+        //if ($data->type == 'charge.paid'){
               $to = 'lypef@live.com';
     
     		$subject = 'Pago confirmado';
@@ -692,9 +692,25 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
     
-    		mail($to, $subject, $data, $headers);
-        }
-		//http_response_code(200); // Return 200 OK*/
+    		mail($to, $subject, 'pagado', $headers);
+        //}
+		http_response_code(200); // Return 200 OK*/
+		if ($data->type == 'charge.paid')
+		{
+			$payment_method = $data->charges->data->object->payment_method->type;
+			
+			$to = 'lypef@live.com';
+    
+    		$subject = 'Pago confirmado';
+    
+    		$headers = "From: " . 'info@linku.com.mx' . "\r\n";
+    		$headers .= "Reply-To: 'lypef@live.com'\r\n";
+    		$headers .= "MIME-Version: 1.0\r\n";
+    		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+    
+    		mail($to, $subject, $payment_method, $headers);
+		}
+
 	}
 }
 ?>
