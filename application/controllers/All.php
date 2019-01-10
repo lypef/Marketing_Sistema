@@ -697,7 +697,8 @@ class All extends CI_Controller {
 		http_response_code(200); // Return 200 OK*/
 		$body = @file_get_contents('php://input');
 		$data = json_decode($body);
-		
+		http_response_code(200);
+
 		if ($data->type == 'charge.paid')
 		{
 			$payment_method = $data->charges->data->object->payment_method->type;
@@ -711,7 +712,7 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
     
-    		mail($to, $subject, $payment_method, $headers);
+    		mail($to, $subject, 's', $headers);
 		}
 
 	}
