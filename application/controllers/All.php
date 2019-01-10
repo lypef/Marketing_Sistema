@@ -695,6 +695,9 @@ class All extends CI_Controller {
     		mail($to, $subject, 'pagado', $headers);
         //}
 		http_response_code(200); // Return 200 OK*/
+		$body = @file_get_contents('php://input');
+		$data = json_decode($body);
+		
 		if ($data->type == 'charge.paid')
 		{
 			$payment_method = $data->charges->data->object->payment_method->type;
