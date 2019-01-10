@@ -429,6 +429,17 @@
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
+    //Pago oxxo
+    if (getUrlVars()["ref_oxxo"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> SOLO PAGA <strong>$ <?php echo str_replace('MXN',' MXN', $_GET['pay']) ?></strong>, EN EL OXXO MAS CERCANO | <a target='_BLANK' href='<?php echo base_url() . 'all/oxxo_ficha?ref_oxxo='.$_GET['ref_oxxo'].'&pay='.$_GET['pay'].' ' ?>'> ver ficha </a>";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
     </script>
  </body>
 </html>

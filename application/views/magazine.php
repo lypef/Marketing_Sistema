@@ -152,7 +152,7 @@
                   </div>
                   </div>
                   
-                  <!-- subir_img -->
+                  <!-- Recibir revista u magazine -->
                   <div class="modal fade" id="registrarme_umagazine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -160,7 +160,7 @@
                         <div class="site-content" id="content">
                         <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 100.00 MXN</h2>
                         </div>
-                        <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/clients_administrar_img_add" autocomplete="off" enctype="multipart/form-data">
+                        <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" autocomplete="off" enctype="multipart/form-data">
                           <p>
                           <span class="">
                               <input id="nombre" class="" type="text" value="" name="nombre" placeholder="Nombre completo: " autocomplete="off">
@@ -173,7 +173,12 @@
                           </p>
                           <p>
                               <span class="">
-                              <input id="email" class="" type="email" value="" name="email" placeholder="Correo electronico: " autocomplete="off">
+                              <input id="email" class="" type="email" value="" name="email" placeholder="Correo electronico: " autocomplete="off" required>
+                              </span>
+                          </p>
+                          <p>
+                              <span class="">
+                              <input id="phone" class="" type="number" value="" name="phone" placeholder="Numero movil: " autocomplete="off">
                               </span>
                           </p>
                           <p>
@@ -182,8 +187,9 @@
                                   <input type="checkbox" name="r_promo_nego" id="r_promo_nego" value="" checked> Quiero recibir promociones de negocios. <br>
                               </span>
                           </p>
-                          <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
-                          <input type="hidden" id="id_empresa" name="id_empresa" value="$_GET[id]">
+                          <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+                          <input type="hidden" id="pag" name="pag" value="'.$_GET['pag'].'">
+                          <input type="hidden" id="id_img" name="id_img" value="'.$_GET['id_img'].'">
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -216,14 +222,6 @@
                     }
                   ?>
               </div>
-
-              
-              
-
-
-
-              
-
         </div>
       </div>
   </div>
@@ -258,7 +256,7 @@ text-align: center;
         <?php 
             if ($pag > 1)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=" . ($pag-1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=" . ($pag-1);
                 echo '<a href="'.$link.'">&laquo;</a>';
             }else
             {
@@ -271,10 +269,10 @@ text-align: center;
         for ($i = 1; $i <= $pags; $i++) {
             if ($pag == $i)
             {
-                echo '<a class="active" href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=$i" .'">'.$i.'</a>';
+                echo '<a class="active" href="'. UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=$i" .'">'.$i.'</a>';
             }else
             {
-                echo '<a href="'. "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=$i" .'">'.$i.'</a>';
+                echo '<a href="'. UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=$i" .'">'.$i.'</a>';
             }
         }
 
@@ -282,7 +280,7 @@ text-align: center;
         <?php 
             if ($pag < $pags)
             {
-                $link = "/index.php/".UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=" . ($pag+1);
+                $link = UrlActual($_SERVER[REQUEST_URI]). "?id_img=$_GET[id_img]&pag=" . ($pag+1);
                 echo '<a href="'.$link.'">&raquo;</a>';
             }else
             {

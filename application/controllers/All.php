@@ -594,5 +594,87 @@ class All extends CI_Controller {
 			redirect($url.'?sendmailserviciofalse=false&id='.$this->input->post('id_empresa').'');
 		}
 	}
+
+	public function register_magazine()
+	{
+		$r_informacion = 0; $r_promo_nego = 0;
+		if (!is_null($this->input->post('r_informacion'))) { $r_informacion = 1; }
+		if (!is_null($this->input->post('r_promo_nego'))) { $r_promo_nego = 1; }
+
+		$data = array(
+			'name' => $this->input->post('nombre'),
+			'direccion'  => $this->input->post('direccion'),
+			'email'  => $this->input->post('email'),
+			'phone'  => '+52'.$this->input->post('phone'),
+			'info_email'  => $r_informacion,
+			'promo_nego	'  => $r_promo_nego,
+			'estatus'  => 0
+		);
+		
+		$this->db->insert('register_magazine',$data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			require_once('././oxxo_pay/lib/Conekta.php');
+			\Conekta\Conekta::setApiKey("key_S1vdzHRjAjT7eUory5Fhxg");
+			\Conekta\Conekta::setApiVersion("2.0.0");
+
+			try{
+        	$order = \Conekta\Order::create(
+				array(
+					"line_items" => array(
+					array(
+						"name" => "Subscripcion anual U Magazine",
+						"unit_price" => 10000,
+						"quantity" => 1
+					)//first line_item
+					),//shipping_lines - physical goods only
+					"currency" => "MXN",
+					"customer_info" => array(
+					"name" => $this->input->post('nombre'),
+					"email" => $this->input->post('email'),
+					"phone" => '+52'.$this->input->post('phone')
+					),//shipping_contact - required only for physical goods
+					"charges" => array(
+						array(
+							"payment_method" => array(
+							"type" => "oxxo_cash"
+							)//payment_method
+						) //first charge
+					) //charges
+				)//order
+				);
+				
+				$to = $this->input->post('email');
+
+				$headers = "From: " . $this->config->item('correo_receptor') . "\r\n";
+				$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
+				$headers .= "MIME-Version: 1.0\r\n";
+				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+
+				
+				$body_mail = '
+					<center><h1>Recibe por un año completo la revista U Magazine. 
+					<br>Solo paga en el oxxo  mas cercano $ 100 MXN !
+					<br> <a target="_BLANK" href='.base_url() . 'all/oxxo_ficha?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.' ?> Descargar ficha </a></h1></center>
+				';
+				mail($to, 'Ficha OXXO', $body_mail, $headers);
+				redirect($this->input->post('url').'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');
+			} catch (\Conekta\ParameterValidationError $error){
+				echo $error->getMessage();
+			} catch (\Conekta\Handler $error){
+				echo $error->getMessage();
+			}
+			
+		}else
+		{
+			redirect($this->input->post('url'));
+		}
+	}
+
+	public function oxxo_ficha ()
+	{
+		$this->load->view('oxxo_ficha');
+	}
 }
 ?>
