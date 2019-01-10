@@ -627,22 +627,21 @@ class All extends CI_Controller {
 						"name" => "Subscripcion anual U Magazine",
 						"unit_price" => 10000,
 						"quantity" => 1
-					)//first line_item
-					),//shipping_lines - physical goods only
+					)),
 					"currency" => "MXN",
 					"customer_info" => array(
 					"name" => $this->input->post('nombre'),
 					"email" => $this->input->post('email'),
 					"phone" => '+52'.$this->input->post('phone')
-					),//shipping_contact - required only for physical goods
+					),
 					"charges" => array(
 						array(
 							"payment_method" => array(
 							"type" => "oxxo_cash"
-							)//payment_method
-						) //first charge
-					) //charges
-				)//order
+							)
+						)
+					)
+				)
 				);
 				
 				$to = $this->input->post('email');
