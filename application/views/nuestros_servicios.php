@@ -95,6 +95,7 @@
           </p>
           <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]); ?>">
           <input type="hidden" id="asunto" name="asunto" value="Interesado en publicidad">
+          <div class="g-recaptcha" data-sitekey="6LcS24gUAAAAAP6hLsQiZeh8fMxHuGPZfg25jcXP" align="right"></div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Perder la oportunidad</button>
