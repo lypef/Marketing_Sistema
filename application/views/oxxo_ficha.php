@@ -140,7 +140,7 @@
 				<div class="opps-info">
 					<div class="opps-brand"><img src="../../public/images/oxxopay_brand.png" alt="OXXOPay"></div>
 					<div class="opps-ammount">
-						<hz>Monto a pagar</h3>
+						<h3>Monto a pagar</h3>
 						<h2>$ <?php echo str_replace('MXN','',$_GET['pay']) ?><sup>MXN</sup></h2>
 						<p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
 					</div>
