@@ -154,7 +154,12 @@
                     </li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
                       <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
-                      <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">U. Magazine</a></li>
+                      <li class="nav-item"><a href="#" target="_self">U. Magazine</a>
+                        <ul>
+                          <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">Gestionar</a></li>
+                          <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">Suscriptores</a></li>
+                        </ul>
+                      </li>
                       <li class="nav-item"><a href="#" target="_self">Categorias</a>
                       '.GetCategoriesLI().'
                       </li>
