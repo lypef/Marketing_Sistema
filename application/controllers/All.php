@@ -737,7 +737,7 @@ class All extends CI_Controller {
 					}
 			
 					h3 {
-						font-size: 20px;
+						font-size: 17px;
 						color: #000000;
 						text-align: center;
 						margin-top: -1px;
