@@ -683,7 +683,7 @@ class All extends CI_Controller {
 		
 		if ($data->type == 'charge.paid')
 		{
-			$payment_method = $data->charges->data->object->payment_method->type;
+			$referencia = $data->data->object->payment_method->reference;
 			
 			$to = 'lypef@live.com';
     
@@ -694,7 +694,7 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
     
-			mail($to, $subject, $data, $headers);
+			mail($to, $subject, $referencia, $headers);
 			http_response_code(200);
 		}
 
