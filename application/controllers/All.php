@@ -699,11 +699,13 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
 	
+			$body = 'Agradecemos su registro.<br> Cada sera enviada nuestra publicacion impresa a la direccion: ' . $val->direccion;
+
 			$update = array(
 					'estatus' => 1,
 			);
 			
-			$this->db->where('id', $referencia)->update('register_magazine', $update);
+			$this->db->where('id', $body)->update('register_magazine', $update);
 			
 			if ($this->db->affected_rows() >= 1 )
 			{
