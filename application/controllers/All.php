@@ -655,11 +655,12 @@ class All extends CI_Controller {
 				$body_mail = '
 				<html>
 				<head>
+					<meta charset="utf-8">
 					<link href="styles.css" media="all" rel="stylesheet" type="text/css" />
-				<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+					<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 					<style>
 					/* Reset -------------------------------------------------------------------- */
-				* 	 { margin: 0;padding: 0; }
+					* 	 { margin: 0;padding: 0; }
 					body { font-size: 14px; }
 			
 					/* OPPS --------------------------------------------------------------------- */
@@ -869,6 +870,7 @@ class All extends CI_Controller {
 			$body_email = '
 			<html>
 			<head>
+				<meta charset="utf-8">
 				<link href="styles.css" media="all" rel="stylesheet" type="text/css" />
 			<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 			<style>
@@ -880,7 +882,7 @@ class All extends CI_Controller {
 
 				h3 {
 					margin-bottom: 10px;
-					font-size: 10px;
+					font-size: 13px;
 					font-weight: 600;
 					text-transform: uppercase;
 				}
@@ -1014,7 +1016,7 @@ class All extends CI_Controller {
 						<hr><br>
 						<div class="opps-ammount">
 										<CENTER><h3>De manera mensual sera enviada nuestra publicacion impresa a la siguiente direccion</h3></CENTER>
-										<hr><P>'.$val->direccion.'</P>
+										<hr><P>'.$val->direccion.'</P><br>
 									</div>
 								</div>
 								<div class="opps-reference"></div>
