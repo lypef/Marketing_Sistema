@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-01-2019 a las 05:54:06
+-- Tiempo de generación: 11-01-2019 a las 07:02:51
 -- Versión del servidor: 10.2.17-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `marketing`
 --
-CREATE DATABASE IF NOT EXISTS `marketing` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `marketing`;
 
 -- --------------------------------------------------------
 
@@ -74,7 +72,7 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `category`, `empresa`, `active`, `direccion`, `mail`, `telefono`, `responsable`, `premium5`) VALUES
-(1, 1, 'PAMPAS S.A DE C.V', 1, 'DIRECCION NUEVA s', 'A@A.COM', '45455', 'EFRAIN MARTINEZ CASTRO', 1),
+(1, 1, 'PAMPAS S.A DE C.V', 1, 'DIRECCION NUEVA s', 'A@a.COM', '45455', 'EFRAIN MARTINEZ CASTRO', 1),
 (49, 2, 'CHINA TOWN', 0, 'FORUM COATZACOALCOS', 'A@A.COM', '7451', 'PEPE PECAS CON UN PICO', 0),
 (53, 8, 'DESPACHO JURIDICO', 1, 'PARQUE JUAREZ NO. 9', 'MARTINZARATE@HOTMAIL.COM', '66564', 'LIC. MARTIN ZARATE', 0),
 (54, 5, 'FARMACIA DEL AHORRO', 1, 'TUXTLA GUTIERREZ CHIAPAS', 'CONTACTO@FARMAHORRO.COM', '5465464', 'ING. LUIS ANTONIO MAGANDA PATRICIO', 0),
@@ -83,7 +81,12 @@ INSERT INTO `clients` (`id`, `category`, `empresa`, `active`, `direccion`, `mail
 (57, 5, 'FRUTAS Y VERDURAS CABADA', 1, 'CERRO, CENTRO. ', 'A@A.COM', '963', 'CAROLINA ASCENCIO DOMINGUEZ', 0),
 (58, 4, 'ZAPATERIA CUERNAVACA', 1, '20 DE NOVIEMBRE 306', 'A@A.COM', '963', 'CANDELARIA DOMINICK TORETO', 0),
 (59, 8, 'PEMEX S.A DE C.V', 1, 'DESCONOCIDA', 'A@A.COM', '963', 'GERMAN MARIANO ROSAL', 0),
-(168, 2, 'QUESADILLAS HIDALGUENSES', 1, 'PARQUE JUARES NO. 12', 'HIDALGEUNSE@QUESADILLAS.COM', '65656', 'NO SE SABE', 1);
+(168, 2, 'QUESADILLAS HIDALGUENSES', 1, 'PARQUE JUARES NO. 12', 'HIDALGEUNSE@QUESADILLAS.COM', '65656', 'NO SE SABE', 1),
+(169, 2, 'qwdwdq', 1, '', '', '', '', 0),
+(170, 2, 'qwdwdwd', 1, '', '', '', '', 0),
+(171, 4, 'qwdwdwdwq', 1, '', '', '', '', 0),
+(172, 2, 'qwdwqdw', 1, '', '', '', '', 0),
+(173, 2, 'dwqdqwdwq', 1, '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -162,7 +165,14 @@ INSERT INTO `empresa_gallery` (`id`, `empresa`, `url`, `url_img`, `premium`, `ti
 (47, 53, '../../public/images/clients/53_20181230050348.jpg', '../../public/images/clients/53_20181230050348.jpg', 0, 'DIA OCUPADO', 'DIA OCUPADO, LA ULTIMA Y TERMINAMOS ', ''),
 (48, 53, '../../public/images/clients/53_20181230050425.jpg', '../../public/images/clients/53_20181230050425.jpg', 0, 'REUNIONES CON STYLO ! ', 'OFICINAS SUC. MADERO', ''),
 (49, 55, '../../public/images/clients/55_20181230050534.jpg', '../../public/images/clients/55_20181230050534.jpg', 0, 'NUEVA AMBULANCIA', 'NUEVO VEHÍCULO OFICIAL ', ''),
-(50, 55, '../../public/images/clients/55_20181230050551.jpg', '../../public/images/clients/55_20181230050551.jpg', 0, 'AGUINALDO ?', 'QUEREMOS TU AGUINALDO ', '');
+(50, 55, '../../public/images/clients/55_20181230050551.jpg', '../../public/images/clients/55_20181230050551.jpg', 0, 'AGUINALDO ?', 'QUEREMOS TU AGUINALDO ', ''),
+(52, 1, '../../public/images/clients/1_20190109070942.jpg', '../../public/images/clients/1_20190109070942.jpg', 0, '', '', ''),
+(53, 1, '../../public/images/clients/1_20190109071540.jpg', '../../public/images/clients/1_20190109071540.jpg', 0, '', '', ''),
+(54, 1, '../../public/images/clients/1_20190109071613.jpg', '../../public/images/clients/1_20190109071613.jpg', 0, '', '', ''),
+(55, 1, 'https://www.youtube.com/watch?v=CAaXHE4Yhl8', '../../public/images/clients/1_20190109071945.jpg', 0, 'ghjkl', 'tgyhjkl', 'ghujkl'),
+(56, 1, 'https://www.youtube.com/watch?v=-gVCM_x42_s', '../../public/images/clients/1_20190109073859.jpg', 0, '', '', ''),
+(57, 1, 'https://www.youtube.com/watch?v=-gVCM_x42_s', '../../public/images/clients/1_20190109074147.jpg', 0, '', '', ''),
+(58, 1, 'https://www.youtube.com/watch?v=-gVCM_x42_s', '../../public/images/clients/1_20190109074214.jpg', 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -201,6 +211,41 @@ INSERT INTO `magazine` (`id`, `nombre`, `numero`, `url_img`, `f_publicacion`) VA
 (16, 'prueba 1', 5, '../../public/images/magazine/3.jpg', '2019-01-02'),
 (17, 'prueba 1', 5, '../../public/images/magazine/4.jpg', '2019-01-02'),
 (18, 'prueba 1', 5, '../../public/images/magazine/1.jpg', '2019-01-02');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `register_magazine`
+--
+
+CREATE TABLE `register_magazine` (
+  `id` varchar(254) NOT NULL,
+  `name` varchar(254) NOT NULL,
+  `direccion` varchar(254) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `phone` varchar(254) NOT NULL,
+  `info_email` tinyint(1) NOT NULL,
+  `promo_nego` tinyint(1) NOT NULL,
+  `estatus` tinyint(1) NOT NULL,
+  `f_ini` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `register_magazine`
+--
+
+INSERT INTO `register_magazine` (`id`, `name`, `direccion`, `email`, `phone`, `info_email`, `promo_nego`, `estatus`, `f_ini`) VALUES
+('00000513117005', 'FRANCISCO EDUARDO ASCENCIO  DOMINGUEZ', '20 DE NOVIEMBRE, NO. 306, COLONIA CENTRO, FRENTE A PORTÓN  DE COPPEL', 'A@A.COM', '9231200505', 1, 1, 0, '2019-01-31'),
+('000025011174005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('0000301117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('000535001117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('9003001117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 0, '2019-01-10'),
+('90530001117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('98000001117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('980000051117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 0, '2019-01-10'),
+('9800002501117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('98000025011174005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10'),
+('980005001117005', 'FULANITO PEREZ', 'DIRECCION', 'A@A.COM', '+529231200505', 0, 0, 1, '2019-01-10');
 
 -- --------------------------------------------------------
 
@@ -260,6 +305,12 @@ ALTER TABLE `magazine`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `register_magazine`
+--
+ALTER TABLE `register_magazine`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -279,7 +330,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT de la tabla `c_zacatecas`
@@ -291,13 +342,13 @@ ALTER TABLE `c_zacatecas`
 -- AUTO_INCREMENT de la tabla `empresa_gallery`
 --
 ALTER TABLE `empresa_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `magazine`
 --
 ALTER TABLE `magazine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

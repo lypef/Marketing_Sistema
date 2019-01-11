@@ -253,13 +253,17 @@ class All extends CI_Controller {
 
 		if (!is_null($buscar))
 		{
-			$TotalPags = number_format($this->db->query('SELECT cl.id FROM clients cl, categories ca where cl.category = ca.id and cl.empresa like "%'.$buscar.'%" or cl.category = ca.id and cl.responsable like "%'.$buscar.'%"')->num_rows() / 10, 0, '', ' ');
+			$TotalPags_ = $this->db->query('SELECT cl.id FROM clients cl, categories ca where cl.category = ca.id and cl.empresa like "%'.$buscar.'%" or cl.category = ca.id and cl.responsable like "%'.$buscar.'%"')->num_rows() / 10;
 		}else
 		{
-			$TotalPags = number_format($this->db->query('SELECT id FROM clients')->num_rows() / 10, 0, '', ' ');
+			$TotalPags_ = $this->db->query('SELECT id FROM clients')->num_rows() / 10;
 		}
 		
-		
+		$TotalPags = number_format($TotalPags_, 0, '', ' ');
+
+		if ($TotalPags_ > $TotalPags) { $TotalPags = $TotalPags + 1; }
+
+
 		$limit = 'LIMIT '.(($pag * 10) - 10).', 10;';
 		$data['pags'] = $TotalPags;
 		$data['pag'] = $pag;
@@ -1040,5 +1044,98 @@ class All extends CI_Controller {
 		}
 
 	}
+
+	public function magazine_sub()
+	{
+		LoginCheck();
+		$buscar = $this->input->get('search');
+		$pag = $this->input->get('pag');
+		$limit = '';
+		if (is_null($pag))
+		{
+			$pag = 1;
+		}
+
+		if (!is_null($buscar))
+		{
+			$TotalPags_ = $this->db->query('SELECT id FROM register_magazine where `name` like "%'.$buscar.'%" or direccion like "%'.$buscar.'%" or phone like "%'.$buscar.'%" or id like "%'.$buscar.'%" ')->num_rows() / 10;
+		}else
+		{
+			$TotalPags_ = $this->db->query('SELECT id FROM register_magazine')->num_rows() / 10 ;
+		}
+		
+		$TotalPags = number_format($TotalPags_, 0, '', ' ');
+
+		if ($TotalPags_ > $TotalPags) { $TotalPags = $TotalPags + 1; }
+		
+		$limit = 'LIMIT '.(($pag * 10) - 10).', 10;';
+		$data['pags'] = $TotalPags;
+		$data['pag'] = $pag;
+
+		if (!is_null($buscar))
+		{
+			$data['data'] = $this->db->query('SELECT id, name, direccion, email, phone, info_email, promo_nego, estatus, f_ini FROM register_magazine where `name` like "%'.$buscar.'%" or direccion like "%'.$buscar.'%" or phone like "%'.$buscar.'%" or id like "%'.$buscar.'%" '.$limit.' ')->result();
+		}else
+		{
+			$data['data'] = $this->db->query('SELECT id, name, direccion, email, phone, info_email, promo_nego, estatus, f_ini FROM register_magazine '.$limit.' ')->result();
+		}
+		
+		$this->load->view('layouts/header');
+		$this->load->view('magazine_sub', $data);
+		$this->load->view('layouts/footer');
+	}
+
+	public function magazine_sub_update ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$r_informacion = 0;
+		$r_promo_nego = 0;
+		$estatus = 0;
+		
+		if (!is_null($this->input->post('r_informacion'))){ $r_informacion = 1; }
+		if (!is_null($this->input->post('r_promo_nego'))){ $r_promo_nego = 1; }
+		if (!is_null($this->input->post('estatus'))){ $estatus = 1; }
+
+
+		$data = array(
+				'name' => $this->input->post('name'),
+				'direccion' => $this->input->post('direccion'),
+				'email' => $this->input->post('email'),
+				'phone' => $this->input->post('phone'),
+				'info_email' => $r_informacion,
+				'promo_nego' => $r_promo_nego,
+				'estatus' => $estatus,
+				'f_ini' => $this->input->post('f_ini')
+		);
+		
+		$this->db->where('id', $this->input->post('id'))->update('register_magazine', $data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?clientaupdatetrue=true');
+		}else
+		{
+			redirect($url.'?clientupdatefalse=false');
+		}
+
+	}
+	
+	public function magazine_sub_delete ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		$this->db->where('id', $this->input->post('id'))->delete('register_magazine');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?clientadeletetrue=true');
+		}else
+		{
+			redirect($url.'?clientdeletefalse=false');
+		}
+	}
+
 }
 ?>

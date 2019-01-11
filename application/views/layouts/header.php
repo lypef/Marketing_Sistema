@@ -157,7 +157,8 @@
                       <li class="nav-item"><a href="#" target="_self">U. Magazine</a>
                         <ul>
                           <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">Gestionar</a></li>
-                          <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">Suscriptores</a></li>
+                          <li><a href="/index.php/all/magazine_sub?pag=1" target="_self">Suscriptores</a></li>
+                          <li><a href="/index.php/all/magazine_sub?pag=1" target="_self">Reporte activos</a></li>
                         </ul>
                       </li>
                       <li class="nav-item"><a href="#" target="_self">Categorias</a>
