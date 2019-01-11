@@ -597,24 +597,10 @@ class All extends CI_Controller {
 
 	public function register_magazine()
 	{
-		$r_informacion = 0; $r_promo_nego = 0;
-		if (!is_null($this->input->post('r_informacion'))) { $r_informacion = 1; }
-		if (!is_null($this->input->post('r_promo_nego'))) { $r_promo_nego = 1; }
-
-		$data = array(
-			'name' => $this->input->post('nombre'),
-			'direccion'  => $this->input->post('direccion'),
-			'email'  => $this->input->post('email'),
-			'phone'  => '+52'.$this->input->post('phone'),
-			'info_email'  => $r_informacion,
-			'promo_nego	'  => $r_promo_nego,
-			'estatus'  => 0
-		);
+			$r_informacion = 0; $r_promo_nego = 0;
+			if (!is_null($this->input->post('r_informacion'))) { $r_informacion = 1; }
+			if (!is_null($this->input->post('r_promo_nego'))) { $r_promo_nego = 1; }
 		
-		$this->db->insert('register_magazine',$data);
-
-		if ($this->db->affected_rows() >= 1 )
-		{
 			require_once('././oxxo_pay/lib/Conekta.php');
 			\Conekta\Conekta::setApiKey("key_S1vdzHRjAjT7eUory5Fhxg");
 			\Conekta\Conekta::setApiVersion("2.0.0");
@@ -653,22 +639,39 @@ class All extends CI_Controller {
 
 				
 				$body_mail = '
-					<center><h1>Recibe por un año completo la revista U Magazine. 
+					<center><h1>Recibe anualidad completa de la revista U Magazine. 
 					<br>paga en el oxxo  mas cercano solo $ 100 MXN !
 					<br> <a target="_BLANK" href='.base_url() . 'all/oxxo_ficha?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.' ?> Descargar ficha </a></h1></center>
 				';
+				
 				mail($to, 'Ficha OXXO', $body_mail, $headers);
-				redirect($this->input->post('url').'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');
+				
+				$data = array(
+					'id'=> $order->charges[0]->payment_method->reference,
+					'name' => $this->input->post('nombre'),
+					'direccion'  => $this->input->post('direccion'),
+					'email'  => $this->input->post('email'),
+					'phone'  => '+52'.$this->input->post('phone'),
+					'info_email'  => $r_informacion,
+					'promo_nego	'  => $r_promo_nego,
+					'estatus'  => 0,
+					'f_ini' => date("Y-m-d")
+				);
+				$this->db->insert('register_magazine',$data);
+				
+				if ($this->db->affected_rows() >= 1 )
+				{
+					redirect($this->input->post('url').'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');	
+				}else
+				{
+					redirect($this->input->post('url'));
+				}
+				
 			} catch (\Conekta\ParameterValidationError $error){
 				echo $error->getMessage();
 			} catch (\Conekta\Handler $error){
 				echo $error->getMessage();
 			}
-			
-		}else
-		{
-			redirect($this->input->post('url'));
-		}
 	}
 
 	public function oxxo_ficha ()
@@ -685,17 +688,28 @@ class All extends CI_Controller {
 		{
 			$referencia = $data->data->object->payment_method->reference;
 			
-			$to = 'lypef@live.com';
+			$val = $this->db->query('SELECT * FROM register_magazine where id = '.$referencia.' ')->row();
+
+			$to = $val->email;
     
-    		$subject = 'Pago confirmado';
+    		$subject = 'Confirmacion PAGO - U Magazine';
     
-    		$headers = "From: " . 'info@linku.com.mx' . "\r\n";
-    		$headers .= "Reply-To: 'lypef@live.com'\r\n";
+    		$headers = "From: " .$this->config->item('correo_receptor'). "\r\n";
+    		$headers .= "Reply-To: ".$to."\r\n";
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
-    
-			mail($to, $subject, $referencia, $headers);
-			http_response_code(200);
+	
+			$update = array(
+					'estatus' => 1,
+			);
+			
+			$this->db->where('id', $referencia)->update('register_magazine', $update);
+			
+			if ($this->db->affected_rows() >= 1 )
+			{
+				mail($to, $subject, $referencia, $headers);
+				http_response_code(200);
+			}
 		}
 
 	}
