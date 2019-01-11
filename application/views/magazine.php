@@ -173,7 +173,7 @@
                           </p>
                           <p>
                               <span class="">
-                              <input id="email" class="" type="email" value="" name="email" placeholder="Correo electronico: " autocomplete="off" required>
+                              <input id="email" class="" type="email" value="" name="email" placeholder="Correo electronico: " required>
                               </span>
                           </p>
                           <p>
