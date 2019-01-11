@@ -863,7 +863,7 @@ class All extends CI_Controller {
     		$subject = 'Confirmacion PAGO - U Magazine';
     
 			$headers = "From: " .$this->config->item('correo_receptor'). "\r\n";
-			$headers = "CCO: " .$this->config->item('correo_receptor'). "\r\n";
+			$headers .= "CCO: " .$this->config->item('correo_receptor'). "\r\n";
     		$headers .= "Reply-To: ".$to."\r\n";
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
