@@ -737,7 +737,7 @@ class All extends CI_Controller {
 					}
 			
 					h3 {
-						font-size: 17px;
+						font-size: 15px;
 						color: #000000;
 						text-align: center;
 						margin-top: -1px;
@@ -880,7 +880,7 @@ class All extends CI_Controller {
 
 				h3 {
 					margin-bottom: 10px;
-					font-size: 15px;
+					font-size: 10px;
 					font-weight: 600;
 					text-transform: uppercase;
 				}
@@ -1014,7 +1014,7 @@ class All extends CI_Controller {
 						<hr><br>
 						<div class="opps-ammount">
 										<CENTER><h3>De manera mensual sera enviada nuestra publicacion impresa a la siguiente direccion</h3></CENTER>
-										<P>'.$val->direccion.'</P>
+										<hr><P>'.$val->direccion.'</P>
 									</div>
 								</div>
 								<div class="opps-reference"></div>

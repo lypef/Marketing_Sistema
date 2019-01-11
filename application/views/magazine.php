@@ -160,7 +160,7 @@
                         <div class="site-content" id="content">
                         <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 100.00 MXN</h2>
                         </div>
-                        <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" autocomplete="off" enctype="multipart/form-data">
+                        <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" enctype="multipart/form-data">
                           <p>
                           <span class="">
                               <input id="nombre" class="" type="text" value="" name="nombre" placeholder="Nombre completo: " autocomplete="off">
