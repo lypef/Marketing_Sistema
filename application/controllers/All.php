@@ -1012,12 +1012,12 @@ class All extends CI_Controller {
 								<div class="opps-info">
 						
 						<div class="opps-ammount">
-						<h3>ESTIMADO/A '.$val->name.', AGRADECEMOS SU REGISTRO. REF: '.$referencia.'</h3>
+						<center><h3>ESTIMADO/A '.$val->name.', AGRADECEMOS SU REGISTRO. REF: '.$referencia.'</h3></center>
 									</div>
 						<hr><br>
 						<div class="opps-ammount">
 										<CENTER><h3>De manera mensual sera enviada nuestra publicacion impresa a la siguiente direccion</h3></CENTER>
-										<hr><P>'.$val->direccion.'</P><br>
+										<hr><br><P>'.$val->direccion.'</P><br>
 									</div>
 								</div>
 								<div class="opps-reference"></div>
