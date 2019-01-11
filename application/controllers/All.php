@@ -657,20 +657,20 @@ class All extends CI_Controller {
 				<head>
 					<link href="styles.css" media="all" rel="stylesheet" type="text/css" />
 				<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-				<style>
+					<style>
 					/* Reset -------------------------------------------------------------------- */
 				* 	 { margin: 0;padding: 0; }
 					body { font-size: 14px; }
-
+			
 					/* OPPS --------------------------------------------------------------------- */
-
-					h3 {
-						margin-bottom: 10px;
-						font-size: 15px;
+			
+					h4 {
+						margin-bottom: 8px;
+						font-size: 12px;
 						font-weight: 600;
 						text-transform: uppercase;
 					}
-
+			
 					.opps {
 						width: 496px; 
 						border-radius: 4px;
@@ -682,7 +682,7 @@ class All extends CI_Controller {
 						font-family: "Open Sans", sans-serif;
 						color: #4f5365;
 					}
-
+			
 					.opps-reminder {
 						position: relative;
 						top: -1px;
@@ -693,12 +693,12 @@ class All extends CI_Controller {
 						color: #ffffff;
 						background: #000000;
 					}
-
+			
 					.opps-info {
 						margin-top: 26px;
 						position: relative;
 					}
-
+			
 					.opps-info:after {
 						visibility: hidden;
 						display: block;
@@ -706,48 +706,38 @@ class All extends CI_Controller {
 						content: " ";
 						clear: both;
 						height: 0;
-
+			
 					}
-
-					.opps-brand {
-						width: 45%;
-						float: left;
-					}
-
-					.opps-brand img {
-						max-width: 150px;
-						margin-top: 2px;
-					}
-
+			
 					.opps-ammount {
-						width: 55%;
+						width: 100%;
 						float: right;
 					}
-
+			
 					.opps-ammount h2 {
 						font-size: 36px;
 						color: #000000;
 						line-height: 24px;
 						margin-bottom: 15px;
 					}
-
+			
 					.opps-ammount h2 sup {
 						font-size: 16px;
 						position: relative;
 						top: -2px
 					}
-
+			
 					.opps-ammount p {
 						font-size: 10px;
 						line-height: 14px;
 					}
-
+			
 					.opps-reference {
 						margin-top: 14px;
 					}
-
-					h1 {
-						font-size: 27px;
+			
+					h3 {
+						font-size: 20px;
 						color: #000000;
 						text-align: center;
 						margin-top: -1px;
@@ -756,27 +746,27 @@ class All extends CI_Controller {
 						border-radius: 4px;
 						background: #f8f9fa;
 					}
-
+			
 					.opps-instructions {
 						margin: 32px -45px 0;
 						padding: 32px 45px 45px;
 						border-top: 1px solid #b0afb5;
 						background: #f8f9fa;
 					}
-
+			
 					ol {
-						margin: 17px 0 0 16px;
+						margin: 14px 0 0 13px;
 					}
-
+			
 					li + li {
-						margin-top: 10px;
+						margin-top: 8px;
 						color: #000000;
 					}
-
+			
 					a {
 						color: #1155cc;
 					}
-
+			
 					.opps-footnote {
 						margin-top: 22px;
 						padding: 22px 20 24px;
@@ -789,24 +779,23 @@ class All extends CI_Controller {
 			</style>
 				</head>
 				<body>
-					<div class="opps">
-						<div class="opps-header">
-							<div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
-							<div class="opps-info">
-								<div class="opps-brand"><img src="../../public/images/oxxopay_brand.png" alt="OXXOPay"></div>
-								<div class="opps-ammount">
-									<h3>Monto a pagar</h3>
+				<div class="opps">
+				<div class="opps-header">
+					<div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
+					<div class="opps-info">
+						<div class="opps-ammount">
+							<h4>Monto a pagar</h4>
 									<h2>$ '.str_replace('MXN','',$order->amount/100 . $order->currency).'<sup>MXN</sup></h2>
 									<p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
 								</div>
 							</div>
 							<div class="opps-reference">
-								<h3>Referencia</h3>
-					<h1>'.$total_pagar.'</h1>
-							</div>
+								<h4>Referencia</h4>
+					<h3>'.$total_pagar.'</h3>
+								</div>
 						</div>
 						<div class="opps-instructions">
-							<h3>Instrucciones</h3>
+							<h2>Instrucciones</h2>
 							<ol>
 								<li>Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a>.</li>
 								<li>Indica en caja que quieres realizar un pago de <strong>OXXOPay</strong>.</li>
@@ -877,7 +866,7 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
 	
-			$body = '<h3>AGRADECEMOS SU REGISTRO.</h3><br><br>
+			$body = '<h3>AGRADECEMOS SU REGISTRO.</h3><br>
 					</h4>De manera mensual sera enviada nuestra publicacion impresa a la siguiente direccion.
 					<br><br><strong>' . $val->direccion . '</strong></h4>';
 

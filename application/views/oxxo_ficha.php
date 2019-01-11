@@ -9,9 +9,9 @@
 
           /* OPPS --------------------------------------------------------------------- */
 
-          h3 {
-            margin-bottom: 10px;
-            font-size: 15px;
+          h4 {
+            margin-bottom: 8px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
           }
@@ -54,18 +54,8 @@
 
           }
 
-          .opps-brand {
-            width: 45%;
-            float: left;
-          }
-
-          .opps-brand img {
-            max-width: 150px;
-            margin-top: 2px;
-          }
-
           .opps-ammount {
-            width: 55%;
+            width: 100%;
             float: right;
           }
 
@@ -91,8 +81,8 @@
             margin-top: 14px;
           }
 
-          h1 {
-            font-size: 27px;
+          h3 {
+            font-size: 20px;
             color: #000000;
             text-align: center;
             margin-top: -1px;
@@ -110,11 +100,11 @@
           }
 
           ol {
-            margin: 17px 0 0 16px;
+            margin: 14px 0 0 13px;
           }
 
           li + li {
-            margin-top: 10px;
+            margin-top: 8px;
             color: #000000;
           }
 
@@ -138,16 +128,15 @@
 			<div class="opps-header">
 				<div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
 				<div class="opps-info">
-					<div class="opps-brand"><img src="../../public/images/oxxopay_brand.png" alt="OXXOPay"></div>
 					<div class="opps-ammount">
-						<h3>Monto a pagar</h3>
+						<h4>Monto a pagar</h4>
 						<h2>$ <?php echo str_replace('MXN','',$_GET['pay']) ?><sup>MXN</sup></h2>
 						<p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
 					</div>
 				</div>
 				<div class="opps-reference">
-					<h3>Referencia</h3>
-          <h1><?php 
+					<h4>Referencia</h4>
+          <h3><?php 
             $array = str_split($_GET['ref_oxxo'],4);
             $body = "";
             foreach($array as $item){
@@ -155,11 +144,11 @@
             }  
             $body = substr($body, 0, -3);
             echo  $body;
-          ?></h1>
+          ?></h3>
 				</div>
 			</div>
 			<div class="opps-instructions">
-				<h3>Instrucciones</h3>
+				<h2>Instrucciones</h2>
 				<ol>
 					<li>Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a>.</li>
 					<li>Indica en caja que quieres realizar un pago de <strong>OXXOPay</strong>.</li>
