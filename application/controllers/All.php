@@ -705,11 +705,11 @@ class All extends CI_Controller {
 					'estatus' => 1,
 			);
 			
-			$this->db->where('id', $body)->update('register_magazine', $update);
+			$this->db->where('id', $referencia)->update('register_magazine', $update);
 			
 			if ($this->db->affected_rows() >= 1 )
 			{
-				mail($to, $subject, $referencia, $headers);
+				mail($to, $subject, $body, $headers);
 				http_response_code(200);
 			}
 		}
