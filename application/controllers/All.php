@@ -866,7 +866,7 @@ class All extends CI_Controller {
     		$headers .= "MIME-Version: 1.0\r\n";
     		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
 	
-			$body = '
+			$body_email = '
 			<html>
 			<head>
 				<link href="styles.css" media="all" rel="stylesheet" type="text/css" />
@@ -1031,7 +1031,7 @@ class All extends CI_Controller {
 			
 			if ($this->db->affected_rows() >= 1 )
 			{
-				mail($to, $subject, $body, $headers);
+				mail($to, $subject, $body_email, $headers);
 				http_response_code(200);
 			}
 		}
