@@ -1137,5 +1137,85 @@ class All extends CI_Controller {
 		}
 	}
 
+	public function users ()
+	{
+		LoginCheck();
+		$data['users'] = $this->db->query('SELECT * FROM users order by name asc')->result();
+
+		$this->load->view('layouts/header');
+		$this->load->view('users',$data);
+		$this->load->view('layouts/footer');
+	}
+
+	public function users_add ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		$data = array(
+			'username' => $this->input->post('username'),
+			'password'  => md5(md5($this->input->post('password'))),
+			'name'  => $this->input->post('name'),
+			'mail'  => $this->input->post('mail')
+		);
+		
+		$this->db->insert('users',$data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?useraddtrue=true');
+		}else
+		{
+			redirect($url.'?useraddfalse=false');
+		}
+	}
+
+	public function users_delete ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		$this->db->where('id', $this->input->post('id'))->delete('users');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?userdeletetrue=true');
+		}else
+		{
+			redirect($url.'?userdeletefalse=false');
+		}
+	}
+
+	public function users_update()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+
+		$data = array(
+				'username' => $this->input->post('username'),
+				'name' => $this->input->post('name'),
+				'mail' => $this->input->post('mail')
+		);
+
+		if (!empty($this->input->post('password')) && $this->input->post('password') == $this->input->post('password_confirm'))
+		{
+			$data = array(
+					'username' => $this->input->post('username'),
+					'name' => $this->input->post('name'),
+					'mail' => $this->input->post('mail'),
+					'password' => md5(md5($this->input->post('password')))
+			);
+		}
+
+		$this->db->where('id', $this->input->post('id'))->update('users', $data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?userupdatetrue=true');
+		}else
+		{
+			redirect($url.'?userupdatetrue=false');
+		}
+	}
 }
 ?>

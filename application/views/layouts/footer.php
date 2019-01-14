@@ -128,6 +128,56 @@
     ?>
     <!-- Finaliza Modal Agregar cliente -->
 
+    <!-- Modal Agregar usuario -->
+    <?php
+    if ($this->session->userdata('username'))
+    {
+      echo '
+      <div class="modal fade" id="newuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-body">
+            
+            <div class="site-content" id="content">
+            <h2 class="idol-title">Ingrese los datos de un nuevo usuario</h2>
+            </div>
+            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/users_add" autocomplete="off">
+                      <p>
+                          <span class="">
+                          <input id="name" class="" type="text" value="" name="name" placeholder="Nombre: " autocomplete="off">
+                          </span>
+                      </p>
+                      <p>
+                          <span class="">
+                          <input id="mail" class="" type="email" value="" name="mail" placeholder="Email: " autocomplete="off" required>
+                          </span>
+                      </p>
+                      <p>
+                          <span class="">
+                          <input id="username" class="" type="text" value="" name="username" placeholder="Nombre de usuario: " autocomplete="off" required>
+                          </span>
+                      </p>
+                      <p>
+                          <span class="">
+                          <input id="password" class="" type="password" value="" name="password" placeholder="Contraseña: " autocomplete="off" required>
+                          </span>
+                      </p>
+                      <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary" >Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      ';
+    }
+    ?>
+    <!-- Finaliza Modal Agregar usuario -->
+
     <div class="back-to-top">
           <a href="#masthead" title="Ir al principio" class="fa fa-angle-up"></a>       
         </div>
@@ -437,6 +487,69 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-check'></strong> SOLO PAGA <strong>$ <?php echo str_replace('MXN',' MXN', $_GET['pay']) ?></strong>, EN EL OXXO MAS CERCANO | <a target='_BLANK' href='<?php echo base_url() . 'all/oxxo_ficha?ref_oxxo='.$_GET['ref_oxxo'].'&pay='.$_GET['pay'].' ' ?>'> ver ficha </a>";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Eliminar usuario
+    if (getUrlVars()["userdeletetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se elimino usuario correctamente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["userdeletefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible eliminar este usuario.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Actualizar usuario
+    if (getUrlVars()["userupdatetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se actualizo usuario correctamente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["userupdatetrue"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible actualizar este usuario.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Agregar usuario
+    if (getUrlVars()["useraddtrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se agrego usuario correctamente.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["useraddfalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar este usuario.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }

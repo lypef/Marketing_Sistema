@@ -166,9 +166,8 @@
                       </li>
                       <li class="nav-item"><a href="#" target="_self">'.$this->session->userdata('username').'</a>
                         <ul>
-                          <li><a href="bottommap-contact.html" target="_self">Gestionar usuarios</a></li>
-                          <li><a href="topmap-contact.html" target="_self">Editar</a></li>
-                          
+                          <li><a href="#" data-toggle="modal" data-target="#newuser">Nuevo usuario</a></li>
+                          <li><a href="/index.php/all/users" target="_self">Gestionar usuarios</a></li>
                         </ul>
                       </li>
                     </ul>
