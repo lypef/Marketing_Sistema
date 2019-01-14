@@ -113,7 +113,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-body">
-                        <div class="fb-comments" data-href="http://localhost/index.php/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
+                        <div class="fb-comments" data-href="'.base_url().'All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Ocultar</button>

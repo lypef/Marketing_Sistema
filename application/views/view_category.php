@@ -153,7 +153,7 @@ text-align: center;
             <div class="modal-body">
                 <center><img alt="" src="'.$item->url_img.'"></center>
                 <br>
-                <div class="fb-comments" data-href="'.base_url().'/All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
+                <div class="fb-comments" data-href="'.base_url().'All/manager/'.$item->id.'" data-numposts="10" order_by="reverse_time"></div>    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Ocultar</button>
