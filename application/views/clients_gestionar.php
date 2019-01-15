@@ -125,7 +125,7 @@
                             <p>
                                 <span class="">
                                     <input type="checkbox" name="estatus" id="estatus" value="'.$estatus_edit_value.'" '.$estatus_edit.'> Seleccione estatus de el cliente | 
-                                    <input type="checkbox" name="premium5" id="premium5" value="'.$estatus_edit_value_premium.'" '.$estatus_edit_premium.'> Servicio premium 5 Imagenes.<br>
+                                    <input type="checkbox" name="premium5" id="premium5" value="'.$estatus_edit_value_premium.'" '.$estatus_edit_premium.'> Servicio premium<br>
                                 </span>
                             </p>
                             <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">

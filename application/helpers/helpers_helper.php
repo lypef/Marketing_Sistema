@@ -42,6 +42,49 @@
 
         return $r;
     }
+
+    function GetCategoriesFiltersPremium ($id_select)
+    {
+        $c =& get_instance();
+        $q = $c->db->get('categories');
+
+        $r = '
+        <div class="portfolio-section os-animation post" data-os-animation="animated-portfolio-section">
+            <div id="filters" class="button-group postname-categories">
+        ';
+        if ($id_select == 0)
+        {
+            $r .= '
+                <a href="/index.php/all/view_category_premium?id=0&pag=1"><button class="button is-checked">Todos</button></a>
+            ';
+        }else
+        {
+            $r .= '
+                <a href="/index.php/all/view_category_premium?id=0&pag=1"><button class="button">Todos</button></a>
+            ';
+        }
+        
+        foreach ($q->result() as $row)
+        {
+                if ($id_select == $row->id)
+                {
+                    $r .= '
+                        <a href="/index.php/all/view_category_premium?id='.$row->id.'&pag=1"><button class="button is-checked">'.$row->name.'</button></a>
+                    ';
+                }else
+                {
+                    $r .= '
+                        <a href="/index.php/all/view_category_premium?id='.$row->id.'&pag=1"><button class="button">'.$row->name.'</button></a>
+                    ';
+                }
+        }
+        $r .= '
+            </div>
+        </div>
+        ';
+
+        return $r;
+    }
     
     function GetCategoriesLI ()
     {

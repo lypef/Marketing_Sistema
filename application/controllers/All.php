@@ -15,6 +15,7 @@ class All extends CI_Controller {
 	public function index()
 	{
 		$data['categories'] = $this->db->query('SELECT * FROM `categories`')->result();
+		$data['sliders'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category,ca.name, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl, categories ca WHERE ga.empresa = cl.id and cl.category = ca.id ORDER BY RAND() LIMIT 8')->result();
 		
 		$this->load->view('layouts/header');
 		$this->load->view('welcome', $data);
@@ -206,16 +207,16 @@ class All extends CI_Controller {
 
 		if ($category > 0)
 		{
-			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.category = '.$category.' ')->num_rows() / 10, 0, '', ' ');
+			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.category = '.$category.' ')->num_rows() / 9, 0, '', ' ');
 		}
 		else if (!is_null($buscar))
 		{
 			$like = "'%" .$buscar. "%'";
-			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.empresa like '.$like.' or ga.empresa = cl.id and ga.title like '.$like.' or ga.empresa = cl.id and ga.descripcion like '.$like.' ')->num_rows() / 10, 0, '', ' ');
+			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.empresa like '.$like.' or ga.empresa = cl.id and ga.title like '.$like.' or ga.empresa = cl.id and ga.descripcion like '.$like.' ')->num_rows() / 9, 0, '', ' ');
 		}
 		else
 		{
-			$TotalPags = number_format($this->db->query('SELECT id FROM empresa_gallery')->num_rows() / 10, 0, '', ' ');
+			$TotalPags = number_format($this->db->query('SELECT id FROM empresa_gallery')->num_rows() / 9, 0, '', ' ');
 		}
 
 		$limit = 'LIMIT '.(($pag * 9) - 9).', 9;';
@@ -1296,5 +1297,48 @@ class All extends CI_Controller {
 			exit;        
 		}
 	}
+
+	public function view_category_premium()
+	{
+		$category =  $_GET["id"];
+		$pag = $this->input->get('pag');
+		$limit = '';
+
+		if (is_null($pag))
+		{
+			$pag = 1;
+		}
+
+		if ($category > 0)
+		{
+			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.category = '.$category.' and cl.premium5 = 1 and ga.premium = 1 ')->num_rows() / 9, 0, '', ' ');
+		}
+		else
+		{
+			$TotalPags = number_format($this->db->query('SELECT ga.id FROM empresa_gallery ga, clients cl where ga.empresa = cl.id and cl.premium5 = 1 and ga.premium = 1 ')->num_rows() / 9, 0, '', ' ');
+		}
+
+		if ($TotalPags < 1){ $TotalPags = 1; }
+
+		$limit = 'LIMIT '.(($pag * 9) - 9).', 9;';
+		$data['pags'] = $TotalPags;
+		$data['pag'] = $pag;
+
+		if ($category > 0)
+		{
+			$data['data'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.category = '.$category .' and cl.premium5 = 1 and ga.premium = 1 '. $limit.' ')->result();
+		}
+		else
+		{
+			$data['data'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl WHERE ga.empresa = cl.id and cl.premium5 = 1 and ga.premium = 1 '.$limit.' ')->result();
+		}
+
+		
+		$this->load->view('layouts/header');
+		$this->load->view('view_category_premium', $data);
+		$this->load->view('layouts/footer');
+	}
+
+
 }
 ?>
