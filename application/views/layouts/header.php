@@ -158,7 +158,7 @@
                         <ul>
                           <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">Gestionar</a></li>
                           <li><a href="/index.php/all/magazine_sub?pag=1" target="_self">Suscriptores</a></li>
-                          <li><a href="/index.php/all/magazine_sub?pag=1" target="_self">Reporte activos</a></li>
+                          <li><a href="/index.php/all/pdf_activos_magazine" target="_self">Reporte activos</a></li>
                         </ul>
                       </li>
                       <li class="nav-item"><a href="#" target="_self">Categorias</a>
@@ -208,24 +208,17 @@
             <ul class="slides">
             <li>
             <a href="">
-            <img src="../../public/images/slider1.jpg" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
+            <img src="../../public/images/portada2.png" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
             <div class="slider-caption">
-            <h2><a href="category.html">My Journey was full of mystrious.</a></h2>
-            <p>Diam 1989 wisi quam lorem vestibulum nec nibh, sollicitudin volutpat at libero litora, non adipiscin...</p><a href="category.html" target="_self">Read More</a> </div>
+            <h2><a href="'.base_url().'all/c_zacatecas">Conoce zacatecas !</a></h2>
+            <p>Jerez de García Salinas, La Quemada, Nochistlán, Parque Nacional Sierra de Órganos, Teúl de González Ortega, Pinos, Santuario de Plateros, Sombrerete y mas ! </p><a href="'.base_url().'all/c_zacatecas" target="_self">Conocer ! </a> </div>
             </li>
             <li>
             <a href="#">
-            <img src="../../public/images/slider2.jpg" class="attachment-slider size-slider wp-post-image" alt="slider2" /> </a>
+            <img src="../../public/images/portada1.png" class="attachment-slider size-slider wp-post-image" alt="slider2" /> </a>
             <div class="slider-caption">
-            <h2><a href="category.html">Generation of the Technology</a></h2>
-            <p>Diam wisi quam lorem vestibulum nec nibh, sollicitudin volutpat at libero litora, non adipiscing. Nu...</p><a href="category.html" target="_self">Read More</a> </div>
-            </li>
-            <li>
-            <a href="#">
-            <img src="../../public/images/slider3.jpg" class="attachment-slider size-slider wp-post-image" alt="slider3" /> </a>
-            <div class="slider-caption">
-            <h2><a href="category.html">Games for health and nation.</a></h2>
-            <p>Diam wisi quam lorem vestibulum nec nibh, sollicitudin volutpat at libero litora, non adipiscing. Nu...</p><a href="category.html" target="_self">Read More</a> </div>
+            <h2><a href="'.base_url().'all/c_zacatecas">Conoce zacatecas !</a></h2>
+            <p>Jerez de García Salinas, La Quemada, Nochistlán, Parque Nacional Sierra de Órganos, Teúl de González Ortega, Pinos, Santuario de Plateros, Sombrerete y mas ! </p><a href="'.base_url().'all/c_zacatecas" target="_self">Conocer ! </a> </div>
             </li>
             </ul>
           </div>

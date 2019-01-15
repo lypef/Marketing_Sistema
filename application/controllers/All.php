@@ -14,8 +14,10 @@ class All extends CI_Controller {
 	
 	public function index()
 	{
+		$data['categories'] = $this->db->query('SELECT * FROM `categories`')->result();
+		
 		$this->load->view('layouts/header');
-		$this->load->view('welcome');
+		$this->load->view('welcome', $data);
 		$this->load->view('layouts/footer');
 	}
 
@@ -1215,6 +1217,83 @@ class All extends CI_Controller {
 		}else
 		{
 			redirect($url.'?userupdatetrue=false');
+		}
+	}
+
+	public function pdf_activos_magazine ()
+	{
+		$llamadas = $this->db->query('SELECT * FROM `register_magazine` where estatus = 1 order by name asc')->result();
+
+		if(count($llamadas) > 0){
+			//Cargamos la librería de excel.
+			$this->load->library('excel'); $this->excel->setActiveSheetIndex(0);
+			$this->excel->getActiveSheet()->setTitle('suscriptores_activos_magazine');
+			//Contador de filas
+			$contador = 1;
+			//Le aplicamos ancho las columnas.
+			$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
+			$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
+			$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(60);
+			$this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
+			$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+			$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+			//Le aplicamos negrita a los títulos de la cabecera.
+			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("B{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("C{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("D{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFont()->setBold(true);
+			//Centrar encabezados
+			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("B{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("C{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("D{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("E{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("F{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			//Definimos los títulos de la cabecera.
+			$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'FOLIO ACTIVACIÓN');
+			$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'NOMBRE');
+			$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'DIRECCIÓN');
+			$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'CORREO ELECTRÓNICO');
+			$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'TELÉFONO');
+			$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'FECHA INSCRIPCIÓN');
+			//Definimos la data del cuerpo.        
+			foreach($llamadas as $l){
+			//Incrementamos una fila más, para ir a la siguiente.
+			$contador++;
+				//Informacion de las filas de la consulta.
+				$this->excel->getActiveSheet()->setCellValue("A{$contador}", $l->id);
+				$this->excel->getActiveSheet()->getStyle("A{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+				$this->excel->getActiveSheet()->setCellValue("B{$contador}", $l->name);
+				$this->excel->getActiveSheet()->getStyle("B{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+				$this->excel->getActiveSheet()->setCellValue("C{$contador}", $l->direccion);
+				$this->excel->getActiveSheet()->getStyle("C{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+				$this->excel->getActiveSheet()->setCellValue("D{$contador}", $l->email);
+				$this->excel->getActiveSheet()->getStyle("D{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+				
+				$this->excel->getActiveSheet()->setCellValue("E{$contador}", $l->phone);
+				$this->excel->getActiveSheet()->getStyle("E{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+				$this->excel->getActiveSheet()->setCellValue("F{$contador}", $l->f_ini);
+				$this->excel->getActiveSheet()->getStyle("F{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			}
+
+			//Le ponemos un nombre al archivo que se va a generar.
+			$archivo = "suscriptores_activos_magazine.xls";
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment;filename="'.$archivo.'"');
+			header('Cache-Control: max-age=0');
+			$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+			//Hacemos una salida al navegador con el archivo Excel.
+			$objWriter->save('php://output');
+		}else{
+			echo 'No se han encontrado suscriptores activos.';
+			exit;        
 		}
 	}
 }
