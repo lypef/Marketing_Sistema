@@ -836,7 +836,11 @@ class All extends CI_Controller {
 				
 				if ($this->db->affected_rows() >= 1 )
 				{
-					redirect($this->input->post('url').'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');	
+					if (empty($this->input->post('pag'))){
+						redirect(base_url());	
+					}else{
+						redirect($this->input->post('url').'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');	
+					}
 				}else
 				{
 					redirect($this->input->post('url'));

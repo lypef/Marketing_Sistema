@@ -75,14 +75,8 @@
 
               <aside class="widget widget_newsletter">
                 <h2 class="widget-title">Suscribete ! </h2>
-                <p>Ingresa tu email, para recibir las nuevas noticias.</p>
-                <form class="search-form">
-                  <label>
-                    <span class="screen-reader-text">Search for:</span>
-                    <input class="search-field" type="search" placeholder="Email address" name="search">
-                  </label>
-                  <input class="search-submit" type="submit" value="suscribirme">
-                </form>
+                <p>Recibe cada edicion MAGAZINE U, a domilio por solo $ 100 MXN !, Llena el formulario y deposita en el oxxo mas cercano.</p>
+                <a href="#" data-toggle="modal" data-target="#registrarme_umagazine" ><input class="search-submit" type="submit" value="suscribirme"></a>
               </aside>
 
               <aside class="widget widget_newsletter">
