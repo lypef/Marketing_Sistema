@@ -126,6 +126,37 @@
         }
     }
 
+    function GetClientsSelect ()
+    {
+        $c =& get_instance();
+        $q = $c->db->query('select * from clients order by empresa asc');
+
+        $r = '
+        <div class="form-group">
+        <select class="form-control" id="client" name="client" required style="
+            -moz-border-radius: 0px;
+            -webkit-border-radius: 0px;
+            border-radius: 0px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            height: 50px;
+        ">
+        <option value="">SELECCIONE CLIENTE PROPIETARIO DE PROMOCION</option>
+        ';
+        foreach ($q->result() as $row)
+        {
+                $r .= '
+                <option value="'.$row->id.'">'.$row->empresa.'</option>
+                ';
+        }
+        $r .= '
+        </select>
+        </div>';
+
+        return $r;
+                            
+    }
+
     function GetCategoriesSelect ()
     {
         $c =& get_instance();
@@ -156,6 +187,7 @@
         return $r;
                             
     }
+
     function GetCategoriesSelectID ($id)
     {
         $c =& get_instance();

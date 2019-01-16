@@ -1343,6 +1343,12 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function promociones()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('promociones');
+		$this->load->view('layouts/footer');
+	}
 
 }
 ?>

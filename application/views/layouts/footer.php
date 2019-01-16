@@ -41,7 +41,7 @@
         </div>
         <div class="copy-right">
           <div class="container">
-            <span>© 2019 <a target="_blank" href="http://www.cyberchoapas.com">| CLTA DESARROLLO &amp; DISTRIBUCION DE SOFTWARE</a> &amp; <a target="_blank" href="http://www.cyberchoapas.com"> SoftBox Zacatecas</a></span>
+            <span>© 2019 <a target="_blank" href="http://www.cyberchoapas.com">| CLTA DESARROLLO &amp; DISTRIBUCION DE SOFTWARE</a> &amp; <a target="_blank" href="https://www.facebook.com/softboxzac/"> SoftBox Zacatecas</a></span>
           </div> 
         </div> 
       </div>
@@ -127,6 +127,66 @@
     }
     ?>
     <!-- Finaliza Modal Agregar cliente -->
+
+    <!-- Modal Agregar promo -->
+    <?php
+    if ($this->session->userdata('username'))
+    {
+      echo '
+      <div class="modal fade" id="addpromo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-body">
+            
+            <div class="site-content" id="content">
+            <h2 class="idol-title">Ingrese nueva promocion</h2>
+            </div>
+            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/client_add" autocomplete="off">
+                      <p>
+                        <span class="">
+                          '.GetClientsSelect().'
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="empresa" class="" type="text" value="" name="empresa" placeholder="Empresa: " autocomplete="off" required>
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="direccion" class="" type="text" value="" name="direccion" placeholder="Direccion: " autocomplete="off">
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="email" class="" type="email" value="" name="email" placeholder="Email: " autocomplete="off">
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="telefono" class="" type="number" value="" name="telefono" placeholder="Telefono: " autocomplete="off">
+                        </span>
+                      </p>
+                      <p>
+                        <span class="">
+                          <input id="responsable" class="" type="text" value="" name="responsable" placeholder="Responsable: " autocomplete="off">
+                        </span>
+                      </p>
+                      <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary" >Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      ';
+    }
+    ?>
+    <!-- Finaliza Modal Agregar promo -->
 
     <!-- Modal Agregar usuario -->
     <?php
