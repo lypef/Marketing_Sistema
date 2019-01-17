@@ -178,7 +178,7 @@ class All extends CI_Controller {
 			}
 			else
 			{
-				redirect(base_url() . 'all/login#bad_password');
+				redirect(base_url() . 'all/login?loginfalse=true');
 			}
 		}
 		
@@ -1343,12 +1343,128 @@ class All extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
-	public function promociones()
+	public function qr()
 	{
+		LoginCheck();
+		$buscar = $this->input->get('search');
+		$pag = $this->input->get('pag');
+		$limit = '';
+		if (is_null($pag))
+		{
+			$pag = 1;
+		}
+
+		if (!is_null($buscar))
+		{
+			$TotalPags_ = $this->db->query('SELECT cl.id FROM clients cl, categories ca where cl.category = ca.id and cl.empresa like "%'.$buscar.'%" or cl.category = ca.id and cl.responsable like "%'.$buscar.'%"')->num_rows() / 10;
+		}else
+		{
+			$TotalPags_ = $this->db->query('SELECT id FROM promotions')->num_rows() / 10;
+		}
+		
+		$TotalPags = number_format($TotalPags_, 0, '', ' ');
+
+		if ($TotalPags_ > $TotalPags) { $TotalPags = $TotalPags + 1; }
+
+
+		$limit = 'LIMIT '.(($pag * 10) - 10).', 10;';
+		$data['pags'] = $TotalPags;
+		$data['pag'] = $pag;
+
+		if (!is_null($buscar))
+		{
+			$data['data'] = $this->db->query('SELECT cl.id, ca.name, cl.empresa, cl.active, cl.direccion, cl.mail, cl.telefono, cl.responsable, ca.id as "id_cat", cl.premium5 FROM clients cl, categories ca where cl.category = ca.id and cl.empresa like "%'.$buscar.'%" or cl.category = ca.id and cl.responsable like "%'.$buscar.'%" '. $limit.' ')->result();
+		}else
+		{
+			$data['data'] = $this->db->query('SELECT p.id, c.id AS id_empresa, c.empresa, p.name, p.descripcion, p.url, p.qr_img FROM promotions p, clients c where p.client = c.id '.$limit.' ')->result();
+		}
+
 		$this->load->view('layouts/header');
-		$this->load->view('promociones');
+		$this->load->view('qr',$data);
 		$this->load->view('layouts/footer');
 	}
 
+	public function qr_add ()
+	{
+		LoginCheck();
+		
+		$url = $this->input->post('url');
+		
+		//Agregamos la libreria para genera códigos QR
+		require_once 'phpqrcode/qrlib.php';    
+		
+		//Declaramos una carpeta temporal para guardar la imagenes generadas
+		$dir = '././public/images/qr_promotions/qr_promo_'. date("YmdHis").'.'.'.png';
+	
+		//Parametros de Condiguración
+		
+		$tamaño = 20; //Tamaño de Pixel
+		$level = 'H'; //Precisión Baja
+		$framSize = 2; //Tamaño en blanco
+		$contenido = $this->input->post('url_promo');
+		
+		//Enviamos los parametros a la Función para generar código QR 
+		QRcode::png($contenido, $dir, $level, $tamaño, $framSize); 
+
+		
+
+		$data = array(
+			'client' => $this->input->post('client'),
+			'name'  => $this->input->post('name'),
+			'descripcion'  => $this->input->post('descripcion'),
+			'url'  => $this->input->post('url_promo'),
+			'qr_img'  => str_replace('./','../',$dir)
+		);
+		
+		$this->db->insert('promotions',$data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect(base_url() . 'all/qr?qraddtrue=true');
+		}else
+		{
+			redirect(base_url() . 'all/qr?qraddfalse=true');
+		}
+
+	}
+
+	public function qr_delete ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		$this->db->where('id', $this->input->post('id'))->delete('promotions');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?qrtionadeletetrue=true');
+		}else
+		{
+			redirect($url.'?qrtiondeletefalse=false');
+		}
+	}
+
+	public function qr_update ()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		$data = array(
+				'client' => $this->input->post('client'),
+				'name' => $this->input->post('name'),
+				'descripcion' => $this->input->post('descripcion')
+		);
+		
+		$this->db->where('id', $this->input->post('id'))->update('promotions', $data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?qrtionaupdatetrue=true');
+		}else
+		{
+			redirect($url.'?qrtionupdatefalse=false');
+		}
+
+	}
 }
 ?>

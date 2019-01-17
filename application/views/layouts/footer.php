@@ -128,20 +128,20 @@
     ?>
     <!-- Finaliza Modal Agregar cliente -->
 
-    <!-- Modal Agregar promo -->
+    <!-- Modal Agregar qr -->
     <?php
     if ($this->session->userdata('username'))
     {
       echo '
-      <div class="modal fade" id="addpromo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addqr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-body">
             
             <div class="site-content" id="content">
-            <h2 class="idol-title">Ingrese nueva promocion</h2>
+            <h2 class="idol-title">Ingrese datos para QR</h2>
             </div>
-            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/client_add" autocomplete="off">
+            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/qr_add">
                       <p>
                         <span class="">
                           '.GetClientsSelect().'
@@ -149,27 +149,17 @@
                       </p>
                       <p>
                         <span class="">
-                          <input id="empresa" class="" type="text" value="" name="empresa" placeholder="Empresa: " autocomplete="off" required>
+                          <input id="name" class="" type="text" value="" name="name" placeholder="Nombre promocion: " required>
                         </span>
                       </p>
                       <p>
                         <span class="">
-                          <input id="direccion" class="" type="text" value="" name="direccion" placeholder="Direccion: " autocomplete="off">
+                          <input id="descripcion" class="" type="text" value="" name="descripcion" placeholder="Descripcion promocion: " required>
                         </span>
                       </p>
                       <p>
                         <span class="">
-                          <input id="email" class="" type="email" value="" name="email" placeholder="Email: " autocomplete="off">
-                        </span>
-                      </p>
-                      <p>
-                        <span class="">
-                          <input id="telefono" class="" type="number" value="" name="telefono" placeholder="Telefono: " autocomplete="off">
-                        </span>
-                      </p>
-                      <p>
-                        <span class="">
-                          <input id="responsable" class="" type="text" value="" name="responsable" placeholder="Responsable: " autocomplete="off">
+                          <input id="url_promo" class="" type="url" value="" name="url_promo" placeholder="Url direccion de promocion:">
                         </span>
                       </p>
                       <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
@@ -186,7 +176,7 @@
       ';
     }
     ?>
-    <!-- Finaliza Modal Agregar promo -->
+    <!-- Finaliza Modal Agregar qr -->
 
     <!-- Modal Agregar usuario -->
     <?php
@@ -658,6 +648,80 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar este usuario.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Errror password
+    if (getUrlVars()["loginfalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> Contraseña O usuario incorrectos";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Agregar qr
+    if (getUrlVars()["qraddtrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se agrego QR con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["qraddfalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar este QR.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Eliminar qr
+    if (getUrlVars()["qrtionadeletetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se elimino el codigo QR con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["qrtiondeletefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible eliminar este QR.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Actualizar qr
+    if (getUrlVars()["qrtionaupdatetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se actualizo codigo QR con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["qrtionupdatefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible actualizar este QR.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }

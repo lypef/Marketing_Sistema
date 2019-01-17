@@ -166,8 +166,10 @@
                       </li>
                       <li class="nav-item"><a href="#" target="_self">Promociones</a>
                         <ul>
+                          <li><a href="#" data-toggle="modal" data-target="#addqr">Nuevo QR</a></li>
+                          <li><a href="/index.php/all/qr" target="_self">Ver codigos QRs</a></li>
                           <li><a href="#" data-toggle="modal" data-target="#addpromo">Nueva promocion</a></li>
-                          <li><a href="/index.php/all/promociones" target="_self">Ver promociones</a></li>
+                          <li><a href="/index.php/all/promociones" target="_self">Ver promociones</a></li>  
                         </ul>
                       </li>
                       <li class="nav-item"><a href="#" target="_self">'.$this->session->userdata('username').'</a>

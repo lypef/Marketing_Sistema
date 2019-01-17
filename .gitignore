@@ -1,5 +1,6 @@
 public/images/clients/*.jpg
 public/images/magazine/*.jpg
+public/images/qr_promotions/*.jpg
 */config/development
 */logs/log-*.php
 !*/logs/index.html

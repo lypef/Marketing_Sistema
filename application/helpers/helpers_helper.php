@@ -188,6 +188,46 @@
                             
     }
 
+    function GetPromotionsSelectID ($id)
+    {
+        $c =& get_instance();
+        $q = $c->db->get('clients');
+
+        $r = '
+        <div class="form-group">
+        <select class="form-control" id="client" name="client" required style="
+            -moz-border-radius: 0px;
+            -webkit-border-radius: 0px;
+            border-radius: 0px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            height: 50px;
+        ">
+        <option value="">SELECCIONE CATEGORIA A LA QUE PERTENECE</option>
+        ';
+        foreach ($q->result() as $row)
+        {
+                if ($row->id == $id)
+                {
+                    $r .= '
+                    <option value="'.$row->id.'" selected>'.$row->empresa.'</option>
+                    ';
+                }else
+                {
+                    $r .= '
+                    <option value="'.$row->id.'">'.$row->empresa.'</option>
+                    ';
+                }
+                
+        }
+        $r .= '
+        </select>
+        </div>';
+
+        return $r;
+                            
+    }
+    
     function GetCategoriesSelectID ($id)
     {
         $c =& get_instance();
