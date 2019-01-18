@@ -329,6 +329,43 @@
         
     }
 
+    function ImgSelectPromotion ($id)
+    {
+        if ($id > 0)
+        {
+            $c =& get_instance();
+            $item = $c->db->query('SELECT * FROM `promotions_locals` WHERE id = '.$id.' ')->row();
+
+            return '
+            <div class="row">
+                <div class="col-sm-6">
+                    <a class="venobox" data-gall="myGallery" href="'.$item->url.'" title="'.$item->name.'">
+                        <center>
+                            <span><strong>Nombre: '.$item->name.'</strong></span><br><br>
+                            <img src="'.$item->url.'" class="imagen_principal img-thumbnail" width="100%" alt="'.$item->name.'">
+                        </center>
+                    </a><br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#delete_img"><span class="fa fa-times" /> Eliminar promocion actual</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fb-comments" data-href="'.base_url().'All/promotions/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                </div>
+            </div>
+            <br><br>
+            <hr>
+            ';
+        }
+        else
+        {
+            return '';
+        }
+        
+    }
+
     function ImgSelectC_zacatecas ($id)
     {
         if ($id > 0)

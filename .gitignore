@@ -1,6 +1,10 @@
 public/images/clients/*.jpg
 public/images/magazine/*.jpg
 public/images/qr_promotions/*.jpg
+public/images/qr_promotions/*.png
+public/images/qr_promotions/*.PNG
+public/images/promotions/*.jpg
+public/images/promotions/*.JPG
 */config/development
 */logs/log-*.php
 !*/logs/index.html

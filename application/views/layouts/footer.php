@@ -128,6 +128,47 @@
     ?>
     <!-- Finaliza Modal Agregar cliente -->
 
+    <!-- Modal Agregar promo -->
+    <?php
+    if ($this->session->userdata('username'))
+    {
+      echo '
+      <div class="modal fade" id="addpromo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+            
+            <div class="site-content" id="content">
+            <h2 class="idol-title">Ingrese nueva promocion</h2>
+            </div>
+            <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/promo_add" enctype="multipart/form-data">
+            <p>
+              <span class="">
+                <br><input id="name" class="" type="text" value="" name="name" placeholder="Nombre promocion: ">
+              </span>
+            </p>
+            <span>*** Selecciona imagen para subir</span>
+            <p>
+              <span class="">
+                <br><input id="img" class="" type="file" value="" name="img" placeholder="Titulo: " accept="image/x-png,image/gif,image/jpeg" required>
+              </span>
+            </p>
+            <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary" >Subir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      ';
+    }
+    ?>
+    <!-- Finaliza Modal Agregar promo -->
+    
     <!-- Modal Agregar qr -->
     <?php
     if ($this->session->userdata('username'))
@@ -229,51 +270,51 @@
     <!-- Finaliza Modal Agregar usuario -->
     <!-- Recibir revista u magazine -->
     <div class="modal fade" id="registrarme_umagazine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                        <div class="modal-body">
-                        <div class="site-content" id="content">
-                        <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 100.00 MXN</h2>
-                        </div>
-                        <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" enctype="multipart/form-data">
-                          <p>
-                          <span class="">
-                              <input id="nombre" class="" type="text" value="" name="nombre" placeholder="Nombre completo: " autocomplete="off">
-                              </span>
-                          </p>
-                          <p>
-                          <span class="">
-                              <input id="direccion" class="" type="text" value="" name="direccion" placeholder="Direccion donde recibira U.Magazine ?: " autocomplete="off">
-                          </span>
-                          </p>
-                          <p>
-                              <span class="">
-                              <input id="email" class="" type="email" value="" name="email" placeholder="Correo electronico: " required>
-                              </span>
-                          </p>
-                          <p>
-                              <span class="">
-                              <input id="phone" class="" type="number" value="" name="phone" placeholder="Numero movil: " autocomplete="off">
-                              </span>
-                          </p>
-                          <p>
-                              <span class="">
-                                  <input type="checkbox" name="r_informacion" id="r_informacion" value="" checked> Quiero recibir información por correo electronico. <br>
-                                  <input type="checkbox" name="r_promo_nego" id="r_promo_nego" value="" checked> Quiero recibir promociones de negocios. <br>
-                              </span>
-                          </p>
-                          <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
-                          <input type="hidden" id="pag" name="pag" value="<?php echo $_GET['pag'] ?>">
-                          <input type="hidden" id="id_img" name="id_img" value="<?php echo $_GET['id_img'] ?>">
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Suscribirme</button>
-                          </form>
-                      </div>
-                      </div>
-                  </div>
-              </div>
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          <div class="modal-body">
+          <div class="site-content" id="content">
+          <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 100.00 MXN</h2>
+          </div>
+          <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" enctype="multipart/form-data">
+            <p>
+            <span class="">
+                <input id="nombre" class="" type="text" value="" name="nombre" placeholder="Nombre completo: " autocomplete="off">
+                </span>
+            </p>
+            <p>
+            <span class="">
+                <input id="direccion" class="" type="text" value="" name="direccion" placeholder="Direccion donde recibira U.Magazine ?: " autocomplete="off">
+            </span>
+            </p>
+            <p>
+                <span class="">
+                <input id="email" class="" type="email" value="" name="email" placeholder="Correo electronico: " required>
+                </span>
+            </p>
+            <p>
+                <span class="">
+                <input id="phone" class="" type="number" value="" name="phone" placeholder="Numero movil: " autocomplete="off">
+                </span>
+            </p>
+            <p>
+                <span class="">
+                    <input type="checkbox" name="r_informacion" id="r_informacion" value="" checked> Quiero recibir información por correo electronico. <br>
+                    <input type="checkbox" name="r_promo_nego" id="r_promo_nego" value="" checked> Quiero recibir promociones de negocios. <br>
+                </span>
+            </p>
+            <input type="hidden" id="url" name="url" value="<?php echo UrlActual($_SERVER[REQUEST_URI]) ?>">
+            <input type="hidden" id="pag" name="pag" value="<?php echo $_GET['pag'] ?>">
+            <input type="hidden" id="id_img" name="id_img" value="<?php echo $_GET['id_img'] ?>">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Suscribirme</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
 
 
     <div class="back-to-top">
@@ -722,6 +763,48 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-exclamation'> </strong> No es posible actualizar este QR.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Agregar promocion
+    if (getUrlVars()["addpromotrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se agrego promocion con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["addpromofalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible agregar esta promocion.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Eliminar promocion
+    if (getUrlVars()["promotiondeletetrue"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se elimino promocion con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["promotiondeletefalse"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible eliminar esta promocion.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }

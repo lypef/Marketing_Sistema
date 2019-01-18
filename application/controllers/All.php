@@ -837,7 +837,7 @@ class All extends CI_Controller {
 				if ($this->db->affected_rows() >= 1 )
 				{
 					if (empty($this->input->post('pag'))){
-						redirect(base_url());	
+						redirect(base_url().'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');	
 					}else{
 						redirect($this->input->post('url').'?ref_oxxo='.$order->charges[0]->payment_method->reference.'&pay='.$order->amount/100 . $order->currency.'&id_img='.$this->input->post('id_img').'&pag='.$this->input->post('pag').' ');	
 					}
@@ -1356,7 +1356,7 @@ class All extends CI_Controller {
 
 		if (!is_null($buscar))
 		{
-			$TotalPags_ = $this->db->query('SELECT cl.id FROM clients cl, categories ca where cl.category = ca.id and cl.empresa like "%'.$buscar.'%" or cl.category = ca.id and cl.responsable like "%'.$buscar.'%"')->num_rows() / 10;
+			$TotalPags_ = $this->db->query('SELECT p.id, c.id AS id_empresa, c.empresa, p.name, p.descripcion, p.url, p.qr_img FROM promotions p, clients c where p.client = c.id and p.name like "%'.$buscar.'%" or p.client = c.id and p.descripcion like "%'.$buscar.'%" or p.client = c.id and c.empresa like "%'.$buscar.'%" '.$limit.' ')->num_rows() / 10;
 		}else
 		{
 			$TotalPags_ = $this->db->query('SELECT id FROM promotions')->num_rows() / 10;
@@ -1373,7 +1373,7 @@ class All extends CI_Controller {
 
 		if (!is_null($buscar))
 		{
-			$data['data'] = $this->db->query('SELECT cl.id, ca.name, cl.empresa, cl.active, cl.direccion, cl.mail, cl.telefono, cl.responsable, ca.id as "id_cat", cl.premium5 FROM clients cl, categories ca where cl.category = ca.id and cl.empresa like "%'.$buscar.'%" or cl.category = ca.id and cl.responsable like "%'.$buscar.'%" '. $limit.' ')->result();
+			$data['data'] = $this->db->query('SELECT p.id, c.id AS id_empresa, c.empresa, p.name, p.descripcion, p.url, p.qr_img FROM promotions p, clients c where p.client = c.id and p.name like "%'.$buscar.'%" or p.client = c.id and p.descripcion like "%'.$buscar.'%" or p.client = c.id and c.empresa like "%'.$buscar.'%" '.$limit.' ')->result();
 		}else
 		{
 			$data['data'] = $this->db->query('SELECT p.id, c.id AS id_empresa, c.empresa, p.name, p.descripcion, p.url, p.qr_img FROM promotions p, clients c where p.client = c.id '.$limit.' ')->result();
@@ -1465,6 +1465,104 @@ class All extends CI_Controller {
 			redirect($url.'?qrtionupdatefalse=false');
 		}
 
+	}
+
+	public function promotions()
+	{
+		LoginCheck();
+		$pag = $this->input->get('pag');
+		$buscar = $this->input->get('search');
+		$limit = '';
+
+		if (is_null($pag))
+		{
+			$pag = 1;
+		}
+
+		if (!is_null($buscar))
+		{
+			$like = "'%" .$buscar. "%'";
+			$TotalPags = number_format($this->db->query('SELECT * FROM promotions_locals where name like '.$like.' order by id desc ')->num_rows() / 18, 0, '', ' ');
+		}
+		else
+		{
+			$TotalPags = number_format($this->db->query('SELECT id FROM promotions_locals order by id desc')->num_rows() / 18, 0, '', ' ');
+		}
+
+		$limit = 'LIMIT '.(($pag * 18) - 18).', 18;';
+		$data['pags'] = $TotalPags;
+		$data['pag'] = $pag;
+
+		if (!is_null($buscar))
+		{
+			$like = "'%" .$buscar. "%'";
+			$data['data'] = $this->db->query('SELECT * FROM promotions_locals where name like '.$like.' order by id desc '.$limit.' ')->result();
+		}
+		else
+		{
+			$data['data'] = $this->db->query('SELECT * FROM promotions_locals order by id desc '.$limit.' ')->result();
+		}
+		
+
+		$this->load->view('layouts/header');
+		$this->load->view('promotions', $data);
+		$this->load->view('layouts/footer');
+	}
+
+	public function promo_add()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		//subir imagen
+		$extencion = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
+		$config['upload_path'] = "././public/images/promotions/";
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['file_name'] = 'promo_'. date("YmdHis").'.'.$extencion;
+		$config['max_size'] = '5000';
+		$config['max_width']  = '5024';
+		$config['max_height']  = '5768';
+
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('img'))
+		{
+			redirect(base_url() . 'all/promotions?addpromofalse=true');
+		}else
+		{
+			$data = array(
+				'url' => '../../public/images/promotions/'.$config['file_name'],
+				'name' => $this->input->post('name')
+			);
+
+			$this->db->insert('promotions_locals',$data);
+
+			if ($this->db->affected_rows() >= 1 )
+			{
+				redirect(base_url() . 'all/promotions?addpromotrue=true&?id_img=0&pag=1');
+			}else
+			{
+				redirect(base_url() . 'all/promotions?addpromofalse=true&?id_img=0&pag=1');
+			}
+		}
+	}
+
+	public function promotion_delete()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$id_img = $this->input->post('id');
+		$pag = $this->input->post('pag');
+
+		$this->db->where('id', $id_img)->delete('promotions_locals');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?promotiondeletetrue=true&id_img=0&pag='.$pag.'');
+		}else
+		{
+			redirect($url.'?promotiondeletefalse=false&id_img='.$id_img.'&pag='.$pag.'');
+		}
 	}
 }
 ?>
