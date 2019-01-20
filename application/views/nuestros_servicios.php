@@ -13,7 +13,7 @@
                   <br>
                   <h4 class="card-title"><strong>PUBLICIDAD</strong></h4>
                   <br>
-                  <p class="card-text text-lowercase text-justify">EN ESTE SERVICIO OFRECEMOS DESDE ALGO SENCILLO COMO CREACIÓN DE GRÁFICOS PUBLICITARIOS HASTA UN ESPACIO EN NUESTRA PAGINA WEB O EN NUESTRA REVISTA...</p>
+                  <p class="card-text text-lowercase text-justify"><span class="text-uppercase">E</span>N ESTE SERVICIO OFRECEMOS DESDE ALGO SENCILLO COMO CREACIÓN DE GRÁFICOS PUBLICITARIOS HASTA UN ESPACIO EN NUESTRA PAGINA WEB O EN NUESTRA REVISTA...</p>
                   <div align="right">
                     <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#publicidad_modal" title="Publicidad">Ver mas !</a>
                   </div>
@@ -27,7 +27,7 @@
                   <br>
                   <h4 class="card-title"><strong>DESARROLLO DE PROYECTOS</strong></h4>
                   <br>
-                  <p class="card-text text-lowercase text-justify">MUCHAS VECES LAS EMPRESAS BUSCAN CRECER PERO NO SIEMPRE LO HACEN DE MANERA ADECUADA, POR LO QUE TERMINAN GASTANDO MUCHO DINERO Y CRECIENDO POCO...</p>
+                  <p class="card-text text-lowercase text-justify"><span class="text-uppercase">M</span>UCHAS VECES LAS EMPRESAS BUSCAN CRECER PERO NO SIEMPRE LO HACEN DE MANERA ADECUADA, POR LO QUE TERMINAN GASTANDO MUCHO DINERO Y CRECIENDO POCO...</p>
                   <div align="right">
                     <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#desarrollo_modal" title="Desarrollo">Ver mas !</a>
                   </div>
@@ -41,7 +41,7 @@
                   <br>
                   <h4 class="card-title"><strong>GESTIÓN DE RECURSOS</strong></h4>
                   <br>
-                  <p class="card-text text-lowercase text-justify">MUCHOS EMPRESARIOS NO SABEN QUE SUS EMPRESAS PUEDEN RECIBIR RECURSO GOBIERNO FEDERAL O QUE EXISTEN PRESTAMOS A TASAS MUY BAJAS...</p>
+                  <p class="card-text text-lowercase text-justify"><span class="text-uppercase">M</span>UCHOS EMPRESARIOS NO SABEN QUE SUS EMPRESAS PUEDEN RECIBIR RECURSO GOBIERNO FEDERAL O QUE EXISTEN PRESTAMOS A TASAS MUY BAJAS...</p>
                   <div align="right">
                     <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#gestion_modal" title="Gestion">Ver mas !</a>
                   </div>
@@ -111,7 +111,7 @@
     <div class="modal-content">
     <div class="modal-body">
       <h2 class="idol-title">DESARROLLO DE PROYECTOS</h2>
-      <p class="card-text text-justify">Muchas veces las empresas buscan crecer pero no siempre lo hacen de manera adecuada, por lo que terminan gastando mucho dinero y creciendo poco. en otras ocasiones, hay gente con muy buenas ideas pero con poca experiencia en negocios y no sabe como aterrizar esas ideas y fracasan. a través de nuestra experiencia en el desarrollo de proyectos, podremos analizar a profundidad cuales son sus puntos de ventaja y desventaja, cuales son sus ideas como empresa y cuales son las necesidades de sus clientes, de esta manera, garantizamos que las empresas crezcan de la mejor manera o sus productos o servicios se comercialicen como ellos quieren y sobretodo, al mejor costo, porque hacer crecer una empresa no siempre significa gastar mucho dinero.</p>
+      <p class="card-text text-justify">Muchas veces las empresas buscan crecer pero no siempre lo hacen de manera adecuada, por lo que terminan gastando mucho dinero y creciendo poco. En otras ocasiones, hay gente con muy buenas ideas pero con poca experiencia en negocios y no sabe como aterrizar esas ideas y fracasan. A través de nuestra experiencia en el desarrollo de proyectos, podremos analizar a profundidad cuales son sus puntos de ventaja y desventaja, cuales son sus ideas como empresa y cuales son las necesidades de sus clientes, de esta manera, garantizamos que las empresas crezcan de la mejor manera o sus productos o servicios se comercialicen como ellos quieren y sobretodo, al mejor costo, porque hacer crecer una empresa no siempre significa gastar mucho dinero.</p>
       <h3 class="idol-title">Haz crecer tu empresa ahora mismo</h3>
 
       <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/servicio_inteserado">
@@ -161,7 +161,7 @@
     <div class="modal-content">
     <div class="modal-body">
       <h2 class="idol-title">GESTIÓN DE RECURSOS</h2>
-      <p class="card-text text-justify">Muchos empresarios no saben que sus empresas pueden recibir recurso gobierno federal o que existen prestamos a tasas muy bajas con los cuales podrían expandir su comercio, aumentar su clientela, mejorar su producto o servicio, etc. nuestro equipo altamente capacitado, podrá orientarte a escoger la mejor convocatoria para tu empresa, te ayudará a reunir los requisistos y a realizar los tramites correspondientes para que tu empresa reciba el apoyo necesario para crecer.</p>
+      <p class="card-text text-justify">Muchos empresarios no saben que sus empresas pueden recibir recurso gobierno federal o que existen prestamos a tasas muy bajas con los cuales podrían expandir su comercio, aumentar su clientela, mejorar su producto o servicio, etc. nuestro equipo altamente capacitado, podrá orientarte a escoger la mejor convocatoria para tu empresa, te ayudará a reunir los requisitos y a realizar los tramites correspondientes para que tu empresa reciba el apoyo necesario para crecer.</p>
       <h3 class="idol-title">Haz crecer tu empresa ahora mismo</h3>
 
       <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/servicio_inteserado">
