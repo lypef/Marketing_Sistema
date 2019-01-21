@@ -103,7 +103,6 @@ text-align: center;
                 '.$premium_icono. $view.'
                 <a target="_BLANK" href="/index.php/all/clients_administrar?id='.$item->cl_id_empresa.'"><span class="fa fa-image" title="Ver galeria de '.$item->empresa.'"></span></a>
                 <a href="#" data-toggle="modal" data-target="#comments'.$item->id.'" title="Comentarios"><span class="fa fa-comments"></span></a>
-                <a href="#" data-toggle="modal" data-target="#send'.$item->id.'" title="Enviar a un amigo"><span class="fa fa-send"></span></a>
                 <h2 class="entry-title">'.$item->empresa.'</h2>
                 <div class="entry-meta">
                     <span class="tag-links">

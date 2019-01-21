@@ -274,7 +274,7 @@
         
         if (!$CI->session->userdata('username'))
         {
-            redirect ('/');
+            redirect (base_url());
         }
     }
 

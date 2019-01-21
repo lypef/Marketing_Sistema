@@ -531,3 +531,5 @@ $config['rewrite_short_tags'] = FALSE;
 */
 
 $config['correo_receptor'] = 'ventas@cyberchoapas.com';
+$config['google_secret'] = '6LcS24gUAAAAAJCcIIH5FbrZaHzV9NlP-RZbzX5u';
+$config['google_sitio'] = '6LcS24gUAAAAAP6hLsQiZeh8fMxHuGPZfg25jcXP';

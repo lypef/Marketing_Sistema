@@ -95,7 +95,6 @@
                         <header class="entry-header">
                         '.$premium_icono. $view.'
                         <a href="#" data-toggle="modal" data-target="#comments'.$item->id.'" title="Comentarios"><span class="fa fa-comments"></span></a>
-                        <a href="#" data-toggle="modal" data-target="#send'.$item->id.'"><span class="fa fa-send"></span></a>
                         '.$pencil_trash.'
                         <h2 class="entry-title">'.$item->descripcion.'</h2>
                         <div class="entry-meta">

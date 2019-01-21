@@ -537,36 +537,68 @@ class All extends CI_Controller {
 
 	}
 
+	private function ValidateRecaptcha ($recaptchaResponse)
+	{
+		$r = false;
+
+		$recaptchaResponse = trim($recaptchaResponse);
+ 
+        $userIp = $this->input->ip_address();
+     
+        $secret = $this->config->item('google_secret');
+
+		$url="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$recaptchaResponse."&remoteip=".$userIp;
+ 
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, $url); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        $output = curl_exec($ch); 
+        curl_close($ch);      
+         
+        $status= json_decode($output, true);
+ 
+        if ($status['success']) {
+            $r = true;
+		}else{
+			print_r('Debe comprobar que no es un robot !');
+			exit;
+		}
+
+		return $r;
+	}
+
 	public function servicio_inteserado ()
 	{
-		$url = $this->input->post('url');
+		if ($this->ValidateRecaptcha($this->input->post('g-recaptcha-response'))) {
+            $url = $this->input->post('url');
 		
-		$to = $this->config->item('correo_receptor');
+			$to = $this->config->item('correo_receptor');
 
-		$subject = $this->input->post('asunto') . ' !' ;
+			$subject = $this->input->post('asunto') . ' !' ;
 
-		$headers = "From: " . $this->input->post('email') . "\r\n";
-		$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
+			$headers = "From: " . $this->input->post('email') . "\r\n";
+			$headers .= "Reply-To: ". $this->input->post('email') . "\r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  
 
-		
-		$body = $this->input->post('comentario') . '
-			<br><br>Nombre<br>'.$this->input->post('nombre').'
-			<br><br>Empresa:<br>'.$this->input->post('empresa').'
-			<br><br>Sitio web:<br><a href="'.$this->input->post('web').'">'.$this->input->post('web').'</a>
-			<br><br>Email:<br><a href="mailto:'.$this->input->post('email').'" target="_top">'.$this->input->post('email').'</a>
-			<br><br>Telefono:<br>'.$this->input->post('telefono').'
-		';
-		
-		
-		if (mail($to, $subject, $body, $headers))
-		{
-			redirect($url.'?sendmailserviciotrue=true');
-		}else
-		{
-			redirect($url.'?sendmailserviciofalse=false');
-		}
+			
+			$body = $this->input->post('comentario') . '
+				<br><br>Nombre<br>'.$this->input->post('nombre').'
+				<br><br>Empresa:<br>'.$this->input->post('empresa').'
+				<br><br>Sitio web:<br><a href="'.$this->input->post('web').'">'.$this->input->post('web').'</a>
+				<br><br>Email:<br><a href="mailto:'.$this->input->post('email').'" target="_top">'.$this->input->post('email').'</a>
+				<br><br>Telefono:<br>'.$this->input->post('telefono').'
+			';
+			
+			
+			if (mail($to, $subject, $body, $headers))
+			{
+				redirect($url.'?sendmailserviciotrue=true');
+			}else
+			{
+				redirect($url.'?sendmailserviciofalse=false');
+			}
+        }
 	}
 	
 	public function category_administrar_sendmail ()
@@ -604,6 +636,7 @@ class All extends CI_Controller {
 
 	public function register_magazine()
 	{
+		if ($this->ValidateRecaptcha($this->input->post('g-recaptcha-response'))) {
 			$r_informacion = 0; $r_promo_nego = 0;
 			if (!is_null($this->input->post('r_informacion'))) { $r_informacion = 1; }
 			if (!is_null($this->input->post('r_promo_nego'))) { $r_promo_nego = 1; }
@@ -851,6 +884,7 @@ class All extends CI_Controller {
 			} catch (\Conekta\Handler $error){
 				echo $error->getMessage();
 			}
+		}
 	}
 
 	public function oxxo_ficha ()
@@ -1227,7 +1261,7 @@ class All extends CI_Controller {
 
 	public function pdf_activos_magazine ()
 	{
-		$llamadas = $this->db->query('SELECT * FROM `register_magazine` where estatus = 1 order by name asc')->result();
+		$llamadas = $this->db->query('SELECT id, name, direccion, email, phone, IF(info_email = true, "Si", "No") as info_email, IF( promo_nego = true, "Si", "No") as  promo_nego, estatus, f_ini FROM `register_magazine` where estatus = 1 order by name asc')->result();
 
 		if(count($llamadas) > 0){
 			//Cargamos la librería de excel.
@@ -1242,6 +1276,8 @@ class All extends CI_Controller {
 			$this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
 			$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
 			$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+			$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+			$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
 			//Le aplicamos negrita a los títulos de la cabecera.
 			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
 			$this->excel->getActiveSheet()->getStyle("B{$contador}")->getFont()->setBold(true);
@@ -1249,6 +1285,8 @@ class All extends CI_Controller {
 			$this->excel->getActiveSheet()->getStyle("D{$contador}")->getFont()->setBold(true);
 			$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFont()->setBold(true);
 			$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
+			$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 			//Centrar encabezados
 			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -1257,6 +1295,8 @@ class All extends CI_Controller {
 			$this->excel->getActiveSheet()->getStyle("D{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 			$this->excel->getActiveSheet()->getStyle("E{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 			$this->excel->getActiveSheet()->getStyle("F{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("G{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$this->excel->getActiveSheet()->getStyle("H{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 			//Definimos los títulos de la cabecera.
 			$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'FOLIO ACTIVACIÓN');
 			$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'NOMBRE');
@@ -1264,6 +1304,8 @@ class All extends CI_Controller {
 			$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'CORREO ELECTRÓNICO');
 			$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'TELÉFONO');
 			$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'FECHA INSCRIPCIÓN');
+			$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'ENVIAR INF. POR EMAIL');
+			$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'ENVIAR PROMOCIONES DE NEGOCIOS');
 			//Definimos la data del cuerpo.        
 			foreach($llamadas as $l){
 			//Incrementamos una fila más, para ir a la siguiente.
@@ -1286,6 +1328,12 @@ class All extends CI_Controller {
 
 				$this->excel->getActiveSheet()->setCellValue("F{$contador}", $l->f_ini);
 				$this->excel->getActiveSheet()->getStyle("F{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+				$this->excel->getActiveSheet()->setCellValue("G{$contador}", $l->info_email);
+				$this->excel->getActiveSheet()->getStyle("G{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+				$this->excel->getActiveSheet()->setCellValue("H{$contador}", $l->promo_nego);
+				$this->excel->getActiveSheet()->getStyle("H{$contador}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 			}
 
 			//Le ponemos un nombre al archivo que se va a generar.
@@ -1563,6 +1611,27 @@ class All extends CI_Controller {
 		{
 			redirect($url.'?promotiondeletefalse=false&id_img='.$id_img.'&pag='.$pag.'');
 		}
+	}
+
+	public function nuestros_servicios_publicidad()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('nuestros_servicios_publicidad');
+		$this->load->view('layouts/footer');
+	}
+
+	public function nuestros_servicios_desarrollo()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('nuestros_servicios_desarrollo');
+		$this->load->view('layouts/footer');
+	}
+
+	public function nuestros_servicios_gestion()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('nuestros_servicios_gestion');
+		$this->load->view('layouts/footer');
 	}
 }
 ?>
