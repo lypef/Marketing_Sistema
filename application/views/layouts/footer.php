@@ -826,7 +826,7 @@
         body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
-        body +="<strong><p class='fa fa-warning'></strong> Compruebe el catcha, (No soy robot).";
+        body +="<strong><p class='fa fa-warning'></strong> Compruebe el captcha, (No soy robot).";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
