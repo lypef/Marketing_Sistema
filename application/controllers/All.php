@@ -537,7 +537,7 @@ class All extends CI_Controller {
 
 	}
 
-	private function ValidateRecaptcha ($recaptchaResponse)
+	private function ValidateRecaptcha ($recaptchaResponse, $urls)
 	{
 		$r = false;
 
@@ -560,8 +560,7 @@ class All extends CI_Controller {
         if ($status['success']) {
             $r = true;
 		}else{
-			print_r('Debe comprobar que no es un robot !');
-			exit;
+			redirect($urls.'?soy_robot=true');
 		}
 
 		return $r;
@@ -569,7 +568,7 @@ class All extends CI_Controller {
 
 	public function servicio_inteserado ()
 	{
-		if ($this->ValidateRecaptcha($this->input->post('g-recaptcha-response'))) {
+		if ($this->ValidateRecaptcha($this->input->post('g-recaptcha-response'), $this->input->post('url') )) {
             $url = $this->input->post('url');
 		
 			$to = $this->config->item('correo_receptor');
@@ -636,7 +635,7 @@ class All extends CI_Controller {
 
 	public function register_magazine()
 	{
-		if ($this->ValidateRecaptcha($this->input->post('g-recaptcha-response'))) {
+		if ($this->ValidateRecaptcha($this->input->post('g-recaptcha-response'), $this->input->post('url'))) {
 			$r_informacion = 0; $r_promo_nego = 0;
 			if (!is_null($this->input->post('r_informacion'))) { $r_informacion = 1; }
 			if (!is_null($this->input->post('r_promo_nego'))) { $r_promo_nego = 1; }

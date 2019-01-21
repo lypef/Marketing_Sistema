@@ -819,6 +819,17 @@
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }
+    //Eliminar promocion
+    if (getUrlVars()["soy_robot"])
+    {
+        var body = "<div class='alert alert-warning alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-warning'></strong> Compruebe el catcha, (No soy robot).";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
     </script>
  </body>
 </html>
