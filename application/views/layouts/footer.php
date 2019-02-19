@@ -9,10 +9,10 @@
                 <aside class="widget widget_text">
                   <div class="site-info">
                     <h1 class="site-title">
-                      <a href="/" target="_self"><img alt="" src="../../public/images/footer-logo_.png"></a>
+                      <a href="/" target="_self"><img alt="" src="../../public/images/footer-logo_2.png"></a>
                     </h1>  
                   </div>
-                  <div class="textwidget text-justify">En link u projects somos un equipo de profesionales dedicados a realizar proyectos de expansión comercial para empresas, pymes y emprendedores.</div>
+                  <div class="textwidget text-justify">Gracias por visitar nuestra página, nos vemos en tu próxima búsqueda.</div>
                   <div class="inline-social-icons">
                     <ul>
                       <li><a href="https://www.facebook.com/linkuzac/?modal=admin_todo_tour" target="_blank" class="fa fa-facebook-square"></a></li>
@@ -57,7 +57,7 @@
           <center><img src="../../public/images/site-logo1.png" alt=""></center>
           <br>
           EN LINK U PROJECTS SOMOS UN EQUIPO DE PROFESIONALES DEDICADOS A REALIZAR PROYECTOS DE EXPANSIÓN COMERCIAL PARA EMPRESAS, PyMES Y EMPRENDEDORES. 
-          <br><br>PONIENDO A SU ALCANCE  NUESTRAS MEJORES HERRAMIENTAS PARA ASI POSICIONAR SUS MARCAS Y PRODUCTOS SOBRE CUALQUIER COMPETENCIAS.
+          <br><br>PONIENDO A SU ALCANCE  NUESTRAS MEJORES HERRAMIENTAS PARA ASI POSICIONAR SUS MARCAS Y PRODUCTOS SOBRE CUALQUIER COMPETENCIA.
           <br><br>NUESTRO OBJETIVO ES BRINDAR EL MEJOR SERVICIO CON LA MEJOR CALIDAD Y A UN BAJO COSTO, DE ESTA MANERA LOGRAMOS VINCULAR LA ECONOMÍA DEL CONSUMIDOR CON LA DE NUESTROS CLIENTES Y A SU VEZ LA DE ELLOS CON LA NUESTRA.
           </div>
           <div class="modal-footer">
@@ -67,6 +67,42 @@
       </div>
     </div>
     <!-- Finaliza Modal Quienes somos -->
+
+    <!-- Modal We go -->
+    <div class="modal fade" id="modal_wego" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+          <hr>
+          <center><img src="../../public/images/site-logo1.png" alt=""></center>
+          <br>
+          <center>Estamos diseñando el click qué necesitas para tener lo que quieres y en la puerta de tu casa, esperalo muy pronto...</center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Finaliza Modal we  -->
+
+    <!-- Modal u car -->
+    <div class="modal fade" id="modal_ucar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+          <hr>
+          <center><img src="../../public/images/site-logo1.png" alt=""></center>
+          <br>
+          <center>Muy pronto la manera de viajar dentro y fuera de tu ciudad, no volverá a ser la misma.. U Car, muy pronto en tu ciudad, esperalo...</center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Finaliza Modal u car -->
 
     <!-- Modal Agregar cliente -->
     <?php
@@ -277,6 +313,9 @@
               <div class="site-content" id="content">
               <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 100.00 MXN</h2>
               </div>
+              <p>
+              Adquiere en cualquier Oxxo nuestra revista mensual o si prefieres, desde nuestra página suscribete por sólo $100 anuales y recibela en tu domicilio. En ella encontrarás  reportajes a profesionales de la salud hablando de temas específicos, entretenimiento, cultura, agenda de eventos del mes en Zacatecas, tips de belleza, política actual, entre otros temas relevantes y de interés social.
+              </p>
               <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" enctype="multipart/form-data">
                 <p>
                 <span class="">

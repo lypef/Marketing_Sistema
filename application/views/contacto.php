@@ -24,11 +24,6 @@
                     </div>
                   </aside>
                   
-                  <center>
-                    <button data-trigger="focus" data-toggle="popover" title="We Go" data-content="Estamos diseñando el click qué necesitas para tener lo que quieres y en la puerta de tu casa, esperalo muy pronto..." type="button" class="btn btn-success btn-lg" data-placement="top"><span class="fa fa-shopping-cart"></span> We Go</button>
-                    <button data-trigger="focus" data-toggle="popover" title="U Car" data-content="Muy pronto la manera de viajar dentro y fuera de tu ciudad, no volverá a ser la misma.. U Car, muy pronto en tu ciudad, esperalo..." type="button" class="btn btn-info btn-lg" data-placement="top"><span class="fa fa-car"></span> U Car</button>
-                    <button data-trigger="focus" data-toggle="popover" title="U Magazine" data-content="Adquiere en cualquier Oxxo nuestra revista mensual o si prefieres, desde nuestra página suscribete por sólo $100 anuales y recibela en tu domicilio. En ella encontrarás  reportajes a profesionales de la salud hablando de temas específicos, entretenimiento, cultura, agenda de eventos del mes en Zacatecas, tips de belleza, política actual, entre otros temas relevantes y de interés social." type="button" class="btn btn-warning btn-lg" data-placement="top"><span class="fa fa-newspaper-o "></span> U Magazine</button>
-                  </center>
                   </div>
                   <hr>
                   <div class="entry-content contact-columns-3">

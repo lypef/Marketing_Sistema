@@ -49,6 +49,9 @@
         background: url(../../public/images/loader.svg) no-repeat center 0;
         margin:-50px 0 0 -50px;
     }
+    table, th, td {
+      border: 0px;
+    }
   </style>
   <body class="home">
   <div id="preloader">
@@ -125,15 +128,53 @@
                   if ($login)
                   {
                     echo '
-                    <a href="/index.php/all/clients_gestionar" title="Gestionar clientes" target="_self">
-                    <img alt="" src="../../public/images/site-logo1.png">
-                    </a>';
+
+                    <table class="back">
+                      <tr>
+                        <td>
+                          <a href="javascript:history.back(-1);" title="Pagina anterior" target="_self">
+                          <img alt="" src="../../public/images/next1.png" height="70" width="70">
+                          </a>
+                        </td>
+                      
+                        <td>
+                          <a href="/index.php/all/clients_gestionar" title="Gestionar clientes" target="_self">
+                          <img alt="" src="../../public/images/site-logo1.png">
+                          </a>
+                        </td>
+                        
+                        <td>
+                          <a href="javascript:history.back(1);" title="Pagina siguiente" target="_self">
+                          <img alt="" src="../../public/images/back1.png" height="70" width="70">
+                          </a>
+                        </td>
+                      </tr>
+                    </table>';
                   }else
                   {
                     echo '
-                    <a href="/" title="Pagina principal" target="_self">
-                    <img alt="" src="../../public/images/site-logo1.png">
-                    </a>';
+                    <table class="back">
+                      <tr>
+                        <td>
+                          <a href="javascript:history.back(-1);" title="Pagina anterior" target="_self">
+                          <img alt="" src="../../public/images/next1.png" height="70" width="70">
+                          </a>
+                        </td>
+                      
+                        <td>
+                          <a href="/" title="Pagina principal" target="_self">
+                          <img alt="" src="../../public/images/site-logo1.png">
+                          </a>
+                        </td>
+                        
+                        <td>
+                          <a href="javascript:history.back(1);" title="Pagina siguiente" target="_self">
+                          <img alt="" src="../../public/images/back1.png" height="70" width="70">
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                    ';
                   }
                 ?>
               </h1>
@@ -155,7 +196,7 @@
                     </li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
                       <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
-                      <li class="nav-item"><a href="#" target="_self">U. Magazine</a>
+                      <li class="nav-item"><a href="#" target="_self">U Magazine</a>
                         <ul>
                           <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">Gestionar</a></li>
                           <li><a href="/index.php/all/magazine_sub?pag=1" target="_self">Suscriptores</a></li>
@@ -193,11 +234,13 @@
                       <li><a href="" data-toggle="modal" data-target="#exampleModal">Quienes somos</a></li>
                       <li><a href="/index.php/all/nuestros_servicios" target="_self">Nuestros servicios</a></li>
                       <li><a href="/index.php/all/contacto" target="_self">Contacto</a></li>
-                      <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">U. Magazine</a></li>
-                      <li><a href="/index.php/all/c_zacatecas" target="_self">Conoce Zacatecas</a></li>
+                      <li><a href="" target="_self" data-toggle="modal" data-target="#modal_wego">We Go</a></li>
+                      <li><a href="" target="_self" data-toggle="modal" data-target="#modal_ucar">U car</a></li>
+                      <li><a href="/index.php/all/magazine?id_img=0&pag=1" target="_self">U Magazine</a></li>
                       <li class="nav-item"><a href="#" target="_self">Categorias</a>
                       '.GetCategoriesLI().'
                       </li>
+                      <li><a href="/index.php/all/c_zacatecas" target="_self">Galeria</a></li>
                     </ul>
                   </div>    
                 </nav>
@@ -217,16 +260,8 @@
             <ul class="slides">
             <li>
             <a href="">
-            <img src="../../public/images/portada2.png" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
+            <img src="../../public/images/portada4.png" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
             <div class="slider-caption">
-            <h2><a href="'.base_url().'all/c_zacatecas">Conoce zacatecas !</a></h2>
-            <p>Jerez de García Salinas, La Quemada, Nochistlán, Parque Nacional Sierra de Órganos, Teúl de González Ortega, Pinos, Santuario de Plateros, Sombrerete y mas ! </p><a href="'.base_url().'all/c_zacatecas" target="_self">Conocer ! </a> </div>
-            </li>
-            <li>
-            <a href="#">
-            <img src="../../public/images/portada1.png" class="attachment-slider size-slider wp-post-image" alt="slider2" /> </a>
-            <div class="slider-caption">
-            <h2><a href="'.base_url().'all/c_zacatecas">Conoce zacatecas !</a></h2>
             <p>Jerez de García Salinas, La Quemada, Nochistlán, Parque Nacional Sierra de Órganos, Teúl de González Ortega, Pinos, Santuario de Plateros, Sombrerete y mas ! </p><a href="'.base_url().'all/c_zacatecas" target="_self">Conocer ! </a> </div>
             </li>
             </ul>
