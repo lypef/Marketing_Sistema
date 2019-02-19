@@ -132,7 +132,7 @@
                     <table class="back">
                       <tr>
                         <td>
-                          <a href="javascript:history.back(-1);" title="Pagina anterior" target="_self">
+                          <a href="javascript:history.back();" title="Pagina anterior" target="_self">
                           <img alt="" src="../../public/images/next1.png" height="70" width="70">
                           </a>
                         </td>
@@ -144,7 +144,7 @@
                         </td>
                         
                         <td>
-                          <a href="javascript:history.back(1);" title="Pagina siguiente" target="_self">
+                          <a href="javascript:history.forward();" title="Pagina siguiente" target="_self">
                           <img alt="" src="../../public/images/back1.png" height="70" width="70">
                           </a>
                         </td>
@@ -156,7 +156,7 @@
                     <table class="back">
                       <tr>
                         <td>
-                          <a href="javascript:history.back(-1);" title="Pagina anterior" target="_self">
+                          <a href="javascript:history.back();" title="Pagina anterior" target="_self">
                           <img alt="" src="../../public/images/next1.png" height="70" width="70">
                           </a>
                         </td>
@@ -168,7 +168,7 @@
                         </td>
                         
                         <td>
-                          <a href="javascript:history.back(1);" title="Pagina siguiente" target="_self">
+                          <a href="javascript:history.forward();" title="Pagina siguiente" target="_self">
                           <img alt="" src="../../public/images/back1.png" height="70" width="70">
                           </a>
                         </td>
