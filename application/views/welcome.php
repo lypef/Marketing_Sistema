@@ -89,11 +89,6 @@
                   </ul>
                 </div>
               </aside>
-              
-              <aside class="widget widget_tag_cloud clearfix">
-                <h2 class="widget-title">Categorias</h2>
-                <?php echo GetCategoriesLI(); ?>
-              </aside>
             </div>
           </div>
         </div>

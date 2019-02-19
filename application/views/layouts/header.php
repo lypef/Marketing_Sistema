@@ -83,7 +83,10 @@
                       $salir = '<li><a href="/index.php/All/login_close" class="fa fa-times"> salir</a></li>';
                     }else
                     {
-                      $salir = '<li><a href="/index.php/all/login" class="fa fa-user"> Entrar</a></li>';
+                      $salir = '
+                        <li><a href="/" class="fa fa-home"> Pagina principal</a></li>
+                        <li><a href="/index.php/all/login" class="fa fa-user"> Entrar</a></li>  
+                      ';
                     }
                     echo $salir . '
                     <li><a href="https://www.facebook.com/linkuzac/?modal=admin_todo_tour" target="_blank" class="fa fa-facebook-square"></a></li>
@@ -94,10 +97,10 @@
                   else
                   {
                     echo '
-                    <li><a href="#" target="_blank" class="fa fa-facebook-square"></a></li>
-                    <li><a href="#" target="_blank" class="fa fa-twitter-square"></a></li>
-                    <li><a href="#" target="_blank" class="fa fa-youtube-play"></a></li>
-                    <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
+                      <li><a href="/" class="fa fa-home"> Pagina principal</a></li>
+                      <li><a href="https://www.facebook.com/linkuzac/?modal=admin_todo_tour" target="_blank" class="fa fa-facebook-square"></a></li>
+                      <li><a href="https://www.youtube.com/channel/UCv72dPE4OO9HZ_JSUVL_HPA?disable_polymer=true" target="_blank" class="fa fa-youtube-play"></a></li>
+                      <li><a href="https://www.instagram.com/linku.gestion/?utm_source=ig_profile_share&igshid=1vkm4f8uy46jr" target="_blank" class="fa fa-instagram"></a></li>
                     ';
                   }
                   ?>
