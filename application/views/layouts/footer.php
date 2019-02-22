@@ -180,7 +180,12 @@
             <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/promo_add" enctype="multipart/form-data">
             <p>
               <span class="">
-                <br><input id="name" class="" type="text" value="" name="name" placeholder="Nombre promocion: ">
+                <br><input id="name" class="" type="text" value="" name="name" placeholder="Nombre promocion: " maxlength="18">
+              </span>
+            </p>
+            <p>
+              <span class="">
+                <br><input id="price" class="" type="text" value="" name="price" placeholder="Precio: ">
               </span>
             </p>
             <span>*** Selecciona imagen para subir</span>

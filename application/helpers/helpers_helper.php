@@ -347,7 +347,15 @@
                     </a><br>
                     <div class="row">
                         <div class="col-sm-12">
+                            <blockquote class="blockquote text-center">
+                                <p class="mb-0">'.$item->price.'</p>
+                            </blockquote>
+                        </div>
+                        <div class="col-sm-12">
                             <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#delete_img"><span class="fa fa-times" /> Eliminar promocion actual</button>
+                        </div>
+                        <div class="col-sm-12">
+                            <br><button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#this_addqr"><span class="fa fa-check" /> Generar codigo QR</button>
                         </div>
                     </div>
                 </div>
@@ -355,8 +363,90 @@
                     <div class="fb-comments" data-href="'.base_url().'All/promotions/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
                 </div>
             </div>
+
+            <!-- modal -->
+            <div class="modal fade" id="this_addqr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    
+                    <div class="site-content" id="content">
+                    <h2 class="idol-title">Ingrese datos para QR: '.$item->name.'</h2>
+                    </div>
+                    <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/qr_add">
+                            <p>
+                                <span class="">
+                                '.GetClientsSelect().'
+                                </span>
+                            </p>
+                            <p>
+                                <span class="">
+                                <input id="name" class="" type="hidden" value="'.$item->name.'" name="name" placeholder="Nombre promocion: " required>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="">
+                                <input id="descripcion" class="" type="text" value="" name="descripcion" placeholder="Descripcion promocion: " required>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="">
+                                <input id="url_promo" class="" type="hidden" value="'.base_url().'all/promotions?id_img='.$item->id.'&pag=1" name="url_promo" placeholder="Url direccion de promocion:">
+                                </span>
+                            </p>
+                            <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" >Agregar</button>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Finaliza modal -->
+
             <br><br>
             <hr>
+            ';
+        }
+        else
+        {
+            return '';
+        }
+        
+    }
+
+    function ImgSelectPromotionNoLogin ($id)
+    {
+        if ($id > 0)
+        {
+            $c =& get_instance();
+            $item = $c->db->query('SELECT * FROM `promotions_locals` WHERE id = '.$id.' ')->row();
+
+            return '
+            <div class="row">
+                <div class="col-sm-6">
+                <div class="row">
+                        <div class="col-sm-12">
+                            <blockquote class="blockquote text-center">
+                                <p class="mb-0">'.$item->name.'</p>
+                                <footer>'.$item->price.'</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <a class="venobox" data-gall="myGallery" href="'.$item->url.'" title="'.$item->name.'">
+                        <center>
+                            <img src="'.$item->url.'" class="imagen_principal img-thumbnail" width="100%" alt="'.$item->name.'">
+                        </center>
+                    </a><br>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fb-comments" data-href="'.base_url().'All/promotions/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                </div>
+            </div>
+            <br><br>
             ';
         }
         else

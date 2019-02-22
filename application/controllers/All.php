@@ -1467,7 +1467,7 @@ class All extends CI_Controller {
 
 		if ($this->db->affected_rows() >= 1 )
 		{
-			redirect(base_url() . 'all/qr?qraddtrue=true');
+			redirect(base_url() . 'all/qr?qraddtrue=true&search='.$this->input->post('name').'');
 		}else
 		{
 			redirect(base_url() . 'all/qr?qraddfalse=true');
@@ -1516,7 +1516,6 @@ class All extends CI_Controller {
 
 	public function promotions()
 	{
-		LoginCheck();
 		$pag = $this->input->get('pag');
 		$buscar = $this->input->get('search');
 		$limit = '';
@@ -1579,6 +1578,7 @@ class All extends CI_Controller {
 		{
 			$data = array(
 				'url' => '../../public/images/promotions/'.$config['file_name'],
+				'price' => $this->input->post('price'),
 				'name' => $this->input->post('name')
 			);
 
@@ -1586,10 +1586,10 @@ class All extends CI_Controller {
 
 			if ($this->db->affected_rows() >= 1 )
 			{
-				redirect(base_url() . 'all/promotions?addpromotrue=true&?id_img=0&pag=1');
+				redirect(base_url() . 'all/promotions?addpromotrue=true&id_img='.$this->db->insert_id().'&pag=1');
 			}else
 			{
-				redirect(base_url() . 'all/promotions?addpromofalse=true&?id_img=0&pag=1');
+				redirect(base_url() . 'all/promotions?addpromofalse=true&id_img=0&pag=1');
 			}
 		}
 	}

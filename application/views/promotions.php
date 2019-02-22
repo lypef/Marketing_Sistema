@@ -51,8 +51,14 @@
                   <br>
                   ';
               }
-              echo ImgSelectPromotion($_GET['id_img']);
+              if ($login)
+              {
+                  echo ImgSelectPromotion($_GET['id_img']);
+              }else {
+                  echo ImgSelectPromotionNoLogin($_GET['id_img']);
+              }
               ?>
+              <?php if ($login){ ?>
               <form class="search-form">
                 <label>
                     <div class="row">
@@ -83,6 +89,7 @@
                     }
                   ?>
               </div>
+            <?php } ?>
         </div>
       </div>
   </div>
@@ -112,6 +119,7 @@ text-align: center;
 .pagination a:hover:not(.active) {background-color: #ddd;}
 </style>
 
+<?php if ($login){ ?>
 <div class="center">
     <div class="pagination">
         <?php 
@@ -151,6 +159,7 @@ text-align: center;
         ?>
     </div>
 </div>
+<?php } ?>
 <br>
 <script>
     $(document).ready(function(){
