@@ -9,12 +9,12 @@
         <li>
         <span class="fa fa-map-marker"></span>
         <address>
-            Calle De La Unión 108, Centro, Zacatecas 
+            <a target="_BLANK" href="https://www.google.com.mx/maps/place/Calle De La Unión 108, Centro, Zacatecas">Calle De La Unión 108, Centro, Zacatecas </a>
         </address>
         </li>
         <li>
         <span class="fa fa-phone"></span>
-            +52 - 492 145 07 91
+            +52 - 492 267 67 87
         </li>
         <li>
         <a target="_blank" href="mailto:info@linku.com.mx">

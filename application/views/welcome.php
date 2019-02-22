@@ -18,7 +18,7 @@
                   <div class="col-sm-6">
                     <div class="text-center">
                       <a href="'.base_url().'all/view_category_premium?id='.$item->id.'&pag=1">
-                        <span><strong>'.$item->nombre.'</strong></span><br><span><strong>'.$item->name.'</strong></span><br>
+                        <br><span><strong>'.strtoupper($item->name).'</strong></span><br>
                         <img src="'.$item->image.'" class="zoom img-thumbnail" alt="Categoria: '.$item->name.'" style="width:100%; height:234px">
                       </a>
                     </div>
@@ -31,7 +31,7 @@
             
             <div id="secondary" class="col-sm-4">
               <aside class="widget widget_text">
-                <h2 class="widget-title">Afiliados</h2>
+                <h2 class="widget-title">Zacatecas</h2>
                 <br><br>
                 <div class="row">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -47,10 +47,9 @@
                           $header = '<div class="item">';  
                         }
                         echo $header . '
-                            <img src="'.$item->url_img.'" alt="'.$item->title.'" style="width:100%; height:260px;">
+                            <img src="'.$item->url.'" alt="'.$item->name.'" style="width:100%; height:260px;">
                           <div class="carousel-caption">
-                            <h2 style="color: #FFFFFF; ">'.$item->title.'</h2>
-                            <p>'.$item->descripcion.' | '.$item->name.'</p>
+                            <a target="_BLANK" href="index.php/all/c_zacatecas?id_img='.$item->id.'"><h2 style="color: #FFFFFF; ">'.$item->name.'</h2></a>
                           </div>
                         </div>
                         ';

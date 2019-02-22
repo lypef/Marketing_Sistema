@@ -19,7 +19,7 @@
                       </div>
                       <ul>
                         <li><span class="fa fa-map-marker"></span>Calle De La Unión 108, Centro, Zacatecas</li>
-                        <br><li><span class="fa fa-calendar-check-o"></span>Citas: 492 145 07 91</li>
+                        <br><li><span class="fa fa-calendar-check-o"></span>Citas: 492 267 67 87</li>
                       </ul>
                     </div>
                   </aside>
@@ -75,10 +75,18 @@
           </div>
       </div>
     </main>
+
 <script>
-  $('.popover-dismiss').popover({
-    trigger: 'focus'
-  })
+if (getUrlVars()["asunto"])
+{
+    document.getElementById("asunto").value = getUrlVars()["asunto"];
+    document.getElementById("comentario").value = 'Me interesa el servicio, ' + getUrlVars()["servicio"] + ' pueden darme mas información ?';
+}
+
+
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
 
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
