@@ -1,5 +1,9 @@
 public/images/clients/*.jpg
 public/images/magazine/*.jpg
+public/images/gallery/*.jpg
+public/images/gallery/*.png
+public/images/gallery/*.PNG
+public/images/gallery/*.JPG
 public/images/qr_promotions/*.jpg
 public/images/qr_promotions/*.png
 public/images/qr_promotions/*.PNG

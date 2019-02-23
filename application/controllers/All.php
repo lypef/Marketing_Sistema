@@ -120,6 +120,47 @@ class All extends CI_Controller {
 		}
 	}
 
+	public function gallery_add()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		
+		//subir imagen
+		$extencion = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
+		$config['upload_path'] = "././public/images/gallery/";
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['file_name'] = 'magazine_'. date("YmdHis").'.'.$extencion;
+		$config['max_size'] = '5000';
+		$config['max_width']  = '5024';
+		$config['max_height']  = '5768';
+
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('img'))
+		{
+			/*Existe error al tratar de subir imagen*/
+			//echo $this->upload->display_errors();
+			//chmod($config['upload_path'] . $extencion, 777);
+			redirect($url.'?galleryaddfalse=false');
+		}else
+		{
+			$data = array(
+				'title' => $this->input->post('title'),
+				'url' => '../../public/images/gallery/'.$config['file_name']
+			);
+
+			$this->db->insert('gallery',$data);
+
+			if ($this->db->affected_rows() >= 1 )
+			{
+				redirect($url.'?id='.$this->db->insert_id().'&galleryaddtrue=true');
+			}else
+			{
+				redirect($url.'?galleryaddfalse=false');
+			}
+		}
+	}
+
 	public function magazine_update()
 	{
 		LoginCheck();
@@ -160,6 +201,24 @@ class All extends CI_Controller {
 		}else
 		{
 			redirect($url.'?magazinedeletefalse=false&id_img='.$id_img.'&pag='.$pag.'');
+		}
+	}
+
+	public function gallery_delete()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$id_img = $this->input->post('id');
+		$pag = $this->input->post('pag');
+
+		$this->db->where('id', $this->input->post('id'))->delete('gallery');
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?gallerydeletetrue=true');
+		}else
+		{
+			redirect($url.'?gallerydeletefalse=false');
 		}
 	}
 
@@ -1630,6 +1689,14 @@ class All extends CI_Controller {
 	{
 		$this->load->view('layouts/header');
 		$this->load->view('nuestros_servicios_gestion');
+		$this->load->view('layouts/footer');
+	}
+
+	public function galery()
+	{
+		$data['data'] = $this->db->query('SELECT * FROM `gallery` order by id desc')->result();		
+		$this->load->view('layouts/header');
+		$this->load->view('galery', $data);
 		$this->load->view('layouts/footer');
 	}
 }

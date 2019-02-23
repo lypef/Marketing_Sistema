@@ -329,6 +329,80 @@
         
     }
 
+    function ImgSelectGallery ($id)
+    {
+        if ($id > 0)
+        {
+            $c =& get_instance();
+            $item = $c->db->query('SELECT * FROM `gallery` WHERE id = '.$id.' ')->row();
+
+            return '
+            <div class="row">
+                <div class="col-sm-6">
+                    <a class="venobox" data-gall="myGallerySelect" href="'.$item->url.'" title="'.$item->title.'">
+                        <center>
+                            <span><strong>'.$item->title.'</strong></span>
+                            <img src="'.$item->url.'" class="imagen_principal img-thumbnail" width="100%" alt="'.$item->title.'">
+                        </center>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fb-comments" data-href="'.base_url().'All/galery/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                </div>
+            </div>
+            <br><br>
+            <hr>
+            ';
+        }
+        else
+        {
+            return '';
+        }
+        
+    }
+
+    function ImgSelectGalleryLogin ($id)
+    {
+        $admin = '
+        <div class="row">
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#add_img_gallery"><span class="fa fa-plus" /> Agregar imagen</button>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#delete_img"><span class="fa fa-times" /> Eliminar imagen actual</button>
+            </div>
+        </div><br><hr>
+        ';
+        if ($id > 0)
+        {
+            $c =& get_instance();
+            $item = $c->db->query('SELECT * FROM `gallery` WHERE id = '.$id.' ')->row();
+
+            return $admin .'
+            <div class="row">
+                <div class="col-sm-6">
+                    <a class="venobox" data-gall="myGallerySelect" href="'.$item->url.'" title="'.$item->title.'">
+                        <center>
+                            <span><strong>'.$item->title.'</strong></span>
+                            <img src="'.$item->url.'" class="imagen_principal img-thumbnail" width="100%" alt="'.$item->title.'">
+                        </center>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fb-comments" data-href="'.base_url().'All/galery/img_num/'.$item->id.'" data-numposts="6" order_by="reverse_time"></div>    
+                </div>
+            </div>
+            <br><br>
+            <hr>
+            ';
+        }
+        else
+        {
+            return $admin .'';
+        }
+        
+    }
+
     function ImgSelectPromotion ($id)
     {
         if ($id > 0)
