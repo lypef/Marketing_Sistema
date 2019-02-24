@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-02-2019 a las 06:44:55
+-- Tiempo de generación: 24-02-2019 a las 06:15:57
 -- Versión del servidor: 10.2.17-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `marketing`
 --
-CREATE DATABASE IF NOT EXISTS `marketing` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `marketing`;
 
 -- --------------------------------------------------------
 
@@ -496,23 +494,24 @@ CREATE TABLE `users` (
   `username` varchar(254) NOT NULL,
   `password` varchar(254) NOT NULL,
   `name` varchar(254) NOT NULL,
-  `mail` varchar(254) NOT NULL
+  `mail` varchar(254) NOT NULL,
+  `video` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `name`, `mail`) VALUES
-(1, 'root', 'b9be11166d72e9e3ae7fd407165e4bd2', 'Francisco Eduardo Ascencio Dominguez', 'lypef@live.com'),
-(2, 'carlitos_015', 'b9be11166d72e9e3ae7fd407165e4bd2', 'CARLOS PEREZ ISIDORO', 'carlos@empresa.com'),
-(3, 'carly052', 'b9be11166d72e9e3ae7fd407165e4bd2', 'JACINTO PEREZ ISIDORO', 'carlos@empresa.com'),
-(4, 'carly1456', 'b9be11166d72e9e3ae7fd407165e4bd2', 'ALFREDO PEREZ ISIDORO', 'carlos@empresa.com'),
-(5, 'especial_456', 'B9be11166d72e9e3ae7fd407165e4bd2', 'MARTIN PEREZ ISIDORO', 'carlos@empresa.com'),
-(7, 'carly1852', 'B9be11166d72e9e3ae7fd407165e4bd2', 'CLEOTILDE PEREZ ISIDORO', 'carlos@empresa.com\r\n'),
-(8, 'carly852', 'B9be11166d72e9e3ae7fd407165e4bd2', 'TADEO PEREZ ISIDORO', 'carlos@empresa.com\r\n'),
-(11, 'demo', '6c5ac7b4d3bd3311f033f971196cfa75', 'USUARIO DEMO', 'demo@cyberchoapoas.com'),
-(13, 'demoo', '3da4b5b994b07d7faa6e2251437f2b80', 'a', 'a@a.com');
+INSERT INTO `users` (`id`, `username`, `password`, `name`, `mail`, `video`) VALUES
+(1, 'root', 'b9be11166d72e9e3ae7fd407165e4bd2', 'Francisco Eduardo Ascencio Dominguez', 'lypef@live.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(2, 'carlitos_015', 'b9be11166d72e9e3ae7fd407165e4bd2', 'CARLOS PEREZ ISIDORO', 'carlos@empresa.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(3, 'carly052', 'b9be11166d72e9e3ae7fd407165e4bd2', 'JACINTO PEREZ ISIDORO', 'carlos@empresa.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(4, 'carly1456', 'b9be11166d72e9e3ae7fd407165e4bd2', 'ALFREDO PEREZ ISIDORO', 'carlos@empresa.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(5, 'especial_456', 'B9be11166d72e9e3ae7fd407165e4bd2', 'MARTIN PEREZ ISIDORO', 'carlos@empresa.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(7, 'carly1852', 'B9be11166d72e9e3ae7fd407165e4bd2', 'CLEOTILDE PEREZ ISIDORO', 'carlos@empresa.com\r\n', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(8, 'carly852', 'B9be11166d72e9e3ae7fd407165e4bd2', 'TADEO PEREZ ISIDORO', 'carlos@empresa.com\r\n', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(11, 'demo', '6c5ac7b4d3bd3311f033f971196cfa75', 'USUARIO DEMO', 'demo@cyberchoapoas.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(13, 'demoo', '3da4b5b994b07d7faa6e2251437f2b80', 'a', 'a@a.com', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NTFjleENYEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
 
 --
 -- Índices para tablas volcadas

@@ -1,3 +1,6 @@
+<?php 
+      $login = LoginCheckBool();
+?>
 </div>
       <footer id="colophon" class="site-footer" >
       <div class="widget-wrap">
@@ -22,14 +25,48 @@
                   </div>
                 </aside>
               </div>
+              
               <div class="col-sm-4">
-                <aside class="widget">
-                  <h2 class="widget-title">Categorias</h2>
-                  <ul>
-                    <?php echo GetCategoriesLI(); ?>
-                  </ul>
+                    <h2 class="widget-title">Videos & Lives</h2>
+                    <?php if ($login){
+                      echo '
+                      <!-- Actualizar video footer -->
+                    <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#update_video"><span class="fa fa-check" /> Actualizar video</button><p></p>
+    
+                    <div class="modal fade" id="update_video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                          
+
+                          <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/update_video" autocomplete="off">
+                          
+                          <p class="contact-textarea">
+                            <span class="">
+                              <textarea id="code" name="code" class="" rows="6" placeholder="Escribe aqui el codigo Embed ..." style="color:black;">
+                              '.GetVideoUrl().'
+                              </textarea>
+                            </span>
+                          </p>
+                          <input type="hidden" id="url" name="url" value="'.UrlActual($_SERVER[REQUEST_URI]).'">
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Actualizar video footer -->
+                      ';
+                    }?>
+                    <?php echo GetVideoUrl(); ?>
                 </aside>
               </div>
+
               <div class="col-sm-4">
                 <aside class="widget widget-links">
                   <h2 class="widget-title">Like Us on Facebook</h2>
@@ -46,7 +83,6 @@
         </div> 
       </div>
     </footer>
-
     
     <!-- Modal Quienes somos -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -913,6 +949,27 @@
         body +="<span aria-hidden='true'>&times;</span>";
         body +="</button>";
         body +="<strong><p class='fa fa-exclamation'> </strong> No es posible eliminar esta imagen.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    //Actualizar video
+    if (getUrlVars()["updatevideo"])
+    {
+        var body = "<div class='alert alert-success alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-check'></strong> Se actualizo video con exito.";
+        body +="</div>";
+        document.getElementById("message").innerHTML = body;
+    }
+    else if (getUrlVars()["noupdatevideo"])
+    {
+        var body = "<div class='alert alert-danger alert-dismissible show' role='alert'>";
+        body +="<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+        body +="<span aria-hidden='true'>&times;</span>";
+        body +="</button>";
+        body +="<strong><p class='fa fa-exclamation'> </strong> No es posible actualizar el video.";
         body +="</div>";
         document.getElementById("message").innerHTML = body;
     }

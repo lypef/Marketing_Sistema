@@ -1699,5 +1699,27 @@ class All extends CI_Controller {
 		$this->load->view('galery', $data);
 		$this->load->view('layouts/footer');
 	}
+
+	public function update_video()
+	{
+		LoginCheck();
+		$url = $this->input->post('url');
+		$code = $this->input->post('code');
+
+		
+		$data = array(
+				'video' => $code
+		);
+		
+		$this->db->update('users', $data);
+
+		if ($this->db->affected_rows() >= 1 )
+		{
+			redirect($url.'?updatevideo=true');
+		}else
+		{
+			redirect($url.'?noupdatevideo=true');
+		}
+	}
 }
 ?>

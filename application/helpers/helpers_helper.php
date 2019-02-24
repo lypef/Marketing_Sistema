@@ -561,4 +561,10 @@
         }
         
     }
+
+    function GetVideoUrl ()
+    {
+        $c =& get_instance();
+        return $c->db->query('SELECT video FROM users ORDER BY RAND() LIMIT 1')->row()->video;
+    }
 ?>

@@ -17,7 +17,7 @@ class Models_model extends CI_Model {
 
         if ($r->num_rows() > 0)
         {
-            $this->session->set_userdata('username',$username);
+            $this->session->set_userdata('username',$r->row()->username);
             return true;
         }else {return false; }
     }
