@@ -16,7 +16,8 @@ class All extends CI_Controller {
 	{
 		$data['categories'] = $this->db->query('SELECT * FROM `categories`')->result();
 		$data['sliders'] = $this->db->query('SELECT * FROM c_zacatecas ORDER BY RAND() LIMIT 8')->result();
-		
+		$data['_sliders'] = $this->db->query('SELECT ga.id, ga.url, ga.url_img, ga.title, ga.descripcion, cl.category,ca.name, cl.empresa, ga.premium, cl.id as cl_id_empresa FROM empresa_gallery ga, clients cl, categories ca WHERE ga.empresa = cl.id and cl.category = ca.id ORDER BY RAND() LIMIT 8')->result();
+
 		$this->load->view('layouts/header');
 		$this->load->view('welcome', $data);
 		$this->load->view('layouts/footer');

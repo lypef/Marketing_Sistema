@@ -531,9 +531,9 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                                <li><span>$500 / $800</span> Aprox</li>
+                                <li><span>$500* / $800**</span> Aprox</li>
                                 <li><span>Publicidad en linku.com.mx</span></li>
-                                <li><span>Pagina principal en linku.com.mx</span></li>
+                                <li><span>Página principal en linku.com.mx</span></li>
                                 <li><span>Categoría empresarial</span></li>
                                 <li><span>10 espacios exclusivos</span></li>
                             </ul>
@@ -589,7 +589,7 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                                <li><span>$500 / $ 1000</span> Aprox</li>
+                                <li><span>$500* / $ 1000**</span> Aprox</li>
                                 <li><span>Espacio en reproductor de imágenes</span></li>
                                 <li><span>de empresa afiliadas</span></li>
                                 <li><span>en página principal de nuestra página web</span></li>
@@ -646,11 +646,11 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                                <li><span>$1,000 / $1,500</span> Aprox</li>
+                                <li><span>$1,000* / $1,500**</span> Aprox</li>
                                 <li><span>Módulo para almacenar información</span></li>
                                 <li><span>o contenido de una empresa. Promociones</span></li>
                                 <li><span>o links a página web o redes sociales</span></li>
-                                <li><span>Código Qr personalizados</span></li>
+                                <li><span>Código Qr personalizado</span></li>
                             </ul>
                         </div>
                         <!--//FEATURE LIST END-->
@@ -721,7 +721,7 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                                <li><span>$1,000 / $1,500</span> Aprox</li>
+                                <li><span>$1,000* / $1,500**</span> Aprox</li>
                                 <li><span>Contenido, diseño y ads para Facebook</span></li>
                                 <li><span>Diseño de imagen y contenido personalizado</span></li>
                                 <li><span>Publicación pagada y con público seleccionado con intereses de su empresa</span></li>
@@ -779,7 +779,7 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                                <li><span>$1000 / $1500</span> Aprox</li>
+                                <li><span>$1000* / $1500**</span> Aprox</li>
                                 <li><span>Transmisión en vivo del lugar</span></li>
                                 <li><span>Publicidad a través de redes sociales</span></li>
                                 <li><span>Reproduccion de videos en linku.com.mx</span></li>
@@ -836,7 +836,7 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                            	<li><span>$500-$1,000 / $800-$1,500</span> Aprox</li>
+                            	<li><span>$500-$1,000* / $800-$1,500**</span> Aprox</li>
                                 <li><span>Producto (2) o Lugar (5)</span></li>
                                 <li><span>Fotografías tomadas</span></li>
                                 <li><span>Fotografías editadas</span></li>
@@ -898,7 +898,7 @@ body{background-color:#eee;}
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
                                     <span class="sign">$</span>
-                                    <span class="currency">500</span>
+                                    <span class="currency">5000</span>
                                     <span class="cent">.00</span>
                                     <span class="month">| 1 Semana</span>
                                 </span>
@@ -1032,7 +1032,7 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                                <li><span>$3,500 / $4,800</span> Aprox</li>
+                                <li><span>$3,500* / $4,800**</span> Aprox</li>
                                 <li><span>Redes sociales / Web </span></li>
                                 <li><span>Diseñar contenido</span></li>
                                 <li><span>Publicar contenido</span></li>
