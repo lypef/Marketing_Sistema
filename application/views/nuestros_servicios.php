@@ -911,7 +911,8 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
-                            	<li><span>Reportaje o Entrevista</span></li>
+                                <li><span>$5000* / $ 6500**</span>Aprox</li>
+                                <li><span>Reportaje o Entrevista</span></li>
                                 <li><span>Video con tomas de la empresa</span></li>
                                 <li><span>Elaboración del producto o servicio</span></li>
                                 <li><span>Información que la empresa quiera dar a conocer</span></li>
@@ -972,6 +973,7 @@ body{background-color:#eee;}
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                         	<ul>
+                                <li><span>$7000* / $ 10000**</span>Aprox</li>
                                 <li><span>Diseño y elaboración de página web</span></li>
                                 <li><span>Hecho a medida de la empresa</span></li>
                                 <li><span>Compatibilidad con todos los dispositivos mobiles, tablets, pc y laptops</span></li>
@@ -1037,10 +1039,11 @@ body{background-color:#eee;}
                                 <li><span>Diseñar contenido</span></li>
                                 <li><span>Publicar contenido</span></li>
                                 <li><span>Publicaciones pagadas y no pagadas</span></li>
-                                <li><span>Se publica Información proporcionada por la empresa</span></li>
-                                <li><span>Respuesta eficaz a comentarios y preguntas</span></li>
+                                <li><span>Se publica Información proporcionada unicamente por la empresa</span></li>
+                                <li><span>Respuesta eficaz a comentarios</span></li>
                                 <li><span>Gestion eficaz a clientes en la FanPage</span></li>
                             </ul>
+                            <br><br><p><p></p></p>
                         </div>
                         <!--//FEATURE LIST END-->
                         
