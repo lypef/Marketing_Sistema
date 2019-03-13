@@ -2,17 +2,35 @@
       $login = LoginCheckBool();
 ?>
 </div>
+      <style>
+      .fondocss {
+      position: absolute;
+      top:0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: 0
+      }
+</style>
+      
       <footer id="colophon" class="site-footer" >
       <div class="widget-wrap">
+      <center>
+      
+      <video class = "fondocss" autoplay loop style="min-width: 100% !important;min-height: 100% !important;">
+        <source src="../../public/images/video.mp4" type="video/ogg">
+      </video>
+
         <div class="widget-wrap-bg"></div>
         <div class="container">
           <div class="widget-area">
+            <br><br><br>
             <div class="row">
               <div class="col-sm-4">
                 <aside class="widget widget_text">
                   <div class="site-info">
                     <h1 class="site-title">
-                      <a href="/" target="_self"><img alt="" src="../../public/images/footer-logo_2.png"></a>
+                      <a href="/" target="_self"><img alt="" src="../../public/images/footer_logo_nuevo.png"></a>
                     </h1>  
                   </div>
                   <div class="textwidget text-justify">Gracias por visitar nuestra página, nos vemos en tu próxima búsqueda.</div>
@@ -90,7 +108,7 @@
         <div class="modal-content">
           <div class="modal-body">
           <hr>
-          <center><img src="../../public/images/site-logo1.png" alt=""></center>
+          <center><img src="../../public/images/footer_logo_nuevo.png" alt=""></center>
           <br>
           EN LINK U PROJECTS SOMOS UN EQUIPO DE PROFESIONALES DEDICADOS A REALIZAR PROYECTOS DE EXPANSIÓN COMERCIAL PARA EMPRESAS, PyMES Y EMPRENDEDORES. 
           <br><br>PONIENDO A SU ALCANCE  NUESTRAS MEJORES HERRAMIENTAS PARA ASI POSICIONAR SUS MARCAS Y PRODUCTOS SOBRE CUALQUIER COMPETENCIA.
@@ -110,7 +128,7 @@
         <div class="modal-content">
           <div class="modal-body">
           <hr>
-          <center><img src="../../public/images/site-logo1.png" alt=""></center>
+          <center><img src="../../public/images/footer_logo_nuevo.png" alt=""></center>
           <br>
           <center>Estamos diseñando el click qué necesitas para tener lo que quieres y en la puerta de tu casa, esperalo muy pronto...</center>
           </div>
@@ -128,7 +146,7 @@
         <div class="modal-content">
           <div class="modal-body">
           <hr>
-          <center><img src="../../public/images/site-logo1.png" alt=""></center>
+          <center><img src="../../public/images/footer_logo_nuevo.png" alt=""></center>
           <br>
           <center>Muy pronto la manera de viajar dentro y fuera de tu ciudad, no volverá a ser la misma.. U Car, muy pronto en tu ciudad, esperalo...</center>
           </div>

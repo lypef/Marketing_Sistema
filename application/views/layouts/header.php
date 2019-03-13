@@ -142,7 +142,7 @@
                       
                         <td>
                           <a href="/index.php/all/clients_gestionar" title="Gestionar clientes" target="_self">
-                          <img alt="" src="../../public/images/site-logo1.png">
+                          <img alt="" src="../../public/images/footer_logo_nuevo.png" height="" width="273">
                           </a>
                         </td>
                         
@@ -166,7 +166,7 @@
                       
                         <td>
                           <a href="/" title="Pagina principal" target="_self">
-                          <img alt="" src="../../public/images/site-logo1.png">
+                          <img alt="" src="../../public/images/footer_logo_nuevo.png" height="" width="273" >
                           </a>
                         </td>
                         
