@@ -263,7 +263,7 @@
             <ul class="slides">
             <li>
             <a href="">
-            <img src="../../public/images/portada4.png" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
+            <img src="../../public/images/webpage.gif" class="attachment-slider size-slider wp-post-image" alt="slider1" /> </a>
             <div class="slider-caption">
             <p>Jerez de García Salinas, La Quemada, Nochistlán, Parque Nacional Sierra de Órganos, Teúl de González Ortega, Pinos, Santuario de Plateros, Sombrerete y mas ! </p><a href="'.base_url().'all/c_zacatecas" target="_self">Conocer ! </a> </div>
             </li>

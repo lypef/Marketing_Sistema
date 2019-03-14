@@ -2,25 +2,9 @@
       $login = LoginCheckBool();
 ?>
 </div>
-      <style>
-      .fondocss {
-      position: absolute;
-      top:0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: 0
-      }
-</style>
-      
       <footer id="colophon" class="site-footer" >
       <div class="widget-wrap">
       <center>
-      
-      <video class = "fondocss" autoplay loop style="min-width: 100% !important;min-height: 100% !important;">
-        <source src="../../public/images/video.mp4" type="video/ogg">
-      </video>
-
         <div class="widget-wrap-bg"></div>
         <div class="container">
           <div class="widget-area">
@@ -96,7 +80,7 @@
         </div>
         <div class="copy-right">
           <div class="container">
-            <span>© 2019 <a target="_blank" href="http://www.cyberchoapas.com">| CLTA DESARROLLO &amp; DISTRIBUCION DE SOFTWARE</a> &amp; <a target="_blank" href="https://www.facebook.com/softboxzac/"> SoftBox Zacatecas</a></span>
+            <span>© 2019 <a target="_blank" href="http://www.cyberchoapas.com">CLTA D&amp;D </a> | <a target="_blank" href="https://www.facebook.com/softboxzac/"> SOFTBOXZAC</a></span>
           </div> 
         </div> 
       </div>

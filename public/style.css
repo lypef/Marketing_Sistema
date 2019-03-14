@@ -2590,7 +2590,7 @@ div.bbp-submit-wrapper button {
     text-transform: uppercase;
 }
 .site-footer > .widget-wrap {
-    background: rgba(0, 0, 0, 0.5) url("images/_footer-bg.png") no-repeat fixed 0 0;
+    background: rgba(0, 0, 0, 0.5) url("images/footer-bg.png") no-repeat fixed 0 0;
     background-size: cover;
     padding: 70px 0 0;
     position: relative;
