@@ -74,7 +74,7 @@
 
               <aside class="widget widget_newsletter">
                 <h2 class="widget-title">Suscribete ! </h2>
-                <p>Recibe cada edicion MAGAZINE U, a domilio por solo $ 100 MXN !, Llena el formulario y deposita en el oxxo mas cercano.</p>
+                <p>Recibe cada edicion MAGAZINE U, a domilio por solo $ 420 MXN !, Llena el formulario y deposita en el oxxo mas cercano.</p>
                 <a href="#" data-toggle="modal" data-target="#registrarme_umagazine" ><input class="search-submit" type="submit" value="suscribirme"></a>
               </aside>
               

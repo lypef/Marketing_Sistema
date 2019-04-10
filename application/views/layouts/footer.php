@@ -354,10 +354,10 @@
               <div class="modal-content">
               <div class="modal-body">
               <div class="site-content" id="content">
-              <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 100.00 MXN</h2>
+              <h2 class="idol-title">Suscripción A U.Magazine - Anual $ 420.00 MXN</h2>
               </div>
               <p>
-              Adquiere en cualquier Oxxo nuestra revista mensual o si prefieres, desde nuestra página suscribete por sólo $100 anuales y recibela en tu domicilio. En ella encontrarás  reportajes a profesionales de la salud hablando de temas específicos, entretenimiento, cultura, agenda de eventos del mes en Zacatecas, tips de belleza, política actual, entre otros temas relevantes y de interés social.
+              Adquiere en cualquier Oxxo nuestra revista mensual o si prefieres, desde nuestra página suscribete por sólo $420 anuales y recibela en tu domicilio. En ella encontrarás  reportajes a profesionales de la salud hablando de temas específicos, entretenimiento, cultura, agenda de eventos del mes en Zacatecas, tips de belleza, política actual, entre otros temas relevantes y de interés social.
               </p>
               <form method="post" class="wpcf7-form cmxform" id="commentForm" action="/index.php/All/register_magazine" enctype="multipart/form-data">
                 <p>

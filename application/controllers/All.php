@@ -710,7 +710,7 @@ class All extends CI_Controller {
 					"line_items" => array(
 					array(
 						"name" => "Subscripcion anual U Magazine",
-						"unit_price" => 10000,
+						"unit_price" => 42000,
 						"quantity" => 1
 					)),
 					"currency" => "MXN",
